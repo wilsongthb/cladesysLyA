@@ -6,7 +6,7 @@
 
 ## instalacion
 ~~~
-git clone 
+git clone https://github.com/wilsongthb/cladesysLyA.git
 cd cladesysLyA1
 composer install 
 ~~~
