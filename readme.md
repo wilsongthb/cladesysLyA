@@ -4,11 +4,24 @@
 * https://github.com/juankito
 * https://github.com/wilsongthb
 
+## Frameworks
+* Laravel 5.4
+* Angular 1.6.4
+
+## Recomendamos
+* XAMPP
+* php 7.14
+* MySQL 5.7.18
+* node 8.*
+
+
 ## instalacion
 ~~~
 git clone https://github.com/wilsongthb/cladesysLyA.git
 cd cladesysLyA1
-composer install 
+composer install
+cd public/
+bower install
 ~~~
 
 ## Configuracion de la base de datos

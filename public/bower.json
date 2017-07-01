@@ -1,0 +1,17 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/wilsongthb/cladesysLyA",
+  "authors": [
+    "Wilson Pilco Nuñez <wilsonaux1@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
