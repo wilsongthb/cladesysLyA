@@ -225,13 +225,13 @@ class Relationals extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
-        Schema::dropIfExists('suppliers');
-        Schema::dropIfExists('inputs');
-        Schema::dropIfExists('input_details');
-        Schema::dropIfExists('outputs');
-        Schema::dropIfExists('output_details');
-        Schema::dropIfExists('orders');
         Schema::dropIfExists('order_details');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('output_details');
+        Schema::dropIfExists('outputs');
+        Schema::dropIfExists('input_details');
+        Schema::dropIfExists('inputs');
+        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('products');
     }
 }

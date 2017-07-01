@@ -16,10 +16,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::group(['prefix' => 'cladesys'], function(){
-    Route::get('/', 'cladesys\homeController@index');
-    Route::group(['prefix' => '/logistic'] , function(){
-        Route::resource('brands', 'cladesys\logistic\brandsController');
-    });
-});

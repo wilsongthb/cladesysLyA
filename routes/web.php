@@ -17,7 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/cladesys', function(){ return view('cladesys.index'); });
-Route::get('view/{view}', 'viewController@index');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/home', function(){ return view('index'); });
+    
+    // single page en angular
+    Route::get('/logistic', function(){ return view('logistic.index'); });
+
+    Route::get('view/{view}', 'viewController@index');
+});

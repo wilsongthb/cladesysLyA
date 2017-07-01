@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>CLADESYS</title>
+        <title>Cladesys - Logistic</title>
 
         <link href="{{ asset('css/app.css') }} " rel="stylesheet">
 
@@ -17,13 +16,13 @@
         <![endif]-->
     </head>
     <body>
-        <div ng-app="cladesys">
+        <div ng-app="logistic" ng-controller="rootController">
             
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                <a class="navbar-brand" href="#">Title</a>
+                <a class="navbar-brand" href="{{ url('/') }} ">{{ config('app.name') }}</a>
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="#">Home</a>
+                        <a class="navbar-brand" href="{{ url('/logistic') }} ">Logistic</a>
                     </li>
                     <li>
                         <a href="#">Link</a>
@@ -40,6 +39,6 @@
         <script src="{{ asset('bower_components/angular-route/angular-route.js') }} "></script>
 
         <script>window.url = "{{ url('') }}"</script>
-        <script src="{{ asset('js/cladesys/main.js')}} "></script>
+        <script src="{{ asset('js/logistic/main.js')}} "></script>
     </body>
 </html>

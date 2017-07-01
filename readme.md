@@ -1,4 +1,4 @@
-# App CLADESYS
+# APP CLADESYS
 
 ## Participantes
 * https://github.com/juankito
@@ -13,6 +13,7 @@
 * php 7.14
 * MySQL 5.7.18
 * node 8.*
+* bower
 
 
 ## instalacion
@@ -49,4 +50,9 @@ USE `homestead`;
 ## Ejecutar para crear base de datos
 ~~~
 php artisan migrate
+php artisan db:seed
 ~~~
+
+## Acceso de desarrollo
+email: root@localhost
+pass: root
