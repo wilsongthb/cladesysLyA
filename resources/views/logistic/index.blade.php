@@ -12,6 +12,7 @@
     <title>Cladesys - Logistic</title>
 
     <link href="{{ asset('css/app.css') }} " rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }} ">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
