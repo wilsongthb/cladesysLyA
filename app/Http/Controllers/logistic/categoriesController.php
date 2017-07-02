@@ -8,6 +8,8 @@ use App\categoriesModel;
 
 class categoriesController extends Controller
 {
+    private $titulo = 'CATEGORIAS';
+    private $name = 'categories';
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +17,18 @@ class categoriesController extends Controller
      */
     public function index(Request $request)
     {
-        return categoriesModel::where('detail', 'LIKE', "%$request->search%")->paginate(15);
+        $datos = categoriesModel::where('flagstate', '1');
+        $search = $request->get('search');
+        if ($search) {
+            $datos = $datos->Where('detail', 'LIKE', '%'.$search.'%');
+        }
+        $datos = $datos->paginate(10);
+        return view('logistic.brands.index', [
+            'titulo' => $this->titulo,
+            'name' => $this->name,
+            'datos' => $datos,
+            'search' => $search
+        ]);
     }
 
     /**
@@ -25,7 +38,10 @@ class categoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('logistic.brands.form', [
+            'titulo' => $this->titulo,
+            'name' => $this->name,
+        ]);
     }
 
     /**
@@ -36,7 +52,12 @@ class categoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registro = new categoriesModel;
+        $registro->detail = $request->detail;
+        $registro->flagstate = true;
+        $registro->user_id = \Auth::user()->id;
+        $registro->save();
+        return redirect('logistic/'.$this->name);
     }
 
     /**
@@ -47,7 +68,7 @@ class categoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        return categoriesModel::find($id);
     }
 
     /**
@@ -58,7 +79,12 @@ class categoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('logistic.brands.form', [
+            'titulo' => $this->titulo,
+            'name' => $this->name,
+            'type' => 'edit',
+            'dato' => categoriesModel::find($id)
+        ]);
     }
 
     /**
@@ -70,7 +96,12 @@ class categoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $registro = categoriesModel::find($id);
+        $registro->detail = $request->detail;
+        $registro->user_id = \Auth::user()->id;
+        $registro->save();
+
+        return redirect('logistic/'.$this->name);
     }
 
     /**
@@ -80,7 +111,9 @@ class categoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $registro = categoriesModel::find($id);
+        $registro->flagstate = false;
+        $registro->save();
     }
 }

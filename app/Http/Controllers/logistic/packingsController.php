@@ -8,14 +8,27 @@ use App\packingsModel;
 
 class packingsController extends Controller
 {
+    private $titulo = 'EMPAQUETADO';
+    private $name = 'packings';
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return packingsModel::where('flagstate', '1')->get();
+        $datos = packingsModel::where('flagstate', '1');
+        $search = $request->get('search');
+        if ($search) {
+            $datos = $datos->Where('detail', 'LIKE', '%'.$search.'%');
+        }
+        $datos = $datos->paginate(10);
+        return view('logistic.brands.index', [
+            'titulo' => $this->titulo,
+            'name' => $this->name,
+            'datos' => $datos,
+            'search' => $search
+        ]);
     }
 
     /**
@@ -25,7 +38,10 @@ class packingsController extends Controller
      */
     public function create()
     {
-        //
+        return view('logistic.brands.form', [
+            'titulo' => $this->titulo,
+            'name' => $this->name,
+        ]);
     }
 
     /**
@@ -39,8 +55,9 @@ class packingsController extends Controller
         $registro = new packingsModel;
         $registro->detail = $request->detail;
         $registro->flagstate = true;
-        $registro->user_id = $request->user_id;
+        $registro->user_id = \Auth::user()->id;
         $registro->save();
+        return redirect('logistic/'.$this->name);
     }
 
     /**
@@ -62,7 +79,12 @@ class packingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('logistic.brands.form', [
+            'titulo' => $this->titulo,
+            'name' => $this->name,
+            'type' => 'edit',
+            'dato' => packingsModel::find($id)
+        ]);
     }
 
     /**
@@ -76,9 +98,10 @@ class packingsController extends Controller
     {
         $registro = packingsModel::find($id);
         $registro->detail = $request->detail;
-        // $registro->flagstate = true;
-        $registro->user_id = $request->user_id;
+        $registro->user_id = \Auth::user()->id;
         $registro->save();
+
+        return redirect('logistic/'.$this->name);
     }
 
     /**

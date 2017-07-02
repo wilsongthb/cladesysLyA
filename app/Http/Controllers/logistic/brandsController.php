@@ -19,10 +19,7 @@ class brandsController extends Controller
     public function index(Request $request)
     {
         $datos = brandsModel::where('flagstate', '1');
-
-        // exit(var_dump($request->get('?search')));
         $search = $request->get('search');
-
         if ($search) {
             $datos = $datos->Where('detail', 'LIKE', '%'.$search.'%');
         }
@@ -59,10 +56,8 @@ class brandsController extends Controller
         $registro = new brandsModel;
         $registro->detail = $request->detail;
         $registro->flagstate = true;
-        // $registro->user_id = $request->user_id;
         $registro->user_id = \Auth::user()->id;
         $registro->save();
-
         return redirect('logistic/'.$this->name);
     }
 
@@ -104,7 +99,6 @@ class brandsController extends Controller
     {
         $registro = brandsModel::find($id);
         $registro->detail = $request->detail;
-        // $registro->flagstate = true;
         $registro->user_id = \Auth::user()->id;
         $registro->save();
 
