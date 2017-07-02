@@ -46,6 +46,7 @@ class Basics extends Migration
             
             // columnas
             $table->string('detail');
+            $table->boolean('flagstate');
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();
@@ -96,10 +97,12 @@ class Basics extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        // normalizacion
+        Schema::dropIfExists('brands'); 
         Schema::dropIfExists('categories');
         Schema::dropIfExists('packings');
         Schema::dropIfExists('tickets');
+        // registro
         Schema::dropIfExists('locations');
     }
 }

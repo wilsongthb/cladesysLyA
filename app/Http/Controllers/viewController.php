@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 class viewController extends Controller
 {
     public function index($view){
-        // return view(str_replace('-', '.', $view));
-        return view($view);
+
+        // esta operacion se hace para servir archivos php como si fueran html
+
+        $view_html = substr($view, 0, -5);
+        return view($view_html);
     }
 }

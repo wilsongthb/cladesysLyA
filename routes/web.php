@@ -24,6 +24,10 @@ Route::group(['middleware' => 'auth'], function(){
     
     // single page en angular
     Route::get('/logistic', function(){ return view('logistic.index'); });
+    Route::get('/logistic/{url}', function(){ return view('logistic.index'); });// esta segunda ruta es para que pase por alto los argumentos de HTML5MOD
+    Route::get('/logistic/{url}/{sec}', function(){ return view('logistic.index'); });// esta segunda ruta es para que pase por alto los argumentos de HTML5MOD
+    Route::get('/logistic/{url}/{sec}/{unit}', function(){ return view('logistic.index'); });// esta segunda ruta es para que pase por alto los argumentos de HTML5MOD
 
+    // provedor de vistas, util para el desarrollo con angular
     Route::get('view/{view}', 'viewController@index');
 });
