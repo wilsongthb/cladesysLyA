@@ -22,12 +22,15 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', function(){ return view('index'); });
     
-    // single page en angular
-    Route::get('/logistic', function(){ return view('logistic.index'); });
-    Route::get('/logistic/{url}', function(){ return view('logistic.index'); });// esta segunda ruta es para que pase por alto los argumentos de HTML5MOD
-    Route::get('/logistic/{url}/{sec}', function(){ return view('logistic.index'); });// esta segunda ruta es para que pase por alto los argumentos de HTML5MOD
-    Route::get('/logistic/{url}/{sec}/{unit}', function(){ return view('logistic.index'); });// esta segunda ruta es para que pase por alto los argumentos de HTML5MOD
+    Route::group(['prefix' => 'logistic'], function(){
+        Route::resource('brands', 'logistic\brandsController');
+        // Route::resource('packings', 'logistic\packingsController');
+        // Route::resource('categories', 'logistic\categoriesController');
 
-    // provedor de vistas, util para el desarrollo con angular
+        // single page aplication Angular JS 1.6.4
+        Route::get('/{p?}/{p1?}/{p3?}', function(){ return view('logistic.index'); });// ruta especial, no le des mucha importancia
+    });
+
+    // provedor de vistas, util para el desarrollo con angular, pero puede ser una puerta abierta a errores
     Route::get('view/{view}', 'viewController@index');
 });

@@ -19,8 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Route::group(['middleware' => 'auth:api'], function(){
     Route::group(['prefix' => 'logistic'], function(){
-        Route::resource('brands', 'logistic\brandsController');
-        Route::resource('packings', 'logistic\packingsController');
-        Route::resource('categories', 'logistic\categoriesController');
+        // Route::resource('brands', 'logistic\brandsController');
+        // Route::resource('packings', 'logistic\packingsController');
+        // Route::resource('categories', 'logistic\categoriesController');
     });
 // });

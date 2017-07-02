@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Cladesys - Logistic</title>
 
     <link href="{{ asset('css/app.css') }} " rel="stylesheet">
@@ -15,7 +19,9 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-    <base href="{{ url('') }}/logistic/">
+    
+    @yield('head')
+    
 </head>
 
 <body>
@@ -38,6 +44,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         
+                        <!--los menos de la barra de navegacion-->
                         @include('logistic.menu')
                         
                     </ul>
@@ -80,41 +87,15 @@
             <!-- /.container-fluid -->
         </nav>
         
-        
-
-        <div ng-view></div>
-
-        
-        <div class="jumbotron">
-            <div class="container">
-                <p>Esta aplicación requiere un navegador actualizado, revisa esta <a href="http://caniuse.com/#feat=history">lista</a> para ver los navegadores compatibles.</p>
-            </div>
-        </div>
+        @yield('content')
         
     </div>
 
 
     <script src="{{ asset('js/app.js') }} "></script>
-    <script src="{{ asset('bower_components/angular/angular.js') }} "></script>
-    <script src="{{ asset('bower_components/angular-route/angular-route.js') }} "></script>
-    <script src="{{ asset('bower_components/angular-resource/angular-resource.js') }} "></script>
-
-    <!--JS de la aplicacion, cargarlos en orden es muy importante-->
-    <script>
-        window.url = "{{ url('') }}"
-        window.user = {
-            id: {{ Auth::user()->id }}
-        }
-    </script>
-
-    <!--Fundamentales-->
-    <script src="{{ asset('js/logistic/root.js')}} "></script>
-    <script src="{{ asset('js/logistic/mainController.js')}} "></script>
-
-    <!--basics-->
-    <script src="{{ asset('js/logistic/brandsController.js')}} "></script>
-    <script src="{{ asset('js/logistic/packingsController.js')}} "></script>
-    <script src="{{ asset('js/logistic/categoriesController.js')}} "></script>
+    
+    @yield('scripts')
+    
 </body>
 
 </html>
