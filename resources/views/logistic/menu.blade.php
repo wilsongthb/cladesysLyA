@@ -4,7 +4,9 @@
     <ul class="dropdown-menu">
         <li><a href="{{ url('/logistic/brands') }}">Marcas</a></li>
         <li><a href="{{ url('/logistic/packings') }}">Empaquetado</a></li>
-        <li><a href="{{ url('/logistic/categories') }}">Empaquetado</a></li>
+        <li><a href="{{ url('/logistic/categories') }}">Categorias</a></li>
+        <li><a href="{{ url('/logistic/tickets') }}">Boletos</a></li>
+        <li><a href="{{ url('/logistic/locations') }}">Localizaciones</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="#">Separated link</a></li>
         <li role="separator" class="divider"></li>
