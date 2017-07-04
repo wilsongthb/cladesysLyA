@@ -19,7 +19,7 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function(){
+// Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', function(){ return view('index'); });
     
     Route::group(['prefix' => 'logistic'], function(){
@@ -37,4 +37,4 @@ Route::group(['middleware' => 'auth'], function(){
 
     // provedor de vistas, util para el desarrollo con angular, pero puede ser una puerta abierta a errores
     Route::get('view/{view}', 'viewController@index');
-});
+// });
