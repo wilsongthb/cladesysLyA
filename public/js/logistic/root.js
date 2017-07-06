@@ -7,6 +7,12 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource'])
                 controller: 'mainController'
             })
 
+            // products
+            .when('/products', {
+                templateUrl: `${window.url}/view/logistic.products.index.html`,
+                controller: 'productsController'
+            })
+
             // // brands
             // .when('/brands', {
             //     templateUrl: ` ${window.url}/view/logistic.brands.index.html`,

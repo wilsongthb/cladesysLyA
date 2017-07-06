@@ -9,6 +9,27 @@ $inputs = [
         'required' => true,
         'placeholder' => 'Detalle',
         'maxlength' => '255'
+    ],
+    [
+        'type' => 'text',
+        'layout' => 'Detalle',
+        'required' => true,
+        'placeholder' => 'Detalle',
+        'maxlength' => '255'
+    ],
+    [
+        'type' => 'text',
+        'layout' => 'Detalle',
+        'required' => true,
+        'placeholder' => 'Detalle',
+        'maxlength' => '255'
+    ],
+    [
+        'type' => 'text',
+        'layout' => 'Detalle',
+        'required' => true,
+        'placeholder' => 'Detalle',
+        'maxlength' => '255'
     ]
 ];
 
@@ -33,7 +54,7 @@ $inputs = [
         </div>
     @endforeach
     <button type="submit" class="btn btn-primary">Guardar</button>
-    <button type="button" class="btn btn-danger" ng-click="status = 1">Cancelar</button>
+    <button type="button" class="btn btn-danger">Cancelar</button>
     </div>
     <!--end-form-->
 </div>

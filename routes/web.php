@@ -19,7 +19,7 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', function(){ return view('index'); });
     
     Route::group(['prefix' => 'logistic'], function(){
@@ -31,10 +31,10 @@ Auth::routes();
         Route::resource('locations', 'logistic\locationsController');
         Route::resource('tickets', 'logistic\ticketsController');
 
-        // single page aplication Angular JS 1.6.4
-        Route::get('/ar/{p?}/{p1?}/{p3?}', function(){ return view('logistic.angular'); });// ruta especial, no le des mucha importancia
+        // single page aplication Angular JS 1.6.4^
+        Route::get('/ng/{p?}/{p1?}/{p3?}', function(){ return view('logistic.angular'); });// ruta especial, no le des mucha importancia
     });
 
     // provedor de vistas, util para el desarrollo con angular, pero puede ser una puerta abierta a errores
     Route::get('view/{view}', 'viewController@index');
-// });
+});

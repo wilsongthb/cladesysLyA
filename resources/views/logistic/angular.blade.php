@@ -1,7 +1,7 @@
 @extends('logistic.index')
 
 @section('head')
-    <base href="{{ url('') }}/logistic/">
+    <base href="{{ url('') }}/logistic/ng/">
 @stop
 
 @section('content')

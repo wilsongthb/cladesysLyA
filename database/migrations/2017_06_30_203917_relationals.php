@@ -18,16 +18,16 @@ class Relationals extends Migration
             
             // columnas
             $table->string('detail');
-            $table->char('status', '1');
+            $table->char('status', '1')->default('1');
             $table->char('barcode', '12');
-            $table->boolean('flagstate');
-            $table->string('imagepath'); // mas longitud
+            $table->boolean('flagstate')->default('1');
+            $table->string('imagepath')->nullable(); // mas longitud
 
             // stock minimo del producto
-            $table->integer('minstock');
+            $table->integer('minstock')->default('1');
 
             // packing
-            $table->char('level'); // puede ser char tambien
+            $table->char('level')->default('1'); // puede ser char tambien
             $table->integer('units');
 
             // referencia a brands

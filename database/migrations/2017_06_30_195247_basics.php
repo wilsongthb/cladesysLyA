@@ -18,7 +18,7 @@ class Basics extends Migration
             
             // columnas
             $table->string('detail');
-            $table->boolean('flagstate');
+            $table->boolean('flagstate')->default('1');
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();
@@ -32,7 +32,7 @@ class Basics extends Migration
             
             // columnas
             $table->string('detail');
-            $table->boolean('flagstate');
+            $table->boolean('flagstate')->default('1');
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();
@@ -46,7 +46,7 @@ class Basics extends Migration
             
             // columnas
             $table->string('detail');
-            $table->boolean('flagstate');
+            $table->boolean('flagstate')->default('1');
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();
@@ -62,7 +62,7 @@ class Basics extends Migration
             $table->increments('id');
             
             // columnas
-            $table->boolean('flagstate');
+            $table->boolean('flagstate')->default('1');
             $table->string('name');
 
             // referencia al usuario
@@ -78,7 +78,7 @@ class Basics extends Migration
             
             // columnas
             $table->char('type');
-            $table->boolean('flagstate');
+            $table->boolean('flagstate')->default('1');
             $table->string('name');
 
             // referencia al usuario
