@@ -17,13 +17,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('/hola', function(){ return "loguado papu"; });
-    Route::group(['prefix' => 'logistic'], function(){
-        Route::resource('user', 'UserController');
+// Route::group(['middleware' => 'auth:api'], function(){
+
+    // test route
+    Route::get('/hola', function(){ return "logueado papu!!"; });
+
+    Route::group(['prefix' => 'logistic'], function(){      
+        Route::resource('products', 'logistic\productsResource');
+        Route::get('brands', 'logistic\utilitiesResource@brands');
+        Route::get('categories', 'logistic\utilitiesResource@categories');
+        Route::get('measurements', 'logistic\utilitiesResource@measurements');
+        Route::get('packings', 'logistic\utilitiesResource@packings');
+        
         
         // Route::resource('brands', 'logistic\brandsController');
         // Route::resource('packings', 'logistic\packingsController');
         // Route::resource('categories', 'logistic\categoriesController');
     });
-});
+// });

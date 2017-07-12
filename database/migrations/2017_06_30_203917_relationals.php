@@ -42,6 +42,10 @@ class Relationals extends Migration
             $table->integer('packings_id')->unsigned();
             $table->foreign('packings_id')->references('id')->on('packings');
 
+            // referencia a measurements
+            $table->integer('measurements_id')->unsigned();
+            $table->foreign('measurements_id')->references('id')->on('measurements');
+
             // referencia al usuario
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

@@ -1,16 +1,25 @@
 var app = angular.module('logistic', ['ngRoute', 'ngResource'])
     // configuracion de rutas, etapa de configuracion
-    .config(function($routeProvider, $locationProvider){
+    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
         $routeProvider
             .when('/', {
                 templateUrl: `${window.url}/view/logistic.main.html`,
                 controller: 'mainController'
+            })
+            .when('/notfound', {
+                templateUrl: `${window.url}/view/notfound.html`,
+                // controller: 'mainController'
             })
 
             // products
             .when('/products', {
                 templateUrl: `${window.url}/view/logistic.products.index.html`,
                 controller: 'productsController'
+            })
+
+            .when('/products/create', {
+                templateUrl: `${window.url}/view/logistic.products.create.html`,
+                controller: 'productsCreateController'
             })
 
             // // brands
@@ -49,11 +58,11 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource'])
 
             // rutas perdidas
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/notfound'
             })
         $locationProvider.html5Mode(true)
-    })
+    }])
 
-app.controller('rootController', function(){
-})
+app.controller('rootController', [function(){
+}])
 

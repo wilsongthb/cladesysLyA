@@ -55,6 +55,20 @@ class Basics extends Migration
             // timestamps create_at y update_at
             $table->timestamps();
         });
+        Schema::create('measurements', function (Blueprint $table) {
+            $table->increments('id');
+            
+            // columnas
+            $table->string('detail');
+            $table->boolean('flagstate')->default('1');
+
+            // referencia al usuario
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            // timestamps create_at y update_at
+            $table->timestamps();
+        });
 
         // enable to create products table
 
@@ -102,6 +116,7 @@ class Basics extends Migration
         Schema::dropIfExists('categories');
         Schema::dropIfExists('packings');
         Schema::dropIfExists('tickets');
+        Schema::dropIfExists('measurements');
         // registro
         Schema::dropIfExists('locations');
     }

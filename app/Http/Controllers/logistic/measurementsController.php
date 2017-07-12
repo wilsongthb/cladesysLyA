@@ -4,12 +4,12 @@ namespace App\Http\Controllers\logistic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\ticketsModel;
+use App\measurementsModel;
 
-class ticketsController extends Controller
+class measurementsController extends Controller
 {
-    private $titulo = 'BOLETOS';
-    private $name = 'tickets';
+    private $titulo = 'UNIDADES DE MEDIDA';
+    private $name = 'measurements';
     /**
      * Display a listing of the resource.
      *
@@ -17,13 +17,13 @@ class ticketsController extends Controller
      */
     public function index(Request $request)
     {
-        $datos = ticketsModel::where('flagstate', '1');
+        $datos = measurementsModel::where('flagstate', '1');
         $search = $request->get('search');
         if ($search) {
-            $datos = $datos->Where('name', 'LIKE', '%'.$search.'%');
+            $datos = $datos->Where('detail', 'LIKE', '%'.$search.'%');
         }
         $datos = $datos->paginate(10);
-        return view('logistic.tickets.index', [
+        return view('logistic.brands.index', [
             'titulo' => $this->titulo,
             'name' => $this->name,
             'datos' => $datos,
@@ -38,7 +38,7 @@ class ticketsController extends Controller
      */
     public function create()
     {
-        return view('logistic.tickets.form', [
+        return view('logistic.brands.form', [
             'titulo' => $this->titulo,
             'name' => $this->name,
         ]);
@@ -52,8 +52,8 @@ class ticketsController extends Controller
      */
     public function store(Request $request)
     {
-        $registro = new ticketsModel;
-        $registro->name = $request->name;
+        $registro = new measurementsModel;
+        $registro->detail = $request->detail;
         $registro->flagstate = true;
         $registro->user_id = \Auth::user()->id;
         $registro->save();
@@ -68,7 +68,7 @@ class ticketsController extends Controller
      */
     public function show($id)
     {
-        return ticketsModel::find($id);
+        return measurementsModel::find($id);
     }
 
     /**
@@ -79,11 +79,11 @@ class ticketsController extends Controller
      */
     public function edit($id)
     {
-        return view('logistic.tickets.form', [
+        return view('logistic.brands.form', [
             'titulo' => $this->titulo,
             'name' => $this->name,
             'type' => 'edit',
-            'dato' => ticketsModel::find($id)
+            'dato' => measurementsModel::find($id)
         ]);
     }
 
@@ -96,8 +96,8 @@ class ticketsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $registro = ticketsModel::find($id);
-        $registro->name = $request->name;
+        $registro = measurementsModel::find($id);
+        $registro->detail = $request->detail;
         $registro->user_id = \Auth::user()->id;
         $registro->save();
 
@@ -112,7 +112,7 @@ class ticketsController extends Controller
      */
     public function destroy($id)
     {   
-        $registro = ticketsModel::find($id);
+        $registro = measurementsModel::find($id);
         $registro->flagstate = false;
         $registro->save();
     }

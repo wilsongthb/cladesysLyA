@@ -22,7 +22,7 @@
                 @endif
                 
                 <div class="form-group">
-                    <label for="">Detalle</label>
+                    <label for="">Nombre</label>
                     <input class="form-control"
                         type="text"
                         placeholder="Detalle"

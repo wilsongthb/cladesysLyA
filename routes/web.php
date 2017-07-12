@@ -30,9 +30,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('categories', 'logistic\categoriesController');
         Route::resource('locations', 'logistic\locationsController');
         Route::resource('tickets', 'logistic\ticketsController');
+        Route::resource('measurements', 'logistic\measurementsController');
 
         // single page aplication Angular JS 1.6.4^
-        Route::get('/ng/{p?}/{p1?}/{p3?}', function(){ return view('logistic.angular'); });// ruta especial, no le des mucha importancia
+        Route::get('/ng/{p?}/{p1?}/{p3?}/{p4?}', function(){ return view('logistic.angular'); });// ruta especial, no le des mucha importancia
     });
 
     // provedor de vistas, util para el desarrollo con angular, pero puede ser una puerta abierta a errores
