@@ -113,5 +113,53 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
                 }
             }
         },
+        locations: {
+            registros: [], 
+            get: function(keyCode, buscar){
+                if(arguments.length === 0)
+                    keyCode = 17
+                if(keyCode === 17){// si presiona ctrl
+                    $http.get(
+                        // url
+                        `${window.url}/api/logistic/locations`, 
+                        // config
+                        { 
+                            params: {
+                                search: buscar
+                            }
+                        }
+                    ).then(
+                        // success
+                        (response) => {
+                            this.registros = response.data.data
+                        }
+                    )
+                }
+            }
+        },
+        tickets: {
+            registros: [], 
+            get: function(keyCode, buscar){
+                if(arguments.length === 0)
+                    keyCode = 17
+                if(keyCode === 17){// si presiona ctrl
+                    $http.get(
+                        // url
+                        `${window.url}/api/logistic/tickets`, 
+                        // config
+                        { 
+                            params: {
+                                search: buscar
+                            }
+                        }
+                    ).then(
+                        // success
+                        (response) => {
+                            this.registros = response.data.data
+                        }
+                    )
+                }
+            }
+        },
     }
 }])

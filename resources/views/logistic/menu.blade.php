@@ -1,28 +1,4 @@
 <li class="active"><a href="{{ url('/logistic') }} ">LOGISTIC </a></li>
-{{-- <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Basics <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-        <li><a href="{{ url('/logistic/brands') }}">Marcas</a></li>
-        <li><a href="{{ url('/logistic/packings') }}">Empaquetado</a></li>
-        <li><a href="{{ url('/logistic/categories') }}">Categorias</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="{{ url('/logistic/tickets') }}">Boletos</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="{{ url('/logistic/locations') }}">Localizaciones</a></li>
-    </ul>
-</li> --}}
-{{-- <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relationals <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-        <li><a href="{{ url('/logistic/ng/products') }}">Productos</a></li>
-        <li><a href="{{ url('/logistic/packings') }}">Empaquetado</a></li>
-        <li><a href="{{ url('/logistic/categories') }}">Categorias</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="{{ url('/logistic/tickets') }}">Boletos</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="{{ url('/logistic/locations') }}">Localizaciones</a></li>
-    </ul>
-</li> --}}
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilitarios <span class="caret"></span></a>
     <ul class="dropdown-menu">
@@ -33,6 +9,7 @@
         <li><a href="{{ url('/logistic/measurements') }}">Unidades de Medida</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="{{ url('/logistic/tickets') }}">Boletos</a></li>
+        <li><a href="{{ url('/logistic/ng/suppliers') }}">Proveedores</a></li>{{--  manejado con angular  --}}
         <li role="separator" class="divider"></li>
         <li><a href="{{ url('/logistic/locations') }}">Localizaciones</a></li>
     </ul>
@@ -48,7 +25,7 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kardex <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="#">Ingresos</a></li>
+        <li><a href="{{ url('/logistic/ng/inputs') }} ">Ingresos</a></li>
         <li><a href="#">Salidas</a></li>
         <li><a href="#">Inventario</a></li>
         <li><a href="#">Reportes</a></li>

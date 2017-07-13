@@ -68,7 +68,7 @@ class Relationals extends Migration
             $table->string('region');
             $table->text('home_page'); // puede guardar hmtl?
             $table->string('email');
-            $table->boolean('flagstate');
+            $table->boolean('flagstate')->default('1');
 
             // referencia a tickets
             $table->integer('tickets_id')->unsigned();
@@ -91,7 +91,7 @@ class Relationals extends Migration
             
             // columnas
             $table->char('type');
-            $table->boolean('flagstate');
+            $table->boolean('flagstate')->default('1');
             $table->string('ticketnumber', '20');
 
             // referencia a tickets
@@ -120,6 +120,7 @@ class Relationals extends Migration
             // columnas
             $table->float('unit_price', 11, 4);
             $table->integer('quantity');
+            $table->boolean('flagstate')->default('1');
 
             // referencia a inputs
             $table->integer('inputs_id')->unsigned();
@@ -144,6 +145,7 @@ class Relationals extends Migration
             $table->tinyInteger('status');
             $table->char('type');
             $table->string('ticketnumber', '20');
+            $table->boolean('flagstate')->default('1');
 
             // referencia a tickets
             $table->integer('tickets_id')->unsigned();
@@ -167,6 +169,7 @@ class Relationals extends Migration
             // columnas
             $table->float('unit_price', 11, 4);
             $table->integer('quantity');
+            $table->boolean('flagstate')->default('1');
 
             // referencia a input_details
             $table->integer('input_details_id')->unsigned();
@@ -190,6 +193,7 @@ class Relationals extends Migration
             // columnas
             $table->date('shipping');
             $table->char('status');
+            $table->boolean('flagstate')->default('1');            
             
             // referencia a locations
             $table->integer('locations_id')->unsigned();
@@ -208,6 +212,7 @@ class Relationals extends Migration
             
             // columnas
             $table->integer('quantity');
+            $table->boolean('flagstate')->default('1');            
             
             // referencia a orders
             $table->integer('orders_id')->unsigned();

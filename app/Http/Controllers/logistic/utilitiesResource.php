@@ -9,6 +9,7 @@ use App\locationsModel;
 use App\measurementsModel;
 use App\categoriesModel;
 use App\packingsModel;
+use App\ticketsModel;
 
 class utilitiesResource extends Controller
 {
@@ -45,6 +46,24 @@ class utilitiesResource extends Controller
         if(strlen($request->search) !== 0){// si se envia algun argumento de busqueda
             // condiciones de busqueda
             $result->where('detail', 'LIKE', "%$request->search%");
+        }
+        return $result->paginate(15);
+    }
+    public function locations(Request $request)
+    {
+        $result = locationsModel::where('flagstate', '1');
+        if(strlen($request->search) !== 0){// si se envia algun argumento de busqueda
+            // condiciones de busqueda
+            $result->where('name', 'LIKE', "%$request->search%");
+        }
+        return $result->paginate(15);
+    }
+    public function tickets(Request $request)
+    {
+        $result = ticketsModel::where('flagstate', '1');
+        if(strlen($request->search) !== 0){// si se envia algun argumento de busqueda
+            // condiciones de busqueda
+            $result->where('name', 'LIKE', "%$request->search%");
         }
         return $result->paginate(15);
     }

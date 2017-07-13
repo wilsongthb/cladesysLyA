@@ -1,16 +1,16 @@
-productsConfig = {
-    name: 'products',
-    title: 'PRODUCTOS',
-    urlApi: `${window.url}/api/logistic/products`,
+inputsConfig = {
+    name: 'inputs',
+    title: 'ENTRADAS A ALMACEN',
+    urlApi: `${window.url}/api/logistic/inputs`,
     // esta en ng porque esta ruta sera servida por angular
-    urlCreate: `${window.url}/logistic/ng/products/create`,
-    urlEdit: `${window.url}/logistic/ng/products/edit`
+    urlCreate: `${window.url}/logistic/ng/inputs/create`,
+    urlEdit: `${window.url}/logistic/ng/inputs/edit`
 }
 
-app.controller('productsController', ['$scope', '$http', '$window', function($scope, $http, $window){
+app.controller('inputsController', ['$scope', '$http', '$window', function($scope, $http, $window){
 
     // valores iniciales
-    $scope.config = productsConfig
+    $scope.config = inputsConfig
     $scope.registros = []
     $scope.buscar = ''
     $scope.error = false
@@ -80,7 +80,7 @@ app.controller('productsController', ['$scope', '$http', '$window', function($sc
 // services
 // end services
 
-app.controller('productsCreateController', [
+app.controller('inputsCreateController', [
     '$scope',
     '$http',
     '$location',
@@ -94,20 +94,16 @@ function(
 
     // valores iniciales
     $scope.error = false
-    $scope.config = productsConfig
+    $scope.config = inputsConfig
     $scope.registro = {
         user_id: window.user.id
     }
 
     // obtener los valores relacionales
-    $scope.brands = utilitiesFactory.brands
-    $scope.categories = utilitiesFactory.categories
-    $scope.measurements = utilitiesFactory.measurements
-    $scope.packings = utilitiesFactory.packings
-    $scope.brands.get()
-    $scope.categories.get()
-    $scope.measurements.get()
-    $scope.packings.get()
+    // $scope.locations = utilitiesFactory.locations
+    // $scope.tickets = utilitiesFactory.tickets
+    // $scope.locations.get()
+    // $scope.tickets.get()
 
     $scope.guardar = function(){
         $http.post(

@@ -7,54 +7,33 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource'])
                 controller: 'mainController'
             })
             .when('/notfound', {
-                templateUrl: `${window.url}/view/notfound.html`,
-                // controller: 'mainController'
+                templateUrl: `${window.url}/view/notfound.html`
             })
 
-            // products
             .when('/products', {
                 templateUrl: `${window.url}/view/logistic.products.index.html`,
                 controller: 'productsController'
             })
-
             .when('/products/create', {
                 templateUrl: `${window.url}/view/logistic.products.create.html`,
                 controller: 'productsCreateController'
             })
-
-            // // brands
-            // .when('/brands', {
-            //     templateUrl: ` ${window.url}/view/logistic.brands.index.html`,
-            //     controller: 'brandsController'
-            // })
-            // .when('/brands/create', {
-            //     templateUrl: ` ${window.url}/view/logistic.brands.create.html`,
-            //     controller: 'brandsCreateController'
-            // })
-            // .when('/brands/edit/:id', {
-            //     templateUrl: ` ${window.url}/view/logistic.brands.create.html`,
-            //     controller: 'brandsEditController'
-            // })
-
-            // // packing
-            // .when('/packings', {
-            //     templateUrl: ` ${window.url}/view/logistic.packings.index.html`,
-            //     controller: 'packingsController'
-            // })
-            // .when('/packings/create', {
-            //     templateUrl: ` ${window.url}/view/logistic.packings.create.html`,
-            //     controller: 'packingsCreateController'
-            // })
-            // .when('/packings/edit/:id', {
-            //     templateUrl: ` ${window.url}/view/logistic.packings.create.html`,
-            //     controller: 'packingsEditController'
-            // })
-
-            // // categories
-            // .when('/categories', {
-            //     templateUrl: ` ${window.url}/view/logistic.categories.index.html`,
-            //     controller: 'categoriesController'
-            // })
+            .when('/suppliers', {
+                templateUrl: `${window.url}/view/logistic.suppliers.index.html`,
+                controller: 'suppliersController'
+            })
+            .when('/suppliers/create', {
+                templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
+                controller: 'suppliersCreateController'
+            })
+            .when('/inputs', {
+                templateUrl: `${window.url}/view/logistic.inputs.index.html`,
+                controller: 'inputsController'
+            })
+            .when('/inputs/create', {
+                templateUrl: `${window.url}/view/logistic.inputs.create.html`,
+                controller: 'inputsCreateController'
+            })
 
             // rutas perdidas
             .otherwise({

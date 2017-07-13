@@ -24,10 +24,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::group(['prefix' => 'logistic'], function(){      
         Route::resource('products', 'logistic\productsResource');
+        Route::resource('suppliers', 'logistic\suppliersResource');
+        Route::resource('inputs', 'logistic\inputsResource');
+
         Route::get('brands', 'logistic\utilitiesResource@brands');
         Route::get('categories', 'logistic\utilitiesResource@categories');
         Route::get('measurements', 'logistic\utilitiesResource@measurements');
         Route::get('packings', 'logistic\utilitiesResource@packings');
+        Route::get('locations', 'logistic\utilitiesResource@locations');
+        Route::get('tickets', 'logistic\utilitiesResource@tickets');
         
         
         // Route::resource('brands', 'logistic\brandsController');
