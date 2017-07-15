@@ -20,21 +20,17 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Detalle</th>
-                        <th>Codigo</th>
-                        <th>Empaquetado</th>
-                        <th>Marca</th>
-                        <th>Categoria</th>
+                        <th>Observacion</th>
+                        <th>Creación</th>
+                        <th>Modificación</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="r in registros">
                         <td ng-bind="r.id"></td>
-                        <td ng-bind="r.detail"></td>
-                        <td ng-bind="r.barcode"></td>
-                        <td ng-bind="r.packings_detail"></td>
-                        <td ng-bind="r.brands_detail"></td>
-                        <td ng-bind="r.categories_detail"></td>
+                        <td ng-bind="r.observation"></td>
+                        <td ng-bind="r.created_at"></td>
+                        <td ng-bind="r.updated_at"></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="...">
                                 <a href="{{config.urlEdit}}/{{r.id}}" type="button" class="btn btn-default"> 

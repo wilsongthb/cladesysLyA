@@ -17,6 +17,7 @@
     <script src="{{ asset('bower_components/angular/angular.js') }} "></script>
     <script src="{{ asset('bower_components/angular-route/angular-route.js') }} "></script>
     <script src="{{ asset('bower_components/angular-resource/angular-resource.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-sanitize/angular-sanitize.js') }} "></script>
 
     <!--JS de la aplicacion, cargarlos en orden es muy importante-->
     <script>
@@ -36,8 +37,4 @@
     <script src="{{ asset('js/logistic/suppliersController.js') }} "></script>
     <script src="{{ asset('js/logistic/inputsController.js') }} "></script>
 
-    <!--basics-->
-    {{-- <script src="{{ asset('js/logistic/brandsController.js')}} "></script>
-    <script src="{{ asset('js/logistic/packingsController.js')}} "></script>
-    <script src="{{ asset('js/logistic/categoriesController.js')}} "></script> --}}
 @stop

@@ -76,10 +76,6 @@ app.controller('inputsController', ['$scope', '$http', '$window', function($scop
     $scope.leer()
 }])
 
-
-// services
-// end services
-
 app.controller('inputsCreateController', [
     '$scope',
     '$http',
@@ -98,12 +94,23 @@ function(
     $scope.registro = {
         user_id: window.user.id
     }
+    $scope.registro_detalle = {}
+    $scope.detalles = []
 
     // obtener los valores relacionales
-    // $scope.locations = utilitiesFactory.locations
-    // $scope.tickets = utilitiesFactory.tickets
-    // $scope.locations.get()
-    // $scope.tickets.get()
+    $scope.products = utilitiesFactory.products
+    $scope.products.get()
+    $scope.tickets = utilitiesFactory.tickets
+    $scope.tickets.get()
+    $scope.locations = utilitiesFactory.locations
+    $scope.locations.get()
+
+    $scope.agregarDetalle = function(){
+        $scope.detalles.push(
+            JSON.parse(JSON.stringify($scope.registro_detalle))
+        )
+        $scope.registro_detalle = {}
+    }
 
     $scope.guardar = function(){
         $http.post(

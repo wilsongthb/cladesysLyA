@@ -90,21 +90,8 @@ class Relationals extends Migration
             $table->increments('id');
             
             // columnas
-            $table->char('type');
             $table->boolean('flagstate')->default('1');
-            $table->string('ticketnumber', '20');
-
-            // referencia a tickets
-            $table->integer('tickets_id')->unsigned();
-            $table->foreign('tickets_id')->references('id')->on('tickets');
-
-            // referencia a locations
-            $table->integer('locations_id')->unsigned();
-            $table->foreign('locations_id')->references('id')->on('locations');
-            
-            // referencia a suppliers
-            $table->integer('suppliers_id')->unsigned();
-            $table->foreign('suppliers_id')->references('id')->on('suppliers');
+            $table->string('observation')->nullable();
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();
@@ -118,9 +105,26 @@ class Relationals extends Migration
             $table->increments('id');
             
             // columnas
-            $table->float('unit_price', 11, 4);
+            $table->float('unit_price', 8, 4);
             $table->integer('quantity');
             $table->boolean('flagstate')->default('1');
+            $table->date('expiration');
+            $table->date('fabrication')->nullable();
+            $table->string('lot', 20)->nullable();
+            
+            $table->string('ticketnumber', '20');
+
+            // referencia a tickets
+            $table->integer('tickets_id')->unsigned();
+            $table->foreign('tickets_id')->references('id')->on('tickets');
+
+            // referencia a locations
+            $table->integer('locations_id')->unsigned();
+            $table->foreign('locations_id')->references('id')->on('locations');
+            
+            // referencia a suppliers
+            $table->integer('suppliers_id')->unsigned();
+            $table->foreign('suppliers_id')->references('id')->on('suppliers');
 
             // referencia a inputs
             $table->integer('inputs_id')->unsigned();

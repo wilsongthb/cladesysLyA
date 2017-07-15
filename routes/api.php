@@ -26,6 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::resource('products', 'logistic\productsResource');
         Route::resource('suppliers', 'logistic\suppliersResource');
         Route::resource('inputs', 'logistic\inputsResource');
+        Route::resource('input_details', 'logistic\input_detailsResource');
 
         Route::get('brands', 'logistic\utilitiesResource@brands');
         Route::get('categories', 'logistic\utilitiesResource@categories');

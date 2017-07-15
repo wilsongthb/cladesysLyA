@@ -4,33 +4,17 @@ namespace App\Http\Controllers\logistic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\inputsModel;
 
-class inputsResource extends Controller
+class input_detailsResource extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $result = inputsModel::select(
-            // columnas
-                'inputs.*'
-            )
-            // relaciones con otras tablas
-                ->where('inputs.flagstate', '1') // si esta eliminado no lo considera
-                ->orderBy('inputs.id', 'DESC');
-        if(strlen($request->search) !== 0){// si se envia algun argumento de busqueda
-            // condiciones de busqueda
-            $result
-                ->where('inputs.observation', 'LIKE', "%$request->search%")
-                ->orWhere('inputs.created_at', 'LIKE', "%$request->search%")
-                ->orWhere('inputs.updated_at', 'LIKE', "%$request->search%");
-        }
-        // enviar el resultado
-        return $result->paginate(15);
+        //
     }
 
     /**

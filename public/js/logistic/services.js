@@ -19,8 +19,8 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
     return {
         brands: {
             registros: [], 
-            get: function(keyCode, buscar){
-                if(arguments.length === 0)
+            get: function(keyCode, buscar, onchange){
+                if(arguments.length === 0 || onchange)
                     keyCode = 17
                 if(keyCode === 17){// si presiona ctrl
                     $http.get(
@@ -43,8 +43,8 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         },
         categories: {
             registros: [], 
-            get: function(keyCode, buscar){
-                if(arguments.length === 0)
+            get: function(keyCode, buscar, onchange){
+                if(arguments.length === 0 || onchange)
                     keyCode = 17
                 if(keyCode === 17){// si presiona ctrl
                     $http.get(
@@ -67,8 +67,8 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         },
         measurements: {
             registros: [], 
-            get: function(keyCode, buscar){
-                if(arguments.length === 0)
+            get: function(keyCode, buscar, onchange){
+                if(arguments.length === 0 || onchange)
                     keyCode = 17
                 if(keyCode === 17){// si presiona ctrl
                     $http.get(
@@ -91,8 +91,8 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         },
         packings: {
             registros: [], 
-            get: function(keyCode, buscar){
-                if(arguments.length === 0)
+            get: function(keyCode, buscar, onchange){
+                if(arguments.length === 0 || onchange)
                     keyCode = 17
                 if(keyCode === 17){// si presiona ctrl
                     $http.get(
@@ -115,8 +115,8 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         },
         locations: {
             registros: [], 
-            get: function(keyCode, buscar){
-                if(arguments.length === 0)
+            get: function(keyCode, buscar, onchange){
+                if(arguments.length === 0 || onchange)
                     keyCode = 17
                 if(keyCode === 17){// si presiona ctrl
                     $http.get(
@@ -139,13 +139,37 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         },
         tickets: {
             registros: [], 
-            get: function(keyCode, buscar){
-                if(arguments.length === 0)
+            get: function(keyCode, buscar, onchange){
+                if(arguments.length === 0 || onchange)
                     keyCode = 17
                 if(keyCode === 17){// si presiona ctrl
                     $http.get(
                         // url
                         `${window.url}/api/logistic/tickets`, 
+                        // config
+                        { 
+                            params: {
+                                search: buscar
+                            }
+                        }
+                    ).then(
+                        // success
+                        (response) => {
+                            this.registros = response.data.data
+                        }
+                    )
+                }
+            }
+        },
+        products: {
+            registros: [], 
+            get: function(keyCode, buscar, onchange){
+                if(arguments.length === 0 || onchange)
+                    keyCode = 17
+                if(keyCode === 17){// si presiona ctrl
+                    $http.get(
+                        // url
+                        `${window.url}/api/logistic/products`, 
                         // config
                         { 
                             params: {
