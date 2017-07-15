@@ -28,8 +28,9 @@
     </script>
 
     <!--Fundamentales-->
-    <script src="{{ asset('js/logistic/root.js')}} "></script>
-    <script src="{{ asset('js/logistic/mainController.js')}} "></script>
+    <script src="{{ asset('js/logistic/generics.js') }} "></script>
+    <script src="{{ asset('js/logistic/root.js') }} "></script> 
+    <script src="{{ asset('js/logistic/mainController.js') }} "></script>
 
     {{-- relational --}}
     <script src="{{ asset('js/logistic/services.js')}} "></script>

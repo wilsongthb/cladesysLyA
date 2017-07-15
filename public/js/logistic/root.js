@@ -34,10 +34,7 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
                 templateUrl: `${window.url}/view/logistic.inputs.create.html`,
                 controller: 'inputsCreateController'
             })
-            .when('/inputs/edit/:id', {
-                templateUrl: `${window.url}/view/logistic.inputs.create.html`,
-                controller: 'inputsEditController'
-            })
+
 
             // rutas perdidas
             .otherwise({
