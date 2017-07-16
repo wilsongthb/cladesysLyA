@@ -1,189 +1,44 @@
-// app.factory('brandsFactory', ['$http', function($http){
-//     return {
-//         get: function(buscar){
-//             return $http.get(
-//                 // url
-//                 `${window.url}/api/logistic/brands`, 
-//                 // config
-//                 { 
-//                     params: {
-//                         search: buscar
-//                     }
-//                 }
-//             )
-//         } 
-//     }
-// }])
-
 app.factory('utilitiesFactory', ['$http' ,function($http){
     return {
+        /**
+         * @description Servicio para proveer los datos 
+         * para formularios de la aplicacion con ajax
+         */
         brands: {
             registros: [], 
-            get: function(keyCode, buscar, onchange){
-                if(arguments.length === 0 || onchange)
-                    keyCode = 17
-                if(keyCode === 17){// si presiona ctrl
-                    $http.get(
-                        // url
-                        `${window.url}/api/logistic/brands`, 
-                        // config
-                        { 
-                            params: {
-                                search: buscar
-                            }
-                        }
-                    ).then(
-                        // success
-                        (response) => {
-                            this.registros = response.data.data
-                        }
-                    )
-                }
-            }
+            get: genericGetResource($http, 'brands')
         },
         categories: {
             registros: [], 
-            get: function(keyCode, buscar, onchange){
-                if(arguments.length === 0 || onchange)
-                    keyCode = 17
-                if(keyCode === 17){// si presiona ctrl
-                    $http.get(
-                        // url
-                        `${window.url}/api/logistic/categories`, 
-                        // config
-                        { 
-                            params: {
-                                search: buscar
-                            }
-                        }
-                    ).then(
-                        // success
-                        (response) => {
-                            this.registros = response.data.data
-                        }
-                    )
-                }
-            }
+            get: genericGetResource($http, 'categories')
         },
         measurements: {
             registros: [], 
-            get: function(keyCode, buscar, onchange){
-                if(arguments.length === 0 || onchange)
-                    keyCode = 17
-                if(keyCode === 17){// si presiona ctrl
-                    $http.get(
-                        // url
-                        `${window.url}/api/logistic/measurements`, 
-                        // config
-                        { 
-                            params: {
-                                search: buscar
-                            }
-                        }
-                    ).then(
-                        // success
-                        (response) => {
-                            this.registros = response.data.data
-                        }
-                    )
-                }
-            }
+            get: genericGetResource($http, 'measurements')
         },
         packings: {
             registros: [], 
-            get: function(keyCode, buscar, onchange){
-                if(arguments.length === 0 || onchange)
-                    keyCode = 17
-                if(keyCode === 17){// si presiona ctrl
-                    $http.get(
-                        // url
-                        `${window.url}/api/logistic/packings`, 
-                        // config
-                        { 
-                            params: {
-                                search: buscar
-                            }
-                        }
-                    ).then(
-                        // success
-                        (response) => {
-                            this.registros = response.data.data
-                        }
-                    )
-                }
-            }
+            get: genericGetResource($http, 'measurements')
         },
         locations: {
             registros: [], 
-            get: function(keyCode, buscar, onchange){
-                if(arguments.length === 0 || onchange)
-                    keyCode = 17
-                if(keyCode === 17){// si presiona ctrl
-                    $http.get(
-                        // url
-                        `${window.url}/api/logistic/locations`, 
-                        // config
-                        { 
-                            params: {
-                                search: buscar
-                            }
-                        }
-                    ).then(
-                        // success
-                        (response) => {
-                            this.registros = response.data.data
-                        }
-                    )
-                }
-            }
+            get: genericGetResource($http, 'locations')
         },
         tickets: {
             registros: [], 
-            get: function(keyCode, buscar, onchange){
-                if(arguments.length === 0 || onchange)
-                    keyCode = 17
-                if(keyCode === 17){// si presiona ctrl
-                    $http.get(
-                        // url
-                        `${window.url}/api/logistic/tickets`, 
-                        // config
-                        { 
-                            params: {
-                                search: buscar
-                            }
-                        }
-                    ).then(
-                        // success
-                        (response) => {
-                            this.registros = response.data.data
-                        }
-                    )
-                }
-            }
+            get: genericGetResource($http, 'tickets')
         },
         products: {
             registros: [], 
-            get: function(keyCode, buscar, onchange){
-                if(arguments.length === 0 || onchange)
-                    keyCode = 17
-                if(keyCode === 17){// si presiona ctrl
-                    $http.get(
-                        // url
-                        `${window.url}/api/logistic/products`, 
-                        // config
-                        { 
-                            params: {
-                                search: buscar
-                            }
-                        }
-                    ).then(
-                        // success
-                        (response) => {
-                            this.registros = response.data.data
-                        }
-                    )
-                }
-            }
+            get: genericGetResource($http, 'products')
         },
+    }
+}])
+
+app.factory('getOneFactory', ['$http', function($http){
+    return {
+        at: function(name, id){
+            return $http.get(`${window.url}/api/logistic/${name}/${id}`)
+        }
     }
 }])

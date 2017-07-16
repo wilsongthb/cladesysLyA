@@ -1,8 +1,48 @@
-// funcion para controlador
-var readFunc = ['$scope', '$http', '$window', function($scope, $http, $window){
+// este archivo contiene funciones genericas para la aplicacion
+// estas funciones tienen el objetivo de reducir el codigo repetitivo, ya que es dificil de mantener
+
+var genericGetResource = function($http ,name){
+    /**
+     * @author: Wiskats
+     * @required: window
+     * @argument: $http, name
+     */
+    return (function(buscar, keyCode){
+        if(arguments.length === 0 || !keyCode)
+            keyCode = 17
+        if(keyCode === 17){// si presiona ctrl
+            $http.get(
+                // url
+                `${window.url}/api/logistic/${name}`, 
+                // config
+                { 
+                    params: {
+                        search: buscar
+                    }
+                }
+            ).then(
+                // success
+                (response) => {
+                    this.registros = response.data.data
+                }
+            )
+        }
+    })
+}
+
+// funcion para controlador 
+var readResourceController = function(config){
+    /**
+     * @description: Funcion controlador generico para vista read o index
+     * @author: Wiskats
+     * @required: window
+     * @argument: Object config
+     * @return Array
+     */
+    return (['$scope', '$http', '$window', function($scope, $http, $window){
 
     // valores iniciales
-    $scope.config = productsConfig
+    $scope.config = JSON.parse(JSON.stringify(config))
     $scope.registros = []
     $scope.buscar = ''
     $scope.error = false
@@ -66,4 +106,5 @@ var readFunc = ['$scope', '$http', '$window', function($scope, $http, $window){
     
     // al iniciar
     $scope.leer()
-}]
+}])
+}

@@ -7,6 +7,7 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
                 controller: 'mainController'
             })
             .when('/notfound', {
+                // pagina de error, muestra un mensaje de aviso
                 templateUrl: `${window.url}/view/notfound.html`
             })
 
@@ -18,6 +19,10 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
                 templateUrl: `${window.url}/view/logistic.products.create.html`,
                 controller: 'productsCreateController'
             })
+            .when('/products/edit/:id', {
+                templateUrl: `${window.url}/view/logistic.products.create.html`,
+                controller: 'productsEditController'
+            })
             .when('/suppliers', {
                 templateUrl: `${window.url}/view/logistic.suppliers.index.html`,
                 controller: 'suppliersController'
@@ -25,6 +30,10 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
             .when('/suppliers/create', {
                 templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
                 controller: 'suppliersCreateController'
+            })
+            .when('/suppliers/edit/:id', {
+                templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
+                controller: 'suppliersEditController'
             })
             .when('/inputs', {
                 templateUrl: `${window.url}/view/logistic.inputs.index.html`,

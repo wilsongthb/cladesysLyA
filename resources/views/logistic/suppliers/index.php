@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <h2 class="text-center">{{config.title}} </h2>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -22,14 +22,14 @@
                         <th>ID</th>
                         <th>RAZON SOCIAL</th>
                         <th>Nombre Representante</th>
-                        <th>DOC</th>
+                        <!-- <th>DOC</th>
                         <th>ID DOC</th>
                         <th>Almacén</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
                         <th>Codigo Postal</th>
                         <th>País</th>
-                        <th>Región</th>
+                        <th>Región</th> -->
                         <th>Pagina web</th>
                         <th>Email</th>
                     </tr>
@@ -39,15 +39,15 @@
                         <td ng-bind="r.id"></td>
                         <td ng-bind="r.company_name"></td>
                         <td ng-bind="r.contact_name"></td>
-                        <td ng-bind="r.tickets_name"></td>
+                        <!-- <td ng-bind="r.tickets_name"></td>
                         <td ng-bind="r.identity"></td>
                         <td ng-bind="r.locations_name"></td>
                         <td ng-bind="r.address"></td>
                         <td ng-bind="r.phone"></td>
                         <td ng-bind="r.postal_code"></td>
                         <td ng-bind="r.country"></td>
-                        <td ng-bind="r.region"></td>
-                        <td><a href="{{r.home_page}}">Click</a> </td>
+                        <td ng-bind="r.region"></td> -->
+                        <td><a ng-href="{{r.home_page}}" target="_blank"><i class="fa fa-link"></i> Ver</a> </td>
                         <td ng-bind="r.email"></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="...">

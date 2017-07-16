@@ -20,15 +20,17 @@ class productsResource extends Controller
                 'products.*',
                 'packings.detail AS packings_detail',
                 'brands.detail AS brands_detail',
-                'categories.detail AS categories_detail'
+                'categories.detail AS categories_detail',
+                'measurements.detail AS measurements_detail'
             )
             // relaciones con otras tablas
                 ->leftJoin('packings', 'products.packings_id', '=', 'packings.id')
                 ->leftJoin('brands', 'products.brands_id', '=', 'brands.id')
                 ->leftJoin('categories', 'products.categories_id', '=', 'categories.id')
+                ->leftJoin('measurements', 'products.measurements_id', '=', 'measurements.id')
                 ->where('products.flagstate', '1') // si esta eliminado no lo considera
                 ->orderBy('products.id', 'DESC');
-        if(strlen($request->search) !== 0){// si se envia algun argumento de busqueda
+        if(strlen($request->search) > 0){// si se envia algun argumento de busqueda
             // condiciones de busqueda
             $result
                 ->where('products.detail', 'LIKE', "%$request->search%")
@@ -88,7 +90,12 @@ class productsResource extends Controller
      */
     public function show($id)
     {
-        //
+        $registro = productsModel::find($id);
+        if($registro){
+            return $registro;
+        }else {
+            return response()->json(['error' => 'Error, not found'], 404); // Status code here
+        }
     }
 
     /**
@@ -111,7 +118,25 @@ class productsResource extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $registro = productsModel::find($id);
+        
+        $registro->detail = $request->detail;
+        $registro->barcode = $request->barcode;
+        $registro->minstock = $request->minstock;
+        $registro->brands_id = $request->brands_id;
+        $registro->categories_id = $request->categories_id;
+        $registro->measurements_id = $request->measurements_id;
+        $registro->packings_id = $request->packings_id;
+        $registro->level = $request->level;
+        $registro->units = $request->units;
+        $registro->user_id = $request->user_id;
+
+        $registro->save();
+        return "ok";
+        // return response()->json([
+        //     'error' => 'Error, not found',
+        //     'request' => $request->all()
+        // ], 404); // Status code here
     }
 
     /**
@@ -122,6 +147,8 @@ class productsResource extends Controller
      */
     public function destroy($id)
     {
-        //
+        $registro = productsModel::find($id);
+        $registro->flagstate = 2;
+        $registro->save();
     }
 }

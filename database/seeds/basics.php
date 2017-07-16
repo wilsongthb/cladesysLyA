@@ -22,6 +22,35 @@ class basics extends Seeder
             'password' => bcrypt('root')
         ]);
 
+        DB::table('brands')->insert([
+            'detail' => 'GENERICA',
+            'user_id' => '1',
+        ]);
 
+        DB::table('categories')->insert([
+            'detail' => 'GENERAL',
+            'user_id' => '1'
+        ]);
+
+        DB::table('locations')->insert([
+            'type' => 'ALMACEN',
+            'name' => 'ALMACEN GENERAL',
+            'user_id' => '1'
+        ]);
+        
+        DB::table('measurements')->insert([
+            'detail' => 'UNIDAD',
+            'user_id' => '1'
+        ]);
+
+        DB::table('packings')->insert([
+            'detail' => 'UNIDAD',
+            'user_id' => '1'
+        ]);
+
+        DB::table('tickets')->insert([
+            'name' => 'IDCARD',
+            'user_id' => '1'
+        ]);
     }
 }

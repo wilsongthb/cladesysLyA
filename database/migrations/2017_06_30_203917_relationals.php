@@ -27,8 +27,8 @@ class Relationals extends Migration
             $table->integer('minstock')->default('1');
 
             // packing
-            $table->char('level')->default('1'); // puede ser char tambien
-            $table->integer('units');
+            $table->tinyInteger('level')->default('1'); // puede ser char tambien
+            $table->integer('units')->default('1');
 
             // referencia a brands
             $table->integer('brands_id')->unsigned();
