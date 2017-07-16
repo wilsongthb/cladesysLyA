@@ -32,6 +32,21 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
             registros: [], 
             get: genericGetResource($http, 'products')
         },
+        suppliers: {
+            registros: [], 
+            get: genericGetResource($http, 'suppliers')
+        },
+        images: {
+            list: [],
+            get: function(){
+                $http.get(`${window.url}/listimages`).then(
+                    // success
+                    (response) => {
+                        this.list = response.data
+                    }
+                )
+            }
+        }
     }
 }])
 

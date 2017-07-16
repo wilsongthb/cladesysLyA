@@ -32,8 +32,16 @@
 
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
                     <label>Tipo de documento *</label>
-                    <select ng-model="registro.tickets_id" class="form-control" required>
-                        <option ng-repeat="t in tickets.registros" ng-value="t.id">{{t.name}} </option>
+                    <select 
+                        class="form-control"
+                        ng-model="registro.tickets_id"  
+                        ng-keyup="tickets.get('', $event.keyCode)" 
+                        required>
+                        <option 
+                            ng-repeat="t in tickets.registros" 
+                            ng-value="t.id"
+                            ng-bind="t.name">
+                            </option>
                     </select>
                 </div>
                 
@@ -59,7 +67,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
                     <label>Localización *</label>
-                    <select ng-model="registro.locations_id" class="form-control" required>
+                    <select 
+                        ng-model="registro.locations_id" 
+                        class="form-control" 
+                        ng-keyup="locations.get('', $event.keyCode)" 
+                        required>
                         <option ng-repeat="l in locations.registros" ng-value="l.id">{{l.name}} </option>
                     </select>
                 </div>

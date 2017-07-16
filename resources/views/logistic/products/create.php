@@ -5,27 +5,20 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Detalle</label>
+                        <label for="">Detalle *</label>
                         <input ng-model="registro.detail" type="text" class="form-control" placeholder="Nombre del producto, apariencia, etc" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Codigo</label>
+                        <label for="">Codigo *</label>
                         <input ng-model="registro.barcode" type="text" class="form-control" placeholder="Codigo de barras" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Stock Minimo</label>
-                        <input ng-model="registro.minstock" type="number" class="form-control" placeholder="1" required>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" title="No disponible aun">
-                    <div class="form-group">
-                        <label for="">Imagen</label>
-                        <!-- <input ng-model="registro.image_file" type="file" required> -->
-                        <input ng-model="registro.image_file" type="file" disabled>
+                        <label for="">Stock Minimo *</label>
+                        <input ng-model="registro.minstock" type="text" class="form-control" placeholder="1" required>
                     </div>
                 </div>
             </div>
@@ -33,7 +26,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Marca</label>
+                        <label for="">Marca *</label>
                         <input 
                             type="text"
                             class="form-control"
@@ -50,7 +43,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Categoria</label>
+                        <label for="">Categoria *</label>
                         <input 
                             type="text"
                             class="form-control"
@@ -67,7 +60,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Unidad de Medida</label>
+                        <label for="">Unidad de Medida *</label>
                         <input 
                             type="text"
                             class="form-control"
@@ -88,7 +81,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Paquete</label>
+                        <label for="">Paquete *</label>
                         <input 
                             type="text"
                             class="form-control"
@@ -105,17 +98,59 @@
                 </div>                
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Nivel</label>
-                        <input ng-model="registro.level" type="text" class="form-control" placeholder="Nivel de empaquetado, para una unidad es 1, sucesivamente va aumentando" required>
+                        <label for="">Nivel *</label>
+                        <input 
+                            ng-model="registro.level" 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="1" 
+                            required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="form-group">
-                        <label for="">Unidades</label>
-                        <input ng-model="registro.units" type="text" class="form-control" placeholder="De ser un paquete (nivel > 1), especificar cantidad de unidades contenidas" required>
+                        <label for="">Unidades *</label>
+                        <input 
+                            ng-model="registro.units" 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="1" 
+                            title="Numero de unidades menores que este producto"
+                            required>
                     </div>
                 </div>
             </div>
+
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label for="">Imagen</label>
+                        <p><a class="btn btn-info" href="{{ window.url + '/getimage' }} " target="_blank">Subir archivo</a></p>
+                         <div ng-if="registro.image_path"> 
+                            <img width="100" ng-src="{{config.url + '/' + registro.image_path}}" alt="Image">
+                         </div>
+                        <a class="btn btn-primary" data-toggle="modal" href='#modalSeleccionarImagen'>Seleccionar Imagen</a>
+                        <div class="modal fade" id="modalSeleccionarImagen">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Imagenes <i class="fa fa-refresh" ng-click="images.get()"></i></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="media" ng-repeat="i in images.list">
+                                            <img width="100" class="media-object" src="{{config.url}}/{{i}}" alt="Image" ng-click="registro.image_path = i">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
             <!--mensaje de error-->
             <div class="alert alert-danger" ng-show="error">
                 <button type="button" class="close" ng-click="error = false" aria-hidden="true">&times;</button>

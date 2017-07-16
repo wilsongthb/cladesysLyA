@@ -33,7 +33,11 @@
                         <td ng-bind="r.updated_at"></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="...">
-                                <a href="{{config.urlEdit}}/{{r.id}}" type="button" class="btn btn-default"> 
+                                <a href="{{config.urlShow}}/{{r.id}}" type="button" class="btn btn-default"> 
+                                    <i class="fa fa-search-plus"></i>
+                                    Ver
+                                </a>
+                                <a href="{{config.urlEdit}}/{{r.id}}" type="button" class="btn btn-default disabled">
                                     <i class="fa fa-pencil"></i>
                                     Editar
                                 </a>

@@ -20,10 +20,14 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
+    Route::get('getimage','ImageController@getImage');
+    Route::post('postimage','ImageController@postImage');
+    Route::get('listimages', 'ImageController@list');
     Route::get('/home', function(){ return view('index'); });
     
     Route::group(['prefix' => 'logistic'], function(){
         Route::get('/', function(){ return view('logistic.index'); });
+        
 
         Route::resource('brands', 'logistic\brandsController');
         Route::resource('packings', 'logistic\packingsController');

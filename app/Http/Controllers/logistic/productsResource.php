@@ -74,6 +74,9 @@ class productsResource extends Controller
         $registro->units = $request->units;
         $registro->user_id = $request->user_id;
 
+        // opcionales
+        $registro->image_path = isset($request->image_path) ? $request->image_path : '';
+
         // $registro->user_id = \Auth::user()->id;s
 
         $registro->save();
@@ -130,6 +133,8 @@ class productsResource extends Controller
         $registro->level = $request->level;
         $registro->units = $request->units;
         $registro->user_id = $request->user_id;
+
+        $registro->image_path = isset($request->image_path) ? $request->image_path : '';
 
         $registro->save();
         return "ok";

@@ -1,4 +1,8 @@
-var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
+var app = angular.module('logistic', [
+    'ngRoute', // rutas angular
+    'ngResource', // recursos de angular
+    // 'ngSanitize' // insertar html directamente
+])
     // configuracion de rutas, etapa de configuracion
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
         $routeProvider
@@ -11,6 +15,7 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
                 templateUrl: `${window.url}/view/notfound.html`
             })
 
+            // PRODUCTS
             .when('/products', {
                 templateUrl: `${window.url}/view/logistic.products.index.html`,
                 controller: 'productsController'
@@ -23,6 +28,8 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
                 templateUrl: `${window.url}/view/logistic.products.create.html`,
                 controller: 'productsEditController'
             })
+
+            // SUPPLIERS
             .when('/suppliers', {
                 templateUrl: `${window.url}/view/logistic.suppliers.index.html`,
                 controller: 'suppliersController'
@@ -35,6 +42,8 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
                 templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
                 controller: 'suppliersEditController'
             })
+
+            // INPUTS
             .when('/inputs', {
                 templateUrl: `${window.url}/view/logistic.inputs.index.html`,
                 controller: 'inputsController'
@@ -42,6 +51,10 @@ var app = angular.module('logistic', ['ngRoute', 'ngResource', 'ngSanitize'])
             .when('/inputs/create', {
                 templateUrl: `${window.url}/view/logistic.inputs.create.html`,
                 controller: 'inputsCreateController'
+            })
+            .when('/inputs/show/:id', {
+                templateUrl: `${window.url}/view/logistic.inputs.create.html`,
+                controller: 'inputsShowController'
             })
 
 

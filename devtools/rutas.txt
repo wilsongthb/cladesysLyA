@@ -8,16 +8,16 @@
 |        | POST      | api/logistic/input_details                     | input_details.store   | App\Http\Controllers\logistic\input_detailsResource@store              | api          |
 |        | GET|HEAD  | api/logistic/input_details                     | input_details.index   | App\Http\Controllers\logistic\input_detailsResource@index              | api          |
 |        | GET|HEAD  | api/logistic/input_details/create              | input_details.create  | App\Http\Controllers\logistic\input_detailsResource@create             | api          |
-|        | DELETE    | api/logistic/input_details/{input_detail}      | input_details.destroy | App\Http\Controllers\logistic\input_detailsResource@destroy            | api          |
-|        | PUT|PATCH | api/logistic/input_details/{input_detail}      | input_details.update  | App\Http\Controllers\logistic\input_detailsResource@update             | api          |
 |        | GET|HEAD  | api/logistic/input_details/{input_detail}      | input_details.show    | App\Http\Controllers\logistic\input_detailsResource@show               | api          |
+|        | PUT|PATCH | api/logistic/input_details/{input_detail}      | input_details.update  | App\Http\Controllers\logistic\input_detailsResource@update             | api          |
+|        | DELETE    | api/logistic/input_details/{input_detail}      | input_details.destroy | App\Http\Controllers\logistic\input_detailsResource@destroy            | api          |
 |        | GET|HEAD  | api/logistic/input_details/{input_detail}/edit | input_details.edit    | App\Http\Controllers\logistic\input_detailsResource@edit               | api          |
-|        | GET|HEAD  | api/logistic/inputs                            | inputs.index          | App\Http\Controllers\logistic\inputsResource@index                     | api          |
 |        | POST      | api/logistic/inputs                            | inputs.store          | App\Http\Controllers\logistic\inputsResource@store                     | api          |
+|        | GET|HEAD  | api/logistic/inputs                            | inputs.index          | App\Http\Controllers\logistic\inputsResource@index                     | api          |
 |        | GET|HEAD  | api/logistic/inputs/create                     | inputs.create         | App\Http\Controllers\logistic\inputsResource@create                    | api          |
-|        | GET|HEAD  | api/logistic/inputs/{input}                    | inputs.show           | App\Http\Controllers\logistic\inputsResource@show                      | api          |
-|        | PUT|PATCH | api/logistic/inputs/{input}                    | inputs.update         | App\Http\Controllers\logistic\inputsResource@update                    | api          |
 |        | DELETE    | api/logistic/inputs/{input}                    | inputs.destroy        | App\Http\Controllers\logistic\inputsResource@destroy                   | api          |
+|        | PUT|PATCH | api/logistic/inputs/{input}                    | inputs.update         | App\Http\Controllers\logistic\inputsResource@update                    | api          |
+|        | GET|HEAD  | api/logistic/inputs/{input}                    | inputs.show           | App\Http\Controllers\logistic\inputsResource@show                      | api          |
 |        | GET|HEAD  | api/logistic/inputs/{input}/edit               | inputs.edit           | App\Http\Controllers\logistic\inputsResource@edit                      | api          |
 |        | GET|HEAD  | api/logistic/locations                         |                       | App\Http\Controllers\logistic\utilitiesResource@locations              | api          |
 |        | GET|HEAD  | api/logistic/measurements                      |                       | App\Http\Controllers\logistic\utilitiesResource@measurements           | api          |
@@ -29,12 +29,12 @@
 |        | DELETE    | api/logistic/products/{product}                | products.destroy      | App\Http\Controllers\logistic\productsResource@destroy                 | api          |
 |        | PUT|PATCH | api/logistic/products/{product}                | products.update       | App\Http\Controllers\logistic\productsResource@update                  | api          |
 |        | GET|HEAD  | api/logistic/products/{product}/edit           | products.edit         | App\Http\Controllers\logistic\productsResource@edit                    | api          |
-|        | GET|HEAD  | api/logistic/suppliers                         | suppliers.index       | App\Http\Controllers\logistic\suppliersResource@index                  | api          |
 |        | POST      | api/logistic/suppliers                         | suppliers.store       | App\Http\Controllers\logistic\suppliersResource@store                  | api          |
+|        | GET|HEAD  | api/logistic/suppliers                         | suppliers.index       | App\Http\Controllers\logistic\suppliersResource@index                  | api          |
 |        | GET|HEAD  | api/logistic/suppliers/create                  | suppliers.create      | App\Http\Controllers\logistic\suppliersResource@create                 | api          |
+|        | DELETE    | api/logistic/suppliers/{supplier}              | suppliers.destroy     | App\Http\Controllers\logistic\suppliersResource@destroy                | api          |
 |        | PUT|PATCH | api/logistic/suppliers/{supplier}              | suppliers.update      | App\Http\Controllers\logistic\suppliersResource@update                 | api          |
 |        | GET|HEAD  | api/logistic/suppliers/{supplier}              | suppliers.show        | App\Http\Controllers\logistic\suppliersResource@show                   | api          |
-|        | DELETE    | api/logistic/suppliers/{supplier}              | suppliers.destroy     | App\Http\Controllers\logistic\suppliersResource@destroy                | api          |
 |        | GET|HEAD  | api/logistic/suppliers/{supplier}/edit         | suppliers.edit        | App\Http\Controllers\logistic\suppliersResource@edit                   | api          |
 |        | GET|HEAD  | api/logistic/tickets                           |                       | App\Http\Controllers\logistic\utilitiesResource@tickets                | api          |
 |        | GET|HEAD  | api/user                                       |                       | Closure                                                                | api,auth:api |
@@ -45,9 +45,9 @@
 |        | GET|HEAD  | logistic/brands                                | brands.index          | App\Http\Controllers\logistic\brandsController@index                   | web,auth     |
 |        | POST      | logistic/brands                                | brands.store          | App\Http\Controllers\logistic\brandsController@store                   | web,auth     |
 |        | GET|HEAD  | logistic/brands/create                         | brands.create         | App\Http\Controllers\logistic\brandsController@create                  | web,auth     |
-|        | PUT|PATCH | logistic/brands/{brand}                        | brands.update         | App\Http\Controllers\logistic\brandsController@update                  | web,auth     |
 |        | DELETE    | logistic/brands/{brand}                        | brands.destroy        | App\Http\Controllers\logistic\brandsController@destroy                 | web,auth     |
 |        | GET|HEAD  | logistic/brands/{brand}                        | brands.show           | App\Http\Controllers\logistic\brandsController@show                    | web,auth     |
+|        | PUT|PATCH | logistic/brands/{brand}                        | brands.update         | App\Http\Controllers\logistic\brandsController@update                  | web,auth     |
 |        | GET|HEAD  | logistic/brands/{brand}/edit                   | brands.edit           | App\Http\Controllers\logistic\brandsController@edit                    | web,auth     |
 |        | POST      | logistic/categories                            | categories.store      | App\Http\Controllers\logistic\categoriesController@store               | web,auth     |
 |        | GET|HEAD  | logistic/categories                            | categories.index      | App\Http\Controllers\logistic\categoriesController@index               | web,auth     |
@@ -56,6 +56,7 @@
 |        | PUT|PATCH | logistic/categories/{category}                 | categories.update     | App\Http\Controllers\logistic\categoriesController@update              | web,auth     |
 |        | GET|HEAD  | logistic/categories/{category}                 | categories.show       | App\Http\Controllers\logistic\categoriesController@show                | web,auth     |
 |        | GET|HEAD  | logistic/categories/{category}/edit            | categories.edit       | App\Http\Controllers\logistic\categoriesController@edit                | web,auth     |
+|        | GET|HEAD  | logistic/getimage                              |                       | App\Http\Controllers\ImageController@getImage                          | web,auth     |
 |        | POST      | logistic/locations                             | locations.store       | App\Http\Controllers\logistic\locationsController@store                | web,auth     |
 |        | GET|HEAD  | logistic/locations                             | locations.index       | App\Http\Controllers\logistic\locationsController@index                | web,auth     |
 |        | GET|HEAD  | logistic/locations/create                      | locations.create      | App\Http\Controllers\logistic\locationsController@create               | web,auth     |
@@ -67,30 +68,31 @@
 |        | GET|HEAD  | logistic/measurements                          | measurements.index    | App\Http\Controllers\logistic\measurementsController@index             | web,auth     |
 |        | GET|HEAD  | logistic/measurements/create                   | measurements.create   | App\Http\Controllers\logistic\measurementsController@create            | web,auth     |
 |        | GET|HEAD  | logistic/measurements/{measurement}            | measurements.show     | App\Http\Controllers\logistic\measurementsController@show              | web,auth     |
-|        | DELETE    | logistic/measurements/{measurement}            | measurements.destroy  | App\Http\Controllers\logistic\measurementsController@destroy           | web,auth     |
 |        | PUT|PATCH | logistic/measurements/{measurement}            | measurements.update   | App\Http\Controllers\logistic\measurementsController@update            | web,auth     |
+|        | DELETE    | logistic/measurements/{measurement}            | measurements.destroy  | App\Http\Controllers\logistic\measurementsController@destroy           | web,auth     |
 |        | GET|HEAD  | logistic/measurements/{measurement}/edit       | measurements.edit     | App\Http\Controllers\logistic\measurementsController@edit              | web,auth     |
 |        | GET|HEAD  | logistic/ng/{p?}/{p1?}/{p3?}/{p4?}             | angular@routes        | Closure                                                                | web,auth     |
-|        | GET|HEAD  | logistic/packings                              | packings.index        | App\Http\Controllers\logistic\packingsController@index                 | web,auth     |
 |        | POST      | logistic/packings                              | packings.store        | App\Http\Controllers\logistic\packingsController@store                 | web,auth     |
+|        | GET|HEAD  | logistic/packings                              | packings.index        | App\Http\Controllers\logistic\packingsController@index                 | web,auth     |
 |        | GET|HEAD  | logistic/packings/create                       | packings.create       | App\Http\Controllers\logistic\packingsController@create                | web,auth     |
+|        | DELETE    | logistic/packings/{packing}                    | packings.destroy      | App\Http\Controllers\logistic\packingsController@destroy               | web,auth     |
 |        | PUT|PATCH | logistic/packings/{packing}                    | packings.update       | App\Http\Controllers\logistic\packingsController@update                | web,auth     |
 |        | GET|HEAD  | logistic/packings/{packing}                    | packings.show         | App\Http\Controllers\logistic\packingsController@show                  | web,auth     |
-|        | DELETE    | logistic/packings/{packing}                    | packings.destroy      | App\Http\Controllers\logistic\packingsController@destroy               | web,auth     |
 |        | GET|HEAD  | logistic/packings/{packing}/edit               | packings.edit         | App\Http\Controllers\logistic\packingsController@edit                  | web,auth     |
+|        | POST      | logistic/postimage                             |                       | App\Http\Controllers\ImageController@postImage                         | web,auth     |
 |        | GET|HEAD  | logistic/tickets                               | tickets.index         | App\Http\Controllers\logistic\ticketsController@index                  | web,auth     |
 |        | POST      | logistic/tickets                               | tickets.store         | App\Http\Controllers\logistic\ticketsController@store                  | web,auth     |
 |        | GET|HEAD  | logistic/tickets/create                        | tickets.create        | App\Http\Controllers\logistic\ticketsController@create                 | web,auth     |
-|        | GET|HEAD  | logistic/tickets/{ticket}                      | tickets.show          | App\Http\Controllers\logistic\ticketsController@show                   | web,auth     |
 |        | PUT|PATCH | logistic/tickets/{ticket}                      | tickets.update        | App\Http\Controllers\logistic\ticketsController@update                 | web,auth     |
 |        | DELETE    | logistic/tickets/{ticket}                      | tickets.destroy       | App\Http\Controllers\logistic\ticketsController@destroy                | web,auth     |
+|        | GET|HEAD  | logistic/tickets/{ticket}                      | tickets.show          | App\Http\Controllers\logistic\ticketsController@show                   | web,auth     |
 |        | GET|HEAD  | logistic/tickets/{ticket}/edit                 | tickets.edit          | App\Http\Controllers\logistic\ticketsController@edit                   | web,auth     |
 |        | POST      | logout                                         | logout                | App\Http\Controllers\Auth\LoginController@logout                       | web          |
 |        | POST      | password/email                                 | password.email        | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest    |
 |        | POST      | password/reset                                 |                       | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest    |
 |        | GET|HEAD  | password/reset                                 | password.request      | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest    |
 |        | GET|HEAD  | password/reset/{token}                         | password.reset        | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest    |
-|        | GET|HEAD  | register                                       | register              | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest    |
 |        | POST      | register                                       |                       | App\Http\Controllers\Auth\RegisterController@register                  | web,guest    |
+|        | GET|HEAD  | register                                       | register              | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest    |
 |        | GET|HEAD  | view/{view}                                    |                       | App\Http\Controllers\viewController@index                              | web,auth     |
 +--------+-----------+------------------------------------------------+-----------------------+------------------------------------------------------------------------+--------------+

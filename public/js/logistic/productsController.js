@@ -1,6 +1,7 @@
 productsConfig = {
     name: 'products',
     title: 'PRODUCTOS',
+    url: window.url,
     urlApi: `${window.url}/api/logistic/products`,
     // esta en ng porque esta ruta sera servida por angular
     urlCreate: `${window.url}/logistic/ng/products/create`,
@@ -27,12 +28,13 @@ function(
     // valores iniciales
     $scope.error = false
     $scope.config = JSON.parse(JSON.stringify(productsConfig))
-    $scope.config.title = 'REGISTRAR NUEVO PRODUCTO'
     $scope.registro = {
         // valores por defecto
         user_id: window.user.id
     }
 
+    /////////////////////////////////////////////////////////////////////////7
+    $scope.config.title = 'REGISTRAR NUEVO PRODUCTO'
     // obtener los valores relacionales
     $scope.brands = utilitiesFactory.brands
     $scope.categories = utilitiesFactory.categories
@@ -42,6 +44,11 @@ function(
     $scope.categories.get()
     $scope.measurements.get()
     $scope.packings.get()
+
+    // imagenes
+    $scope.images = utilitiesFactory.images
+    $scope.images.get()
+    //////////////////////////////////////////////////////////////////////////7
 
     $scope.guardar = function(){
         $http.post(
@@ -88,7 +95,9 @@ app.controller('productsEditController', [
     $scope.categories.get()
     $scope.measurements.get()
     $scope.packings.get()
-    
+    // imagenes
+    $scope.images = utilitiesFactory.images
+    $scope.images.get()
     
     // valores iniciales
     $scope.error = false
