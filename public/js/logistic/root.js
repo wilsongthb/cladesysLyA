@@ -57,6 +57,12 @@ var app = angular.module('logistic', [
                 controller: 'inputsShowController'
             })
 
+            // OUTPUTS
+            .when('/outputs', {
+                templateUrl: `${window.url}/view/logistic.outputs.index.html`,
+                // controller: 'outputsController'
+            })
+
 
             // rutas perdidas
             .otherwise({
