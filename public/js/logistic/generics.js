@@ -41,6 +41,10 @@ var readResourceController = function(config){
      */
     return (['$scope', '$http', '$window', function($scope, $http, $window){
 
+    // enfoque inicial
+    document.getElementById('init_focus').focus()
+    // console.log('focus')
+
     // valores iniciales
     $scope.config = JSON.parse(JSON.stringify(config))
     $scope.registros = []
@@ -56,7 +60,7 @@ var readResourceController = function(config){
     $scope.delete_id = 0
 
     $scope.buscarEnter = function(keyCode){
-        console.log(keyCode)
+        // console.log(keyCode)
         if(keyCode === 13){
             $scope.leer()
         }

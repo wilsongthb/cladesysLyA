@@ -11,7 +11,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                     <label>Nombre de La compañia *</label>
-                    <input type="text" ng-model="registro.company_name" class="form-control" required>
+                    <!-- enfoque incial -->
+                    <input id="init_focus" type="text" ng-model="registro.company_name" class="form-control" required>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                     <label>Nombre de contacto *</label>

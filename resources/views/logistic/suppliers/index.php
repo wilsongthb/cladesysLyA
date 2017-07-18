@@ -4,7 +4,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <a href="{{config.urlCreate}}"><button type="button" class="btn btn-default"><i class="fa fa-plus"></i> Agregar</button></a>
+                    <!-- boton enfocado en la carga de la pagina -->
+                    <a href="{{config.urlCreate}}" id="init_focus"><button type="button" class="btn btn-default"><i class="fa fa-plus"></i> Agregar</button></a>
                 </div>
                 <div class="pull-right">
                     <div class="form-inline">

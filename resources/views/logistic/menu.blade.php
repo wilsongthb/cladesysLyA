@@ -1,6 +1,7 @@
-<li class="active"><a href="{{ url('/logistic') }} ">LOGISTIC </a></li>
+<li><a href="{{ url('/logistic') }} ">LOGISTIC </a></li>
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilitarios <span class="caret"></span></a>
+    {{--  enfoque inicial  --}}
+    <a id="nav_focus" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilitarios <span class="caret"></span></a>
     <ul class="dropdown-menu">
         <li><a href="{{ url('/logistic/packings') }}">Empaquetado</a></li>
         <li><a href="{{ url('/logistic/categories') }}">Categorias</a></li>

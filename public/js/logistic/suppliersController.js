@@ -24,6 +24,8 @@ app.controller('suppliersCreateController', [
         $location,
         utilitiesFactory,
     ){
+    // enfoque inicial
+    document.getElementById('init_focus').focus()
     
     // valores iniciales
     $scope.error = false
