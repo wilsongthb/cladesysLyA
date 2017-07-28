@@ -71,21 +71,20 @@ class Basics extends Migration
         });
 
         // enable to create products table
-
-        Schema::create('tickets', function (Blueprint $table) {
-            $table->increments('id');
+        // Schema::create('tickets', function (Blueprint $table) {
+        //     $table->increments('id');
             
-            // columnas
-            $table->boolean('flagstate')->default('1');
-            $table->string('name');
+        //     // columnas
+        //     $table->boolean('flagstate')->default('1');
+        //     $table->string('name');
 
-            // referencia al usuario
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+        //     // referencia al usuario
+        //     $table->integer('user_id')->unsigned();
+        //     $table->foreign('user_id')->references('id')->on('users');
 
-            // timestamps create_at y update_at
-            $table->timestamps();
-        });
+        //     // timestamps create_at y update_at
+        //     $table->timestamps();
+        // });
 
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
