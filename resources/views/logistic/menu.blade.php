@@ -7,7 +7,7 @@
         <li><a href="{{ url('/logistic/categories') }}">Categorias</a></li>
         <li><a href="{{ url('/logistic/brands') }}">Marcas</a></li>
         <li><a href="{{ url('/logistic/measurements') }}">Unidades de Medida</a></li>
-        <li><a href="{{ url('/logistic/tickets') }}">Boletos</a></li>
+        {{--  <li><a href="{{ url('/logistic/tickets') }}">Boletos</a></li>  --}}
         <li role="separator" class="divider"></li>
         <li><a href="{{ url('/logistic/ng/suppliers') }}">Proveedores</a></li>{{--  manejado con angular  --}}
         <li><a href="{{ url('/logistic/ng/products') }}">Productos</a></li>
