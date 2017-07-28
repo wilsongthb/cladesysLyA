@@ -14,6 +14,20 @@ return [
             3 => 'IDCARD'
         ]
     ],
+    // TICKET
+    /**
+        Esta constante y la anterior
+        reemplazan a la tabla tickets, 
+        por ello de ser necesario volver a
+        usar la tabla, evite usar ids duplicados en las dos
+    */
+    'ticket' => [
+        'default' => 10,
+        'type' => [
+            10 => 'BOLETA',
+            11 => 'FACTURA'
+        ]
+    ],
     // TIPO DE LOCALIZACION
     'location' => [
         'default' => 1,

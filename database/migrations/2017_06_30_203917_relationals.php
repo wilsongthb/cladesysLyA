@@ -18,13 +18,13 @@ class Relationals extends Migration
             
             // columnas
             $table->string('detail');
-            $table->char('status', '1')->default('1');
-            $table->char('barcode', '12');
+            // $table->char('status', '1')->default('1');
+            $table->string('barcode', '30');
             $table->boolean('flagstate')->default('1');
-            $table->string('imagepath')->nullable(); // mas longitud
+            $table->string('image_path')->nullable(); // mas longitud
 
             // stock minimo del producto
-            $table->integer('minstock')->default('1');
+            // $table->integer('minstock')->default('1');
 
             // packing
             $table->tinyInteger('level')->default('1'); // puede ser char tambien
@@ -33,7 +33,6 @@ class Relationals extends Migration
             // referencia a brands
             $table->integer('brands_id')->unsigned();
             $table->foreign('brands_id')->references('id')->on('brands');
-
             // referencia a categories
             $table->integer('categories_id')->unsigned();
             $table->foreign('categories_id')->references('id')->on('categories');
@@ -66,13 +65,13 @@ class Relationals extends Migration
             $table->string('postal_code');
             $table->string('country');
             $table->string('region');
-            $table->text('home_page'); // puede guardar hmtl?
+            $table->string('home_page'); // url
             $table->string('email');
             $table->boolean('flagstate')->default('1');
 
             // referencia a tickets
-            $table->integer('tickets_id')->unsigned();
-            $table->foreign('tickets_id')->references('id')->on('tickets');
+            $table->integer('tickets_id')->unsigned(); // usando el de config
+            // $table->foreign('tickets_id')->references('id')->on('tickets');
 
             // referencia a locations
             $table->integer('locations_id')->unsigned();
@@ -105,18 +104,17 @@ class Relationals extends Migration
             $table->increments('id');
             
             // columnas
-            $table->float('unit_price', 8, 4);
+            $table->float('unit_price', 8, 2);
             $table->integer('quantity');
             $table->boolean('flagstate')->default('1');
             $table->date('expiration');
             $table->date('fabrication')->nullable();
             $table->string('lot', 20)->nullable();
-            
-            $table->string('ticketnumber', '20');
+            $table->string('ticket_number', '20');
 
             // referencia a tickets
             $table->integer('tickets_id')->unsigned();
-            $table->foreign('tickets_id')->references('id')->on('tickets');
+            // $table->foreign('tickets_id')->references('id')->on('tickets');
 
             // referencia a locations
             $table->integer('locations_id')->unsigned();
@@ -148,12 +146,12 @@ class Relationals extends Migration
             // columnas
             $table->tinyInteger('status');
             $table->char('type');
-            $table->string('ticketnumber', '20');
+            $table->string('ticket_number', '20');
             $table->boolean('flagstate')->default('1');
 
             // referencia a tickets
             $table->integer('tickets_id')->unsigned();
-            $table->foreign('tickets_id')->references('id')->on('tickets');
+            // $table->foreign('tickets_id')->references('id')->on('tickets');
 
             // referencia a locations
             $table->integer('locations_id')->unsigned();
@@ -171,7 +169,8 @@ class Relationals extends Migration
             $table->increments('id');
             
             // columnas
-            $table->float('unit_price', 11, 4);
+            $table->float('utility', 4, 2); // configuracion de utilidad
+            $table->float('unit_price', 11, 2);
             $table->integer('quantity');
             $table->boolean('flagstate')->default('1');
 
@@ -229,6 +228,31 @@ class Relationals extends Migration
             // timestamps create_at y update_at
             $table->timestamps();
         });
+
+        
+        Schema::create('product_options', function (Blueprint $table) {
+            $table->increments('id');
+
+            // columnas
+            // STOCK
+            $table->integer('minimum');
+            $table->integer('permanent');
+            // DURACION
+            $table->string('duration', '8');// en dias
+            // RELACIONES
+            $table->integer('products_id')->unsigned();
+            $table->foreign('products_id')->references('id')->on('products');
+            $table->integer('locations_id')->unsigned();
+            $table->foreign('locations_id')->references('id')->on('locations');
+
+            // referencia al usuario
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            // timestamps create_at y update_at
+            $table->timestamps();
+        });
+        
     }
 
     /**
@@ -238,6 +262,7 @@ class Relationals extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('product_options');
         Schema::dropIfExists('order_details');
         Schema::dropIfExists('orders');
         Schema::dropIfExists('output_details');

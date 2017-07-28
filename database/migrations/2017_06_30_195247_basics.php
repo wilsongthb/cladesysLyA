@@ -70,6 +70,21 @@ class Basics extends Migration
             $table->timestamps();
         });
 
+        // ITS DISABLE
+        // enable to create products table
+        // Schema::create('tickets', function (Blueprint $table) {
+        //     $table->increments('id');
+            
+        //     // columnas
+        //     $table->boolean('flagstate')->default('1');
+        //     $table->string('name');
+        //     // referencia al usuario
+        //     $table->integer('user_id')->unsigned();
+        //     $table->foreign('user_id')->references('id')->on('users');
+        //     // timestamps create_at y update_at
+        //     $table->timestamps();
+        // });
+
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             
@@ -77,6 +92,7 @@ class Basics extends Migration
             $table->char('type', 1);
             $table->boolean('flagstate')->default('1');
             $table->string('name');
+            $table->float('utility', 4, 2); // configuracion de utilidad
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();
@@ -98,7 +114,7 @@ class Basics extends Migration
         Schema::dropIfExists('brands'); 
         Schema::dropIfExists('categories');
         Schema::dropIfExists('packings');
-        Schema::dropIfExists('tickets');
+        // Schema::dropIfExists('tickets');
         Schema::dropIfExists('measurements');
         // registro
         Schema::dropIfExists('locations');

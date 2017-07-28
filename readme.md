@@ -41,9 +41,9 @@ bower install
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Volcando estructura de base de datos para homestead
-CREATE DATABASE IF NOT EXISTS `homestead` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
-USE `homestead`;
+-- Volcando estructura de base de datos para cladesys_db
+CREATE DATABASE IF NOT EXISTS `cladesys_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `cladesys_db`;
 ~~~
 
 

@@ -17,7 +17,7 @@ class basics extends Seeder
     {
         DB::table('users')->insert([
             'id' => '1',
-            'name' => 'rootSuperUserDev',
+            'name' => 'UserRoot',
             'email' => 'root@localhost',
             'password' => bcrypt('root')
         ]);
@@ -33,8 +33,9 @@ class basics extends Seeder
         ]);
 
         DB::table('locations')->insert([
-            'type' => 'ALMACEN',
+            'type' => '1',
             'name' => 'ALMACEN GENERAL',
+            'utility' => '5',
             'user_id' => '1'
         ]);
         
@@ -48,9 +49,9 @@ class basics extends Seeder
             'user_id' => '1'
         ]);
 
-        DB::table('tickets')->insert([
-            'name' => 'IDCARD',
-            'user_id' => '1'
-        ]);
+        // DB::table('tickets')->insert([
+        //     'name' => 'IDCARD',
+        //     'user_id' => '1'
+        // ]);
     }
 }
