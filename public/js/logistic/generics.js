@@ -42,7 +42,7 @@ var readResourceController = function(config){
     return (['$scope', '$http', '$window', function($scope, $http, $window){
 
     // enfoque inicial
-    document.getElementById('init_focus').focus()
+    // document.getElementById('init_focus').focus()
     // console.log('focus')
 
     // valores iniciales

@@ -11,6 +11,6 @@ class viewController extends Controller
         // esta operacion se hace para servir archivos php como si fueran html
 
         $view_html = substr($view, 0, -5);
-        return view($view_html);
+        return view('templates.'.$view_html);
     }
 }

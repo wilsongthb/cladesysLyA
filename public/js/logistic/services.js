@@ -24,10 +24,10 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
             registros: [], 
             get: genericGetResource($http, 'locations')
         },
-        tickets: {
-            registros: [], 
-            get: genericGetResource($http, 'tickets')
-        },
+        // tickets: {
+        //     registros: [], 
+        //     get: genericGetResource($http, 'tickets')
+        // },
         products: {
             registros: [], 
             get: genericGetResource($http, 'products')

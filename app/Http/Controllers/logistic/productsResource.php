@@ -65,7 +65,7 @@ class productsResource extends Controller
         
         $registro->detail = $request->detail;
         $registro->barcode = $request->barcode;
-        $registro->minstock = $request->minstock;
+        // $registro->minstock = $request->minstock;
         $registro->brands_id = $request->brands_id;
         $registro->categories_id = $request->categories_id;
         $registro->measurements_id = $request->measurements_id;
@@ -125,7 +125,7 @@ class productsResource extends Controller
         
         $registro->detail = $request->detail;
         $registro->barcode = $request->barcode;
-        $registro->minstock = $request->minstock;
+        // $registro->minstock = $request->minstock;
         $registro->brands_id = $request->brands_id;
         $registro->categories_id = $request->categories_id;
         $registro->measurements_id = $request->measurements_id;

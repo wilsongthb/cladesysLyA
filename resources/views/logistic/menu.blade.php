@@ -11,6 +11,7 @@
         <li role="separator" class="divider"></li>
         <li><a href="{{ url('/logistic/ng/products') }}"><i class="fa fa-cogs"></i> Productos</a></li>
         <li><a href="{{ url('/logistic/ng/suppliers') }}"><i class="fa fa-cogs"></i> Proveedores</a></li>
+        <li><a href="{{ url('/logistic/ng') }}"><i class="fa fa-cogs"></i> NG</a></li>
     </ul>
 </li>
 <li class="dropdown">
@@ -30,6 +31,3 @@
         <li><a href="#">Reportes</a></li>
     </ul>
 </li>
-<!-- <li>
-    <a href="{{ url('/logistic/locations') }}">Localizaciones</a>
-</li> -->
