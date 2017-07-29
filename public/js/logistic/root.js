@@ -15,53 +15,53 @@ var app = angular.module('logistic', [
                 templateUrl: `${window.url}/view/notfound.html`
             })
 
-            // PRODUCTS
+            // // PRODUCTS
             .when('/products', {
                 templateUrl: `${window.url}/view/logistic.products.index.html`,
                 controller: 'productsController'
             })
-            .when('/products/create', {
-                templateUrl: `${window.url}/view/logistic.products.create.html`,
-                controller: 'productsCreateController'
-            })
-            .when('/products/edit/:id', {
-                templateUrl: `${window.url}/view/logistic.products.create.html`,
-                controller: 'productsEditController'
-            })
+            // .when('/products/create', {
+            //     templateUrl: `${window.url}/view/logistic.products.create.html`,
+            //     controller: 'productsCreateController'
+            // })
+            // .when('/products/edit/:id', {
+            //     templateUrl: `${window.url}/view/logistic.products.create.html`,
+            //     controller: 'productsEditController'
+            // })
 
-            // SUPPLIERS
-            .when('/suppliers', {
-                templateUrl: `${window.url}/view/logistic.suppliers.index.html`,
-                controller: 'suppliersController'
-            })
-            .when('/suppliers/create', {
-                templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
-                controller: 'suppliersCreateController'
-            })
-            .when('/suppliers/edit/:id', {
-                templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
-                controller: 'suppliersEditController'
-            })
+            // // SUPPLIERS
+            // .when('/suppliers', {
+            //     templateUrl: `${window.url}/view/logistic.suppliers.index.html`,
+            //     controller: 'suppliersController'
+            // })
+            // .when('/suppliers/create', {
+            //     templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
+            //     controller: 'suppliersCreateController'
+            // })
+            // .when('/suppliers/edit/:id', {
+            //     templateUrl: `${window.url}/view/logistic.suppliers.create.html`,
+            //     controller: 'suppliersEditController'
+            // })
 
-            // INPUTS
-            .when('/inputs', {
-                templateUrl: `${window.url}/view/logistic.inputs.index.html`,
-                controller: 'inputsController'
-            })
-            .when('/inputs/create', {
-                templateUrl: `${window.url}/view/logistic.inputs.create.html`,
-                controller: 'inputsCreateController'
-            })
-            .when('/inputs/show/:id', {
-                templateUrl: `${window.url}/view/logistic.inputs.create.html`,
-                controller: 'inputsShowController'
-            })
+            // // INPUTS
+            // .when('/inputs', {
+            //     templateUrl: `${window.url}/view/logistic.inputs.index.html`,
+            //     controller: 'inputsController'
+            // })
+            // .when('/inputs/create', {
+            //     templateUrl: `${window.url}/view/logistic.inputs.create.html`,
+            //     controller: 'inputsCreateController'
+            // })
+            // .when('/inputs/show/:id', {
+            //     templateUrl: `${window.url}/view/logistic.inputs.create.html`,
+            //     controller: 'inputsShowController'
+            // })
 
-            // OUTPUTS
-            .when('/outputs', {
-                templateUrl: `${window.url}/view/logistic.outputs.index.html`,
-                // controller: 'outputsController'
-            })
+            // // OUTPUTS
+            // .when('/outputs', {
+            //     templateUrl: `${window.url}/view/logistic.outputs.index.html`,
+            //     // controller: 'outputsController'
+            // })
 
 
             // rutas perdidas

@@ -7,10 +7,10 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
             
             <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <a href="{{ url('logistic/'.$name.'/create') }}"><button type="button" class="btn btn-default">Agregar</button></a>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <form action="" method="GET" class="form-inline" role="form">
                         <div class="form-group">
                             <input type="text" class="form-control" name="search"

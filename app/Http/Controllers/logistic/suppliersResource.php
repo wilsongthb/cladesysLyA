@@ -18,11 +18,9 @@ class suppliersResource extends Controller
         $result = suppliersModel::select(
             // columnas
                 'suppliers.*',
-                'tickets.name AS tickets_name',
                 'locations.name AS locations_name'
             )
             // relaciones con otras tablas
-                ->leftJoin('tickets', 'suppliers.tickets_id', '=', 'tickets.id')
                 ->leftJoin('locations', 'suppliers.locations_id', '=', 'locations.id')
                 ->where('suppliers.flagstate', '1') // si esta eliminado no lo considera
                 ->orderBy('suppliers.id', 'DESC');
