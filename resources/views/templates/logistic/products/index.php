@@ -15,7 +15,6 @@
                     </div>
                 </div>
             </div>
-
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -77,7 +76,6 @@
                     </div><!-- /input-group -->
                 </div>
             </div>
-            <hr>
 
             <!--dialogo de eleminar registro-->
             <div class="modal fade" id="modal-id">

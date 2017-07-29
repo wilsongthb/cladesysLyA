@@ -1,11 +1,11 @@
-productsConfig = {
+const productsConfig = {
     name: 'products',
     title: 'PRODUCTOS',
-    url: window.url,
-    urlApi: `${window.url}/api/logistic/products`,
+    url: APP_CONST.url,
+    urlApi: `${APP_CONST.url}/api/logistic/products`,
     // esta en ng porque esta ruta sera servida por angular
-    urlCreate: `${window.url}/logistic/ng/products/create`,
-    urlEdit: `${window.url}/logistic/ng/products/edit`
+    urlCreate: `${APP_CONST.url}/logistic/ng/products/create`,
+    urlEdit: `${APP_CONST.url}/logistic/ng/products/edit`
 }
 
 // controlador para leer registros
@@ -23,17 +23,23 @@ function(
     $scope, 
     $http, 
     $location,
-    utilitiesFactory
+    utilitiesFactory,
 ){
+    // enfoque inicial
+    enfocar('init_focus')
+
     // valores iniciales
     $scope.error = false
-    $scope.config = JSON.parse(JSON.stringify(productsConfig))
     $scope.registro = {
         // valores por defecto
-        user_id: window.user.id
+        user_id: APP_CONST.user.id
     }
+    $scope.APP_CONST = APP_CONST
 
     /////////////////////////////////////////////////////////////////////////7
+    // PERSONALIZADO //////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////777
+    $scope.config = JSON.parse(JSON.stringify(productsConfig))
     $scope.config.title = 'REGISTRAR NUEVO PRODUCTO'
     // obtener los valores relacionales
     $scope.brands = utilitiesFactory.brands
@@ -44,12 +50,10 @@ function(
     $scope.categories.get()
     $scope.measurements.get()
     $scope.packings.get()
-
     // imagenes
     $scope.images = utilitiesFactory.images
     $scope.images.get()
     //////////////////////////////////////////////////////////////////////////7
-
     $scope.guardar = function(){
         $http.post(
             // url
@@ -86,6 +90,14 @@ app.controller('productsEditController', [
         $routeParams,
         getOneFactory
     ){
+    //enfoque
+    enfocar('init_focus')
+    // valores iniciales
+    $scope.error = false
+    $scope.APP_CONST = APP_CONST
+    /////////////////////////////////////////////////////////////////////////7
+    // PERSONALIZADO ///////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////777
     // obtener los valores relacionales
     $scope.brands = utilitiesFactory.brands
     $scope.categories = utilitiesFactory.categories
@@ -98,9 +110,7 @@ app.controller('productsEditController', [
     // imagenes
     $scope.images = utilitiesFactory.images
     $scope.images.get()
-    
     // valores iniciales
-    $scope.error = false
     $scope.config = JSON.parse(JSON.stringify(productsConfig))
     $scope.config.title = 'EDITAR PRODUCTO'
     // al editar ---  nombre del recurso,  id
@@ -116,7 +126,8 @@ app.controller('productsEditController', [
             // $location.path(`${$scope.config.name}`)
         }
     )
-
+    /////////////////////////////////////////////////////////////////////////7
+    /////////////////////////////////////////////////////////////////////////777
     $scope.guardar = function(){
         $http.put(
             // url

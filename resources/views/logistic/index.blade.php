@@ -11,7 +11,8 @@
 
     <title>Cladesys - Logistic</title>
 
-    <link href="{{ asset('css/app.css') }} " rel="stylesheet"> 
+    <link href="{{ asset('css/app.css') }} " rel="stylesheet">
+    {{--  <link rel="stylesheet" href="{{ asset('baseguide/dist/css/baseguide.css') }} ">  --}}
     <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">
     {{--  <link rel="stylesheet" href="{{ asset('bower_components/material-design-lite/material.css') }} ">  --}}

@@ -22,18 +22,15 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
     Route::get('getimage','ImageController@getImage');
     Route::post('postimage','ImageController@postImage');
-    Route::get('listimages', 'ImageController@list');
+    Route::get('listimages', 'ImageController@lista');
     Route::get('/home', function(){ return view('index'); });
     
     Route::group(['prefix' => 'logistic'], function(){
         Route::get('/', function(){ return view('logistic.index'); });
-        
-
         Route::resource('brands', 'logistic\brandsController');
         Route::resource('packings', 'logistic\packingsController');
         Route::resource('categories', 'logistic\categoriesController');
         Route::resource('locations', 'logistic\locationsController');
-        // Route::resource('tickets', 'logistic\ticketsController');
         Route::resource('measurements', 'logistic\measurementsController');
 
         // single page aplication Angular JS 1.6.4^

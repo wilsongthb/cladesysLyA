@@ -12,3 +12,10 @@ const enfocar = function(id){
         console.warn('define un id con init_focus')
     }
 }
+
+const ver = function(){
+    if(true){
+        for(i in arguments)
+            console.log(arguments[i])
+    }
+}

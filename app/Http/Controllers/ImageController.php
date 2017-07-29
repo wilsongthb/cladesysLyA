@@ -33,7 +33,7 @@ class ImageController extends Controller
             ->with('success','You have successfully upload images.')
             ->with('image',$imageName);
     }
-    public function list(){
+    public function lista(){
         return glob('images/*');
     }
 }

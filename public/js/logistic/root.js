@@ -1,7 +1,10 @@
 var app = angular.module('logistic', [
     'ngRoute', // rutas angular
     'ngResource', // recursos de angular
-    // 'ngSanitize' // insertar html directamente
+    'ngAnimate',
+    'ngTouch',
+    'ui.bootstrap', // UI bootstrap
+    'ngSanitize', // insertar html directamente
 ])
     // configuracion de rutas, etapa de configuracion
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
@@ -15,19 +18,20 @@ var app = angular.module('logistic', [
                 templateUrl: `${APP_CONST.url}/view/notfound.html`
             })
 
-            // // // PRODUCTS
-            // .when('/products', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.products.index.html`,
-            //     controller: 'productsController'
-            // })
-            // .when('/products/create', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.products.create.html`,
-            //     controller: 'productsCreateController'
-            // })
-            // .when('/products/edit/:id', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.products.create.html`,
-            //     controller: 'productsEditController'
-            // })
+            // PRODUCTS
+            .when('/products', {
+                templateUrl: `${APP_CONST.url}/view/logistic.products.index.html`,
+                controller: 'productsController'
+            })
+            .when('/products/create', {
+                templateUrl: `${APP_CONST.url}/view/logistic.products.create.html`,
+                controller: 'productsCreateController',
+                reloadOnSearch: false
+            })
+            .when('/products/edit/:id', {
+                templateUrl: `${APP_CONST.url}/view/logistic.products.create.html`,
+                controller: 'productsEditController'
+            })
 
             // // SUPPLIERS
             // .when('/suppliers', {

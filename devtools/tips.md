@@ -27,3 +27,6 @@ EN_MAYUSCULAS
 estos tips con la idea de hacer el codigo mas entendible, ejm:
 
 la tabla ```product_options``` esta en forma `under_score`, tendra un modelo llamado `ProductOptionsModel`
+
+# USAR MODALES EN UNA PLANTILLA ANGULAR
+he probado los modales de bootstrap, algo curioso, es que fuerzan la recarga del controlador de la vista en la que estan, esto quizas no parezca muy malo, pero lo es, ya que en caso de un formulario o un proceso de busqueda, la url se le agrega un #modal que refiere al modal, considero que una mejor manera es usar la UI de bootstrap apara angularJS

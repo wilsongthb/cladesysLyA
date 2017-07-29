@@ -29,7 +29,7 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         //     get: genericGetResource($http, 'tickets')
         // },
         products: {
-            registros: [], 
+            registros: [],
             get: genericGetResource($http, 'products')
         },
         suppliers: {
