@@ -30,3 +30,14 @@ la tabla ```product_options``` esta en forma `under_score`, tendra un modelo lla
 
 # USAR MODALES EN UNA PLANTILLA ANGULAR
 he probado los modales de bootstrap, algo curioso, es que fuerzan la recarga del controlador de la vista en la que estan, esto quizas no parezca muy malo, pero lo es, ya que en caso de un formulario o un proceso de busqueda, la url se le agrega un #modal que refiere al modal, considero que una mejor manera es usar la UI de bootstrap apara angularJS
+
+# PASOS PARA CREAR UNA NUEVA PAGINA EN LOGISTIC ANGULAR
+    - Registrar un link en el archivo '/resources/views/logistic/menu.blade.php'
+    - Registrar una ruta que responda al link anterior en '/public/js/logistic/root.js'
+    - Crear un archivo `.php` en '/resources/views/templates' con contenido html
+    - Crear un controlador angular (archivo .js) en '/public/js/logistic'
+    - Registrar al archivo .js anterior para ser cargado con la pagina en el archivo '/resources/views/logistic/angular.blade.php'
+    - Probar que la ruta funcione adecuadamente
+
+## Sugerencias
+El archivo `/public/js/logistic/services.js` contiene servicios para la aplicacion en angular js, estos servicios probeen de datos necesarios para registrar en una tabla relacional, estas solo devuelven datos, para usarlos, primero debe inyectarlo al controlador, agregandolo como parametro a la funcion que recive el .controller para registrar el controlador, luego declare el atributo que necesita en su $scope, para que este disponible para renderizar en la plantilla, tiene que realizar un .get() primero para que solicite los datos al servidor, para mas detalles del uso del methodo .get rebice el archivo `/public/js/logistic/generics.js`

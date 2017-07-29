@@ -37,7 +37,6 @@ class suppliersResource extends Controller
                 ->orWhere('suppliers.region', 'LIKE', "%$request->search%")
                 ->orWhere('suppliers.home_page', 'LIKE', "%$request->search%")
                 ->orWhere('suppliers.email', 'LIKE', "%$request->search%")
-                ->orWhere('tickets.name', 'LIKE', "%$request->search%")
                 ->orWhere('locations.name', 'LIKE', "%$request->search%");
         }
         // enviar el resultado

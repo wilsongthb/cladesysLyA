@@ -35,14 +35,11 @@
                     <label>Tipo de documento *</label>
                     <select 
                         class="form-control"
-                        ng-model="registro.tickets_id"  
-                        ng-keyup="tickets.get('', $event.keyCode)" 
+                        ng-model="registro.tickets_id"
                         required>
-                        <option 
-                            ng-repeat="t in tickets.registros" 
-                            ng-value="t.id"
-                            ng-bind="t.name">
-                            </option>
+                        <?php foreach(config('consts.doc.type') as $key => $doc){ ?>
+                            <option ng-value="<?= $key ?>"><?= $doc ?> </option>
+                        <?php } ?>
                     </select>
                 </div>
                 

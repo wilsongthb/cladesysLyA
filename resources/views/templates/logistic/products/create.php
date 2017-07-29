@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
                             <div class="form-group">
                                 <label for="">Detalle *</label>
                                 <input id="init_focus" ng-model="registro.detail" type="text" class="form-control" placeholder="Nombre del producto, apariencia, etc" required>

@@ -50,4 +50,5 @@
     <!-- relational -->
     <script src="{{ asset('js/logistic/services.js')}} "></script>
     <script src="{{ asset('js/logistic/productsController.js')}} "></script>
+    <script src="{{ asset('js/logistic/suppliersController.js') }} "></script>
 @stop

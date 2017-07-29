@@ -43,6 +43,7 @@ var readResourceController = function(config){
 
     // enfoque inicial
     // document.getElementById('init_focus').focus()
+    enfocar('init_focus')
     // console.log('focus')
 
     // valores iniciales

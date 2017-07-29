@@ -26,26 +26,27 @@ var app = angular.module('logistic', [
             .when('/products/create', {
                 templateUrl: `${APP_CONST.url}/view/logistic.products.create.html`,
                 controller: 'productsCreateController',
-                reloadOnSearch: false
+                reloadOnSearch: false // no recargar el controlador si cambia el id
             })
             .when('/products/edit/:id', {
                 templateUrl: `${APP_CONST.url}/view/logistic.products.create.html`,
-                controller: 'productsEditController'
+                controller: 'productsEditController',
+                reloadOnSearch: false
             })
 
             // // SUPPLIERS
-            // .when('/suppliers', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.suppliers.index.html`,
-            //     controller: 'suppliersController'
-            // })
-            // .when('/suppliers/create', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.suppliers.create.html`,
-            //     controller: 'suppliersCreateController'
-            // })
-            // .when('/suppliers/edit/:id', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.suppliers.create.html`,
-            //     controller: 'suppliersEditController'
-            // })
+            .when('/suppliers', {
+                templateUrl: `${APP_CONST.url}/view/logistic.suppliers.index.html`,
+                controller: 'suppliersController'
+            })
+            .when('/suppliers/create', {
+                templateUrl: `${APP_CONST.url}/view/logistic.suppliers.create.html`,
+                controller: 'suppliersCreateController'
+            })
+            .when('/suppliers/edit/:id', {
+                templateUrl: `${APP_CONST.url}/view/logistic.suppliers.create.html`,
+                controller: 'suppliersEditController'
+            })
 
             // // INPUTS
             // .when('/inputs', {

@@ -1,10 +1,10 @@
 suppliersConfig = {
     name: 'suppliers',
     title: 'PROVEEDORES',
-    urlApi: `${window.url}/api/logistic/suppliers`,
+    urlApi: `${APP_CONST.url}/api/logistic/suppliers`,
     // esta en ng porque esta ruta sera servida por angular
-    urlCreate: `${window.url}/logistic/ng/suppliers/create`,
-    urlEdit: `${window.url}/logistic/ng/suppliers/edit`
+    urlCreate: `${APP_CONST.url}/logistic/ng/suppliers/create`,
+    urlEdit: `${APP_CONST.url}/logistic/ng/suppliers/edit`
 }
 
 app.controller(
@@ -24,9 +24,11 @@ app.controller('suppliersCreateController', [
         $location,
         utilitiesFactory,
     ){
+
+    ///////////////////////////////////////////////////////////77
+    // PERSONALIZAR
     // enfoque inicial
-    document.getElementById('init_focus').focus()
-    
+    enfocar('init_focus')
     // valores iniciales
     $scope.error = false
     $scope.config = JSON.parse(JSON.stringify(suppliersConfig))
@@ -34,18 +36,15 @@ app.controller('suppliersCreateController', [
     $scope.registro = {
         user_id: window.user.id
     }
-    
-
     // obtener los valores relacionales
     $scope.locations = utilitiesFactory.locations
-    $scope.tickets = utilitiesFactory.tickets
     $scope.locations.get()
-    $scope.tickets.get()
+    ///////////////////////////////////////////////////////////7
 
     $scope.guardar = function(){
         $http.post(
             // url
-            `${window.url}/api/logistic/${$scope.config.name}`, 
+            `${APP_CONST.url}/api/logistic/${$scope.config.name}`, 
             // data
             $scope.registro, 
             // config
@@ -78,13 +77,15 @@ app.controller('suppliersEditController', [
         $routeParams,
         getOneFactory
     ){
+
+
+    ////////////////////////////////////////////////////////////////
+    // PERSONALIZAR
+    // enfoque inicial
+    enfocar('init_focus')
     // obtener los valores relacionales
     $scope.locations = utilitiesFactory.locations
-    $scope.tickets = utilitiesFactory.tickets
     $scope.locations.get()
-    $scope.tickets.get()
-    
-    
     // valores iniciales
     $scope.error = false
     $scope.config = JSON.parse(JSON.stringify(suppliersConfig))
@@ -97,16 +98,17 @@ app.controller('suppliersEditController', [
         },
         // error
         function(response){
-            // console.log(`${window.url}/logistic/ng/${$scope.config.name}`)
+            // console.log(`${APP_CONST.url}/logistic/ng/${$scope.config.name}`)
             $location.path('notfound')
             // $location.path(`${$scope.config.name}`)
         }
     )
+    ///////////////////////////////////////////////////////////////7
 
     $scope.guardar = function(){
         $http.put(
             // url
-            `${window.url}/api/logistic/${$scope.config.name}/${$routeParams.id}`, 
+            `${APP_CONST.url}/api/logistic/${$scope.config.name}/${$routeParams.id}`, 
             // data
             $scope.registro, 
             // config

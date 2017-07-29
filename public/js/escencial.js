@@ -5,6 +5,7 @@
  */
 
 const enfocar = function(id){
+    // console.log('XD')
     var el = document.getElementById(id)
     if(el){
         el.focus()

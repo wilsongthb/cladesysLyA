@@ -18,7 +18,7 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         },
         packings: {
             registros: [], 
-            get: genericGetResource($http, 'measurements')
+            get: genericGetResource($http, 'packings')
         },
         locations: {
             registros: [], 
