@@ -1,12 +1,6 @@
 <div class="container">
     <div class="row">
         <h2 class="text-center">{{config.title}} </h2>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="alert alert-info" title="Si, todos son requeridos XD">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong>Información:</strong> Los campos con * son requeridos para guardar el registro
-            </div>
-        </div>
         <form class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-submit="guardar()">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
@@ -79,8 +73,16 @@
                 <button type="button" class="close" ng-click="error = false" aria-hidden="true">&times;</button>
                 <strong>ERROR:</strong> Ocurrio un error :'(  , contacte a su administrador 
             </div>
-            <button class="btn btn-primary">Guardar</button>
+            <div class="form-group">
+                <button class="btn btn-success">Guardar</button>
+            </div>
         </form>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="alert alert-info" title="Si, todos son requeridos XD">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>Información:</strong> Los campos con * son requeridos para guardar el registro
+            </div>
+        </div>
     </div>
     <hr>
 </div>

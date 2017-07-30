@@ -4,7 +4,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <a href="{{config.urlCreate}}"><button type="button" class="btn btn-default"><i class="fa fa-plus"></i> Agregar</button></a>
+                    <a id="init_focus" href="{{config.urlCreate}}"><button type="button" class="btn btn-default"><i class="fa fa-plus"></i> Agregar</button></a>
                 </div>
                 <div class="pull-right">
                     <div class="form-inline">
@@ -37,7 +37,7 @@
                                     <i class="fa fa-search-plus"></i>
                                     Ver
                                 </a>
-                                <a href="{{config.urlEdit}}/{{r.id}}" type="button" class="btn btn-default disabled">
+                                <a href="{{config.urlEdit}}/{{r.id}}" type="button" class="btn btn-default">
                                     <i class="fa fa-pencil"></i>
                                     Editar
                                 </a>

@@ -5,6 +5,9 @@
 ////////////////////////////77777777777
 
 return [
+    'money' => [
+        'symbol' => 'S/.'
+    ],
     // DOCUMENTO DE IDENTIDAD
     'doc' => [
         'default' => 1,

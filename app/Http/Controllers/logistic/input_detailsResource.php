@@ -4,6 +4,8 @@ namespace App\Http\Controllers\logistic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\input_detailsModel;
+use DB;
 
 class input_detailsResource extends Controller
 {
@@ -12,9 +14,20 @@ class input_detailsResource extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filas = DB::table('input_details AS i_d')
+            ->select('i_d.*', 'p.detail', 's.company_name')
+            ->where('i_d.flagstate', 1)
+            ->where('i_d.inputs_id', $request->id)
+            ->leftJoin('products AS p', 'i_d.products_id', '=', 'p.id')
+            ->leftJoin('suppliers AS s', 's.id', '=', 'i_d.suppliers_id')
+            ->get();
+            // ->toSql();
+        
+        // dd($filas);
+
+        return $filas;
     }
 
     /**

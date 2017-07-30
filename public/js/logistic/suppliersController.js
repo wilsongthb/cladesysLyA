@@ -95,6 +95,7 @@ app.controller('suppliersEditController', [
         // success
         function(response){
             $scope.registro = response.data
+            $scope.registro.user_id = APP_CONST.user.id
         },
         // error
         function(response){

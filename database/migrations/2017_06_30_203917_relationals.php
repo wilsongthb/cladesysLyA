@@ -90,7 +90,10 @@ class Relationals extends Migration
             
             // columnas
             $table->boolean('flagstate')->default('1');
-            $table->string('observation')->nullable();
+            $table->string('observation', 500)->nullable();
+            // referencia a locations
+            $table->integer('locations_id')->unsigned();
+            $table->foreign('locations_id')->references('id')->on('locations');
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();
@@ -115,10 +118,6 @@ class Relationals extends Migration
             // referencia a tickets
             $table->integer('tickets_id')->unsigned();
             // $table->foreign('tickets_id')->references('id')->on('tickets');
-
-            // referencia a locations
-            $table->integer('locations_id')->unsigned();
-            $table->foreign('locations_id')->references('id')->on('locations');
             
             // referencia a suppliers
             $table->integer('suppliers_id')->unsigned();

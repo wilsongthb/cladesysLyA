@@ -56,38 +56,43 @@ class inputsResource extends Controller
         // echo print_r($request->registro['user_id'], true);
 
 
-        // registro
-        $registro = new inputsModel;
-        $registro->observation = isset($request->registro['observation']) ? $request->registro['observation'] : '';
-        $registro->user_id = $request->registro['user_id'];
-        $registro->save();
+        // // registro
+        // $registro = new inputsModel;
+        // $registro->observation = isset($request->registro['observation']) ? $request->registro['observation'] : '';
+        // $registro->user_id = $request->registro['user_id'];
+        // $registro->save();
 
-        // detalles
-        // echo print_r($request->detalles, true);
-        foreach ($request->detalles as $key => $value) {
-            $detalle = new input_detailsModel;
+        // // detalles
+        // // echo print_r($request->detalles, true);
+        // foreach ($request->detalles as $key => $value) {
+        //     $detalle = new input_detailsModel;
             
-            $detalle->products_id = $value['products_id'];
-            $detalle->unit_price = $value['unit_price'];
-            $detalle->quantity = $value['quantity'];
-            $detalle->expiration = $value['expiration'];
-            $detalle->suppliers_id = $value['suppliers_id'];
-            $detalle->tickets_id = $value['tickets_id'];
-            $detalle->ticket_number = $value['ticket_number'];
-            $detalle->locations_id = $value['locations_id'];
+        //     $detalle->products_id = $value['products_id'];
+        //     $detalle->unit_price = $value['unit_price'];
+        //     $detalle->quantity = $value['quantity'];
+        //     $detalle->expiration = $value['expiration'];
+        //     $detalle->suppliers_id = $value['suppliers_id'];
+        //     $detalle->tickets_id = $value['tickets_id'];
+        //     $detalle->ticket_number = $value['ticket_number'];
+        //     $detalle->locations_id = $value['locations_id'];
 
-            // valores no requeridos
-            $detalle->fabrication = isset($value['fabrication']) ? $value['fabrication'] : '';
-            $detalle->lot = isset($value['lot']) ? $value['lot'] : '';
+        //     // valores no requeridos
+        //     $detalle->fabrication = isset($value['fabrication']) ? $value['fabrication'] : '';
+        //     $detalle->lot = isset($value['lot']) ? $value['lot'] : '';
 
-            // otros
-            $detalle->inputs_id = $registro->id;
-            $detalle->user_id = $request->registro['user_id'];
+        //     // otros
+        //     $detalle->inputs_id = $registro->id;
+        //     $detalle->user_id = $request->registro['user_id'];
 
-            $detalle->save();
-        }
+        //     $detalle->save();
+        // }
 
-        return "ok";
+        // return "ok";
+        $fila = new inputsModel;
+        $fila->user_id = $request->user_id;
+        $fila->locations_id = $request->locations_id;
+        $fila->save();
+        return $fila;
     }
 
     /**
@@ -99,16 +104,16 @@ class inputsResource extends Controller
     public function show($id)
     {
         $registro = inputsModel::find($id);
-        $detalles = input_detailsModel::select(
-                'input_details.*',
-                'products.detail AS products_detail'
-            )
-            ->leftJoin('products', 'input_details.products_id', '=', 'products.id')
-            ->where('input_details.inputs_id', $id)->get();
+        // $detalles = input_detailsModel::select(
+        //         'input_details.*',
+        //         'products.detail AS products_detail'
+        //     )
+        //     ->leftJoin('products', 'input_details.products_id', '=', 'products.id')
+        //     ->where('input_details.inputs_id', $id)->get();
 
         return [
             'registro' => $registro,
-            'detalles' => $detalles
+            // 'detalles' => $detalles
         ];
     }
 
@@ -132,7 +137,11 @@ class inputsResource extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fila = inputsModel::find($id);
+        $fila->observation = $request->observation;
+        $fila->user_id = $request->user_id;
+        $fila->save();
+        return "ok";
     }
 
     /**

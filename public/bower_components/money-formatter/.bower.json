@@ -1,0 +1,35 @@
+{
+  "name": "money-formatter",
+  "authors": [
+    "fix-fix (https://github.com/fix-fix)"
+  ],
+  "description": "Simple Javascript library for currency formatting",
+  "main": "dist/money-formatter.js",
+  "keywords": [
+    "currency",
+    "iso4217",
+    "iso-4217"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/xsolla/money-formatter",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "tmp",
+    "coverage"
+  ],
+  "version": "0.1.4",
+  "_release": "0.1.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.4",
+    "commit": "0d2b611b106ee52641cf8bd0be20bf4473b65cc8"
+  },
+  "_source": "https://github.com/xsolla/money-formatter.git",
+  "_target": "^0.1.4",
+  "_originalSource": "money-formatter",
+  "_direct": true
+}

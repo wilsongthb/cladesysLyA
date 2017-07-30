@@ -49,18 +49,18 @@ var app = angular.module('logistic', [
             })
 
             // // INPUTS
-            // .when('/inputs', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.inputs.index.html`,
-            //     controller: 'inputsController'
-            // })
-            // .when('/inputs/create', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.inputs.create.html`,
-            //     controller: 'inputsCreateController'
-            // })
-            // .when('/inputs/show/:id', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.inputs.create.html`,
-            //     controller: 'inputsShowController'
-            // })
+            .when('/inputs', {
+                templateUrl: `${APP_CONST.url}/view/logistic.inputs.index.html`,
+                controller: 'inputsController'
+            })
+            .when('/inputs/create', {
+                templateUrl: `${APP_CONST.url}/view/logistic.inputs.create.html`,
+                controller: 'inputsCreateController'
+            })
+            .when('/inputs/edit/:id', {
+                templateUrl: `${APP_CONST.url}/view/logistic.inputs.edit.html`,
+                controller: 'inputsEditController'
+            })
 
             // // OUTPUTS
             // .when('/outputs', {
