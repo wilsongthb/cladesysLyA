@@ -97,6 +97,7 @@
     <script src="{{ asset('js/app.js') }} "></script>
     <script src="{{ asset('js/escencial.js') }} "></script>
     <script src="{{ asset('js/logistic/shortcuts.js') }} "></script>
+    <script src="{{ asset('bower_components/money-formatter/dist/money-formatter.js') }} "></script>
     @yield('scripts')
 </body>
 </html>

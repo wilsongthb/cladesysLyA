@@ -67,6 +67,10 @@ function(
 ){
     $scope.registro = {}
     $scope.detalles = []
+    $scope.detalle = {}
+    $scope.enSoles = function(dinero){
+        return window.moneyFormatter.format('PEN', dinero)
+    }
     ///////////////////////////////////////////////////////////////////7
     // PERSONALIZAR
     //////////////////////////////7
@@ -74,6 +78,18 @@ function(
     $scope.locations.get()
     $scope.config = JSON.parse(JSON.stringify(inputsConfig))
     $scope.config.title = 'EDITAR ENTRADA'
+    $scope.suppliers = utilitiesFactory.suppliers
+    $scope.products = utilitiesFactory.products
+    $scope.suppliers.get()
+    $scope.products.get()
+    $scope.total = function(){
+        var total = 0
+        for(i in $scope.detalles){
+            var d = $scope.detalles[i]
+            total += d.unit_price * d.quantity
+        }
+        return total
+    }
     /////////////////////////////////////////////////
     
     //////////////7/7//
@@ -115,11 +131,33 @@ function(
             }
         )
     }
+    $scope.guardarDetalle = function(){
+        $scope.detalle.user_id = APP_CONST.user.id
+        $scope.detalle.inputs_id = $scope.registro.id
+        $http.post($scope.config.detail.urlApi, $scope.detalle).then(
+            // success
+            function(response){
+                $scope.leerDetalles()
+            }
+        )
+        
+    }
+    $scope.eliminarDetalle = function(id){
+        if(window.confirm('Eliminar a '+ id)){
+            $http.delete($scope.config.detail.urlApi + '/' + id).then(
+                // success
+                function(response){
+                    $scope.leerDetalles()
+                }
+            )
+        }
+    }
     /////////////////////////
 
     // INIT
     $scope.leer()
     $scope.leerDetalles()
+    enfocar('init_focus')
 }])
 
 

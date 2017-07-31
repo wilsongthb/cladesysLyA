@@ -25,7 +25,7 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Kardex <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="{{ url('/logistic/ng/inputs') }} "><i class="fa fa-rocket"></i> Ingresos</a></li>
+        <li><a href="{{ url('/logistic/ng/inputs') }} "><i class="fa fa-chevron-right"></i> Ingresos</a></li>
         <li><a href="{{ url('/logistic/ng/outputs') }} ">Salidas</a></li>
         <li><a href="#">Inventario</a></li>
         <li><a href="#">Reportes</a></li>

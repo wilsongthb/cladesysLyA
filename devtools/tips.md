@@ -46,3 +46,6 @@ he probado los modales de bootstrap, algo curioso, es que fuerzan la recarga del
 
 ## Sugerencias
 El archivo `/public/js/logistic/services.js` contiene servicios para la aplicacion en angular js, estos servicios probeen de datos necesarios para registrar en una tabla relacional, estas solo devuelven datos, para usarlos, primero debe inyectarlo al controlador, agregandolo como parametro a la funcion que recive el .controller para registrar el controlador, luego declare el atributo que necesita en su $scope, para que este disponible para renderizar en la plantilla, tiene que realizar un .get() primero para que solicite los datos al servidor, para mas detalles del uso del methodo .get rebice el archivo `/public/js/logistic/generics.js`
+
+# MONEY
+Puedes formatear el dinero usando la biblioteca money-formatter
