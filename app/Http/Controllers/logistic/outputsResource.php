@@ -16,7 +16,7 @@ class outputsResource extends Controller
      */
     public function index()
     {
-        //
+        return outputsModel::paginate(15);
     }
 
     /**

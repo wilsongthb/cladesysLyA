@@ -46,6 +46,18 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
                     }
                 )
             }
+        },
+        stock: {
+            list: [],
+            get () {
+                $http.get(`${APP_CONST.url}/api/logistic/stock`).then(
+                    // success
+                    function(response){
+                        console.log(response)
+                        console.log(this)
+                    }
+                )
+            }
         }
     }
 }])

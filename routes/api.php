@@ -34,6 +34,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::get('measurements', 'logistic\utilitiesResource@measurements');
         Route::get('packings', 'logistic\utilitiesResource@packings');
         Route::get('locations', 'logistic\utilitiesResource@locations');
+        Route::get('stock', function(){
+            // $stock = \DB::table('products AS p')
+            //     ->select(
+            //         'p.detail',
+            //         \DB::raw('(IFNULL(SUM(i_d.quantity), 0) - IFNULL(SUM(o_d)')
+            //     )
+                
+            //     ->get();
+            // return $stock;
+        });
         // Route::get('tickets', 'logistic\utilitiesResource@tickets');
         
         

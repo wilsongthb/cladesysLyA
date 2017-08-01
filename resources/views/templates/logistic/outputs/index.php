@@ -20,17 +20,15 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Observacion</th>
-                        <th>Creación</th>
-                        <th>Modificación</th>
+                        <th>Numero</th>
+                        <th>Localizacion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="r in registros">
                         <td ng-bind="r.id"></td>
-                        <td ng-bind="r.observation"></td>
-                        <td ng-bind="r.created_at"></td>
-                        <td ng-bind="r.updated_at"></td>
+                        <td ng-bind="r.ticket_number"></td>
+                        <td ng-bind="r.locations_id"></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="...">
                                 <a href="{{config.urlShow}}/{{r.id}}" type="button" class="btn btn-default"> 

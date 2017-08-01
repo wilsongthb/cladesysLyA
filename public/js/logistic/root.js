@@ -62,11 +62,17 @@ var app = angular.module('logistic', [
                 controller: 'inputsEditController'
             })
 
-            // // OUTPUTS
-            // .when('/outputs', {
-            //     templateUrl: `${APP_CONST.url}/view/logistic.outputs.index.html`,
-            //     // controller: 'outputsController'
-            // })
+            // INVENTARIO
+            .when('/inventory', {
+                templateUrl: `${APP_CONST.url}/view/logistic.inventory.html`,
+                controller: 'inventoryController'
+            })
+
+            // OUTPUTS
+            .when('/outputs', {
+                templateUrl: `${APP_CONST.url}/view/logistic.outputs.index.html`,
+                controller: 'outputsController'
+            })
 
 
             // rutas perdidas
