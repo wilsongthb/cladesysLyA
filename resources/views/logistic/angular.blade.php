@@ -34,8 +34,12 @@
     <script>
         const APP_CONST = {
             url: "{{ url('') }}",
-            user: {!! json_encode(Auth::user()) !!}
+            user: {!! json_encode(Auth::user()) !!},
+            location: {
+                default: 1
+            }
         }
+        // en desuso, pero por si axaso lo dejo esto
         window.url = "{{ url('') }}"
         window.user = {
             id: {{ Auth::user()->id }}
@@ -44,11 +48,12 @@
 
     <!--Fundamentales-->
     <script src="{{ asset('js/logistic/generics.js') }} "></script>
-    <script src="{{ asset('js/logistic/root.js') }} "></script>
+    <script src="{{ asset('js/logistic/main.js') }} "></script>
+    <script src="{{ asset('js/logistic/rutas.js') }} "></script>
+    <script src="{{ asset('js/logistic/services.js')}} "></script>
     <script src="{{ asset('js/logistic/mainController.js') }} "></script>
 
     <!-- relational -->
-    <script src="{{ asset('js/logistic/services.js')}} "></script>
     <script src="{{ asset('js/logistic/productsController.js')}} "></script>
     <script src="{{ asset('js/logistic/suppliersController.js') }} "></script>
     <script src="{{ asset('js/logistic/inputsController.js') }} "></script>

@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::group(['middleware' => 'auth:api'], function(){
 
     // test route
-    Route::get('/hola', function(){ return "logueado papu!!"; });
+    // Route::get('/hola', function(){ return "logueado papu!!"; });
+
 
     Route::group(['prefix' => 'logistic'], function(){      
         Route::resource('products', 'logistic\productsResource');
@@ -34,6 +35,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::get('measurements', 'logistic\utilitiesResource@measurements');
         Route::get('packings', 'logistic\utilitiesResource@packings');
         Route::get('locations', 'logistic\utilitiesResource@locations');
+        
         Route::get('stock', function(){
             // $stock = \DB::table('products AS p')
             //     ->select(

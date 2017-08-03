@@ -18,11 +18,13 @@ app.controller('suppliersCreateController', [
     '$http',
     '$location',
     'utilitiesFactory',
+    'locationsService',
     function(
         $scope, 
         $http, 
         $location,
         utilitiesFactory,
+        locationsService
     ){
 
     ///////////////////////////////////////////////////////////77
@@ -34,7 +36,8 @@ app.controller('suppliersCreateController', [
     $scope.config = JSON.parse(JSON.stringify(suppliersConfig))
     $scope.config.title = 'REGISTRAR PROVEEDOR'
     $scope.registro = {
-        user_id: window.user.id
+        user_id: window.user.id,
+        locations_id : locationsService.get()
     }
     // obtener los valores relacionales
     $scope.locations = utilitiesFactory.locations

@@ -69,3 +69,37 @@ app.factory('getOneFactory', ['$http', function($http){
         }
     }
 }])
+
+app.service('locationsService', function($http){
+    this.lista = []
+    this.get = function(){
+        $http.get(`${APP_CONST.url}/api/logistic/locations`).then(
+            // success
+            (response) => {
+                this.lista = response.data.data
+            }
+        )
+    }
+    this.get()
+
+    this.id = APP_CONST.location.default
+    this.set = function(id){
+        // $http.post(`${APP_CONST.url}/api/config`, {
+        //     config: {
+        //         locations_id: id
+        //     }
+        // }).then(
+        //     response => {
+        //         this.config = response
+        //     }
+        // )
+        this.id = id
+    }
+    this.get = function(){
+        return this.id
+    }
+})
+
+app.service('mys', function() {
+    this.id = 1
+});

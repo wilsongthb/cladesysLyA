@@ -8,12 +8,12 @@
                         <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
                             <div class="form-group">
                                 <label for="">Detalle *</label>
-                                <input id="init_focus" ng-model="registro.detail" type="text" class="form-control" placeholder="Nombre del producto, apariencia, etc" required>
+                                <input id="init_focus" ng-model="registro.detail" type="text" class="form-control" placeholder="Nombre del producto, apariencia, etc" required capitalize>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label for="">Codigo *</label>
+                                <label for="">Codigo de barras *</label>
                                 <input ng-model="registro.barcode" type="text" class="form-control" placeholder="Codigo de barras" required>
                             </div>
                         </div>
@@ -50,23 +50,6 @@
                                 <select ng-model="registro.categories_id" class="form-control" required>
                                     <option value="">Buscar...</option>
                                     <option ng-repeat="c in categories.registros" ng-value="c.id">{{c.detail}} </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="">Unidad de Medida *</label>
-                                <input 
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Buscar unidad de medida"
-                                    ng-model="registro.measurements_detail"
-                                    ng-model-options="{ debounce: 1000 } "
-                                    ng-change="measurements.get(registro.measurements_detail, false)"
-                                    ng-show="!registro.measurements_id">
-                                <select ng-model="registro.measurements_id" class="form-control" required>
-                                    <option value="">Buscar...</option>
-                                    <option ng-repeat="m in measurements.registros" ng-value="m.id">{{m.detail}} </option>
                                 </select>
                             </div>
                         </div>
@@ -114,6 +97,28 @@
                             </div>
                         </div>
                     </div>
+                    <legend>Salida</legend>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            
+                            <div class="form-group">
+                                <label for="">Unidad de Medida *</label>
+                                <input 
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Buscar unidad de medida"
+                                    ng-model="registro.measurements_detail"
+                                    ng-model-options="{ debounce: 1000 } "
+                                    ng-change="measurements.get(registro.measurements_detail, false)"
+                                    ng-show="!registro.measurements_id">
+                                <select ng-model="registro.measurements_id" class="form-control" required>
+                                    <option value="">Buscar...</option>
+                                    <option ng-repeat="m in measurements.registros" ng-value="m.id">{{m.detail}} </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="form-group">

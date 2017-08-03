@@ -1,15 +1,10 @@
-var app = angular.module('logistic', [
-    'ngRoute', // rutas angular
-    'ngResource', // recursos de angular
-    'ngAnimate',
-    'ngTouch',
-    'ui.bootstrap', // UI bootstrap
-    'ngSanitize', // insertar html directamente
-])
-    // configuracion de rutas, etapa de configuracion
-    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+// configuracion de rutas, etapa de configuracion
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
         $routeProvider
             .when('/', {
+                redirectTo: '/main'
+            })
+            .when('/main', {
                 templateUrl: `${APP_CONST.url}/view/logistic.main.html`,
                 controller: 'mainController'
             })

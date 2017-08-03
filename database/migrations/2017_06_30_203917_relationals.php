@@ -193,9 +193,9 @@ class Relationals extends Migration
             $table->increments('id');
             
             // columnas
-            $table->date('shipping');
-            $table->char('status');
-            $table->boolean('flagstate')->default('1');            
+            $table->date('shipping'); // fecha de envio
+            $table->char('status'); // estado del envio
+            $table->boolean('flagstate')->default('1'); // estado, eliminado, activo
             
             // referencia a locations
             $table->integer('locations_id')->unsigned();

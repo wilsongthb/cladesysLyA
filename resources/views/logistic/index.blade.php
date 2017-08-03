@@ -11,11 +11,30 @@
 
     <title>Cladesys - Logistic</title>
 
-    <link href="{{ asset('css/app.css') }} " rel="stylesheet">
+    {{--  <link href="{{ asset('css/app.css') }} " rel="stylesheet">  --}}
+    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.css') }} ">
     {{--  <link rel="stylesheet" href="{{ asset('baseguide/dist/css/baseguide.css') }} ">  --}}
     <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">
     {{--  <link rel="stylesheet" href="{{ asset('bower_components/material-design-lite/material.css') }} ">  --}}
+
+    <style>
+    .clase_principal {opacity:0.1;} 
+	.clase_cargando {
+		position:absolute;
+		top:50%;
+		left:50%;
+		 width:100%;
+		height:100%; 
+
+	}
+    /* #load_ing {
+        background-color: white;
+        position: relative;
+        height: 100%;
+        width: 100%;
+    } */
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,6 +46,7 @@
     
 </head>
 <body>
+<div class="clase_principal">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -91,13 +111,26 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    
     @yield('content')
+</div>
+    <div class="clase_cargando"><i class="fa fa-spin fa-cog fa-fw"></i> Cargando</div>
 
-    <script src="{{ asset('js/app.js') }} "></script>
+
+    {{--  <script src="{{ asset('js/app.js') }} "></script>  --}}
+    <script src="{{ asset('bower_components/jquery/dist/jquery.js') }} "></script>
+    <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.js') }} "></script>
     <script src="{{ asset('js/escencial.js') }} "></script>
     <script src="{{ asset('js/logistic/shortcuts.js') }} "></script>
     <script src="{{ asset('bower_components/money-formatter/dist/money-formatter.js') }} "></script>
     @yield('scripts')
+
+    <script>
+        $('.clase_principal').hide()
+        $(document).ready(function(){
+            $('.clase_principal').show()
+            $('.clase_principal').css('opacity', 1)
+            $('.clase_cargando').hide()
+        })
+    </script>
 </body>
 </html>

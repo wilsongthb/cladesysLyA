@@ -53,8 +53,7 @@ return [
             'strict' => true,
             'engine' => null,
             'options'   => [
-                PDO::ATTR_EMULATE_PREPARES => true,
-                // PDO::ATTR_PERSISTENT => true,
+                // PDO::ATTR_EMULATE_PREPARES => true,
             ],
         ],
 

@@ -56,3 +56,9 @@ php artisan db:seed
 ## Acceso de desarrollo
 email: root@localhost
 pass: root
+
+## AGREGAR
+- Patrimonio
+
+- formato de fecha en español
+- COdigo postal como no requerido
