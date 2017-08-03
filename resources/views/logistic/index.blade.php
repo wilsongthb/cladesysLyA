@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">
     {{--  <link rel="stylesheet" href="{{ asset('bower_components/material-design-lite/material.css') }} ">  --}}
-
     <style>
     .clase_principal {opacity:0.1;} 
 	.clase_cargando {
@@ -25,8 +24,7 @@
 		top:50%;
 		left:50%;
 		 width:100%;
-		height:100%; 
-
+		height:100%;
 	}
     /* #load_ing {
         background-color: white;
@@ -123,7 +121,6 @@
     <script src="{{ asset('js/logistic/shortcuts.js') }} "></script>
     <script src="{{ asset('bower_components/money-formatter/dist/money-formatter.js') }} "></script>
     @yield('scripts')
-
     <script>
         $('.clase_principal').hide()
         $(document).ready(function(){

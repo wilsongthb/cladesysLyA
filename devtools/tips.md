@@ -49,3 +49,12 @@ El archivo `/public/js/logistic/services.js` contiene servicios para la aplicaci
 
 # MONEY
 Puedes formatear el dinero usando la biblioteca money-formatter
+
+/**
+Usar dos metodos de ruteo en una misma pagina no es lo mas 
+recomendable, de todas formas predominan las rutas de laravel
+y sobre estas las rutas de apache, este no es un problema
+con nginx, para evitar esto, de ahora en adelante es solo 
+la ruta /logistic y /logistic/api*
+util y mas practico, no se usaran mas rutas
+*/
