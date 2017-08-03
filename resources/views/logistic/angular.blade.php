@@ -1,24 +1,3 @@
-@extends('logistic.index')
-
-@section('head')
-
-    <link rel="stylesheet" href="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-csp.css') }} ">
-    <base href="{{ url('') }}/logistic/ng/">
-
-@stop
-
-@section('content')
-
-<div ng-app="logistic">
-    <div ng-view></div>
-    <hr>
-    <div class="container">
-        <p>Esta aplicación requiere un navegador actualizado, revisa esta <a href="http://caniuse.com/#feat=history">lista</a> para ver los navegadores compatibles.</p>
-    </div>
-</div>
-
-@stop
-
 @section('scripts')
 
     {{--  Scripts de terceros  --}}

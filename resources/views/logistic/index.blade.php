@@ -9,125 +9,137 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Cladesys - Logistic</title>
+    {{--  title  --}}
+    <title>CLADESYS - LOGISTIC</title>
 
-    {{--  <link href="{{ asset('css/app.css') }} " rel="stylesheet">  --}}
-    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.css') }} ">
-    {{--  <link rel="stylesheet" href="{{ asset('baseguide/dist/css/baseguide.css') }} ">  --}}
-    <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }} ">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">
-    {{--  <link rel="stylesheet" href="{{ asset('bower_components/material-design-lite/material.css') }} ">  --}}
     <style>
-    .clase_principal {opacity:0.1;} 
-	.clase_cargando {
+    #contenido {opacity:0.1;} 
+	#cargando {
 		position:absolute;
 		top:50%;
 		left:50%;
 		 width:100%;
 		height:100%;
 	}
-    /* #load_ing {
-        background-color: white;
-        position: relative;
-        height: 100%;
-        width: 100%;
-    } */
     </style>
+    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.css') }} ">
+    <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }} ">
+    {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">  --}}
+    <link rel="stylesheet" href="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-csp.css') }} ">
+    <base href="{{ url('') }}/logistic">
+
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    @yield('head')
-    
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-<div class="clase_principal">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url('/') }} ">{{ config('app.name') }}</a>
+    <div id="contenido" ng-app="logistic">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url('/') }} ">{{ config('app.name') }}</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        
+                        <!--los menus de la barra de navegacion-->
+                        @include('logistic.menu')
+                        
+                    </ul>
+                    {{-- <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form> --}}
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @if (Auth::guest())
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fa fa-user"></i>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('/logistic/locations') }}">Localizaciones</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    
-                    <!--los menus de la barra de navegacion-->
-                    @include('logistic.menu')
-                    
-                </ul>
-                {{-- <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form> --}}
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <i class="fa fa-user"></i>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ url('/logistic/locations') }}">Localizaciones</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            <!-- /.container-fluid -->
+        </nav>
+        <div ng-view></div>
+        <hr>
+        <div class="container">
+            <p>Esta aplicación requiere un navegador actualizado, revisa esta <a href="http://caniuse.com/#feat=history">lista</a> para ver los navegadores compatibles.</p>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-    @yield('content')
-</div>
-    <div class="clase_cargando"><i class="fa fa-spin fa-cog fa-fw"></i> Cargando</div>
+    </div>
+    <div id="cargando"><i class="fa fa-spin fa-cog fa-fw"></i> Cargando</div>
 
-
-    {{--  <script src="{{ asset('js/app.js') }} "></script>  --}}
+    {{--  Scripts de terceros  --}}
     <script src="{{ asset('bower_components/jquery/dist/jquery.js') }} "></script>
     <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.js') }} "></script>
     <script src="{{ asset('js/escencial.js') }} "></script>
     <script src="{{ asset('js/logistic/shortcuts.js') }} "></script>
     <script src="{{ asset('bower_components/money-formatter/dist/money-formatter.js') }} "></script>
-    @yield('scripts')
+    <script src="{{ asset('bower_components/angular/angular.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-route/angular-route.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-resource/angular-resource.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-animate/angular-animate.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-touch/angular-touch.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-bootstrap/ui-bootstrap.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-sanitize/angular-sanitize.js') }} "></script>
+
     <script>
-        $('.clase_principal').hide()
+        // carga de pagina
+        $('#contenido').hide()
         $(document).ready(function(){
-            $('.clase_principal').show()
-            $('.clase_principal').css('opacity', 1)
-            $('.clase_cargando').hide()
+            $('#contenido').show()
+            $('#contenido').css('opacity', 1)
+            $('#cargando').hide()
         })
+        // constantes de la aplicacion
+        const GLOBAL = {
+            url: "{{ url('') }}",
+            user: {!! json_encode(Auth::user()) !!}
+        }
     </script>
+
+    <script src="{{ asset('js/logistic/main.js') }} "></script>
 </body>
 </html>

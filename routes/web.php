@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/{p?}/{p1?}/{p3?}/{p4?}', function(){ 
             // ruta especial, ignora los argumentos y los pasa a angular-route
             return view('logistic.index');
-        })->name('logistic@spa');
+        })->name('logistic');
     });
     Route::get('view/{view}', 'viewController@index');
 
