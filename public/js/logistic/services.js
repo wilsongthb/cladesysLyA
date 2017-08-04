@@ -74,10 +74,16 @@ app.service('locationsService', function($http){
     this.lista = []
     // obtener las localizaciones
     this.get = function(){
-        $http.get(`${GLOBAL.url}/api/logistic/locations`).then(
+        $http.get(`${GLOBAL.url}/logistic/api/locations`).then(
             // success
             (response) => {
                 this.lista = response.data.data
+            }
+        )
+        $http.get(`${GLOBAL.url}/config`).then(
+            // success
+            response => {
+                this.id = response.data.locations_id
             }
         )
     }
@@ -87,13 +93,12 @@ app.service('locationsService', function($http){
     // this.id = GLOBAL.location.default
 
     this.set = function(id){
-        $http.post(`${APP_CONST.url}/api/config`, {
-            config: {
-                locations_id: id
-            }
+        $http.post(`${GLOBAL.url}/config`, {
+            locations_id: id
         }).then(
+            // success
             response => {
-                this.config = response
+                this.id = response.data.locations_id
             }
         )
         this.id = id
@@ -105,4 +110,4 @@ app.service('locationsService', function($http){
 
 app.service('mys', function() {
     this.id = 1
-});
+})

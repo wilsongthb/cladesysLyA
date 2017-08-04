@@ -13,18 +13,26 @@
 
 Route::get('/', function () {
     return view('welcome');
-})->name('Principal');
+})->name('root');
 
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
+    // LOGISTIC
     Route::group(['prefix' => 'logistic'], function(){
         // API
         Route::group(['prefix' => 'api'], function(){
             Route::resource('products', 'logistic\productsResource');
             Route::resource('suppliers', 'logistic\suppliersResource');
+
+            //GETERS UTILITIES
+            Route::get('brands', 'logistic\utilitiesResource@brands');
+            Route::get('categories', 'logistic\utilitiesResource@categories');
+            Route::get('measurements', 'logistic\utilitiesResource@measurements');
+            Route::get('packings', 'logistic\utilitiesResource@packings');
+            Route::get('locations', 'logistic\utilitiesResource@locations');
         });
         // temporal
         Route::resource('brands', 'logistic\brandsController');
@@ -34,25 +42,20 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('measurements', 'logistic\measurementsController');
 
         // WEB SPA
-        Route::get('/{p?}/{p1?}/{p3?}/{p4?}', function(){ 
-            // ruta especial, ignora los argumentos y los pasa a angular-route
-            return view('logistic.angular');
-        })->name('logistic');
+        Route::get('/{p?}/{p1?}/{p3?}/{p4?}', 'logistic\utilitiesResource@main')->name('logistic');
     });
     Route::get('view/{view}', 'viewController@index');
 
-    
-    Route::get('config/{key}/{value}', 'sessionController@getConfig');
+    // configuracion
+    Route::get('config', 'sessionController@getConfig');
     Route::post('config', 'sessionController@setConfig');
 
-
+    // host de archivos, imagenes
     Route::get('getimage','ImageController@getImage');
     Route::post('postimage','ImageController@postImage');
     Route::get('listimages', 'ImageController@lista');
     Route::get('/home', function(){ return view('index'); });
 
-
-    
 });
 
 Route::group(['prefix' => 'test'], function(){

@@ -45,6 +45,12 @@ app.config([
                 controller: 'SuppliersEditController'
             })
 
+            // REQUERIMIENTO
+            .when('/requeriments', {
+                templateUrl: `${GLOBAL.url}/view/logistic.requeriments.index.html`,
+                controller: 'RequerimentsController'
+            })
+
             // rutas perdidas
             .otherwise({
                 redirectTo: '/notfound'

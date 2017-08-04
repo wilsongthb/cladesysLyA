@@ -16,18 +16,18 @@
     </ul>
 </li>
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proceso de Compra <span class="caret"></span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-alt"></i> Proceso de Compra <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="#">Requerimientos</a></li>
-        <li><a href="#">Evaluacion</a></li>
-        <li><a href="#">Orden de Compra</a></li>
+        <li><a href="{{ url('/logistic/requeriments') }} "><i class="fa fa-circle"></i> Requerimientos</a></li>
+        <li><a href="#"><i class="fa fa-circle"></i> Evaluacion</a></li>
+        <li><a href="#"><i class="fa fa-circle"></i> Orden de Compra</a></li>
     </ul>
 </li>
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Kardex <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="{{ url('/logistic/ng/inputs') }} "><i class="fa fa-chevron-right"></i> Ingresos</a></li>
-        <li><a href="{{ url('/logistic/ng/outputs') }} "><i class="fa fa-chevron-left"></i> Salidas</a></li>
+        <!-- <li><a href="{{ url('/logistic/ng/inputs') }} "><i class="fa fa-chevron-right"></i> Ingresos</a></li> -->
+        <!-- <li><a href="{{ url('/logistic/ng/outputs') }} "><i class="fa fa-chevron-left"></i> Salidas</a></li> -->
         <li><a href="{{ url('/logistic/ng/inventory') }} "><i class="fa fa-book"></i> Inventario</a></li>
         <li><a href="#"><i class="fa fa-bar-chart"></i> Reportes</a></li>
     </ul>

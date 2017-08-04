@@ -13,7 +13,7 @@
     <title>CLADESYS - LOGISTIC</title>
 
     <style>
-    #contenido {opacity:0.1;} 
+    #contenido {opacity:0.5;} 
 	#cargando {
 		position:absolute;
 		top:50%;

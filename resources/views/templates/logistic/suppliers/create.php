@@ -46,7 +46,7 @@
                     <input type="text" ng-model="registro.phone" class="form-control" required>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>Codigo Postal *</label>
+                    <label>Codigo Postal</label>
                     <input type="text" ng-model="registro.postal_code" class="form-control">
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">

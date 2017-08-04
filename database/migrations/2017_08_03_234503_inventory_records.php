@@ -20,8 +20,8 @@ class InventoryRecords extends Migration
             // relations
             $table->integer('locations_id')->unsigned();
             $table->foreign('locations_id')->references('id')->on('locations');
-            $table->integer('user_id')->unsigned();
             // el responsable a quien se entrego
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('flagstate')->default('1');
             

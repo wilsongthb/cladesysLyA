@@ -57,4 +57,5 @@
     <script src="{{ asset('js/logistic/HomeController.js') }} "></script>
     <script src="{{ asset('js/logistic/ProductsController.js') }} "></script>
     <script src="{{ asset('js/logistic/SuppliersController.js') }} "></script>
+    <script src="{{ asset('js/logistic/RequerimentsController.js') }} "></script>
 @stop

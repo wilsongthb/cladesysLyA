@@ -23,34 +23,27 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     // Route::get('/hola', function(){ return "logueado papu!!"; });
 
 
-    Route::group(['prefix' => 'logistic'], function(){      
-        
-        
-        Route::resource('inputs', 'logistic\inputsResource');
-        Route::resource('input_details', 'logistic\input_detailsResource');
-        Route::resource('outputs', 'logistic\outputsResource');
+    // Route::group(['prefix' => 'logistic'], function(){      
+    //     // Route::resource('inputs', 'logistic\inputsResource');
+    //     // Route::resource('input_details', 'logistic\input_detailsResource');
+    //     // Route::resource('outputs', 'logistic\outputsResource');
 
-        Route::get('brands', 'logistic\utilitiesResource@brands');
-        Route::get('categories', 'logistic\utilitiesResource@categories');
-        Route::get('measurements', 'logistic\utilitiesResource@measurements');
-        Route::get('packings', 'logistic\utilitiesResource@packings');
-        Route::get('locations', 'logistic\utilitiesResource@locations');
         
-        Route::get('stock', function(){
-            // $stock = \DB::table('products AS p')
-            //     ->select(
-            //         'p.detail',
-            //         \DB::raw('(IFNULL(SUM(i_d.quantity), 0) - IFNULL(SUM(o_d)')
-            //     )
+    //     Route::get('stock', function(){
+    //         // $stock = \DB::table('products AS p')
+    //         //     ->select(
+    //         //         'p.detail',
+    //         //         \DB::raw('(IFNULL(SUM(i_d.quantity), 0) - IFNULL(SUM(o_d)')
+    //         //     )
                 
-            //     ->get();
-            // return $stock;
-        });
-        // Route::get('tickets', 'logistic\utilitiesResource@tickets');
+    //         //     ->get();
+    //         // return $stock;
+    //     });
+    //     // Route::get('tickets', 'logistic\utilitiesResource@tickets');
         
         
-        // Route::resource('brands', 'logistic\brandsController');
-        // Route::resource('packings', 'logistic\packingsController');
-        // Route::resource('categories', 'logistic\categoriesController');
-    });
+    //     // Route::resource('brands', 'logistic\brandsController');
+    //     // Route::resource('packings', 'logistic\packingsController');
+    //     // Route::resource('categories', 'logistic\categoriesController');
+    // });
 // });

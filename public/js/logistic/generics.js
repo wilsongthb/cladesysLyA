@@ -13,7 +13,7 @@ var genericGetResource = function($http ,name){
         if(keyCode === 17){// si presiona ctrl
             $http.get(
                 // url
-                `${GLOBAL.url}/api/logistic/${name}`, 
+                `${GLOBAL.api.url}/${name}`, 
                 // config
                 { 
                     params: {

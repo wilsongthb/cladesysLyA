@@ -67,7 +67,7 @@ class suppliersResource extends Controller
         $registro->identity = $request->identity;
         $registro->address = $request->address;
         $registro->phone = $request->phone;
-        $registro->postal_code = $request->postal_code;
+        
         $registro->country = $request->country;
         $registro->region = $request->region;
         $registro->home_page = $request->home_page;
@@ -77,6 +77,10 @@ class suppliersResource extends Controller
         $registro->tickets_id = $request->tickets_id;
         $registro->locations_id = $request->locations_id;
         $registro->user_id = $request->user_id;
+
+        if(isset($request->postal_code)){
+            $registro->postal_code = $request->postal_code;
+        }
         $registro->save();
         return "ok";
     }
