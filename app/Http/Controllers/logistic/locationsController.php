@@ -55,6 +55,7 @@ class locationsController extends Controller
         $registro = new locationsModel;
         $registro->name = $request->name;
         $registro->type = $request->type;
+        $registro->utility = $request->utility;
         $registro->flagstate = true;
         $registro->user_id = \Auth::user()->id;
         $registro->save();
@@ -100,9 +101,9 @@ class locationsController extends Controller
         $registro = locationsModel::find($id);
         $registro->name = $request->name;
         $registro->type = $request->type;
+        $registro->utility = $request->utility;
         $registro->user_id = \Auth::user()->id;
         $registro->save();
-
         return redirect('logistic/'.$this->name);
     }
 

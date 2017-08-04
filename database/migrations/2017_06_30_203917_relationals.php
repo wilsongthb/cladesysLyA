@@ -62,7 +62,7 @@ class Relationals extends Migration
             $table->string('identity');
             $table->string('address');
             $table->string('phone');
-            $table->string('postal_code');
+            $table->string('postal_code')->nullable();
             $table->string('country');
             $table->string('region');
             $table->string('home_page'); // url
@@ -214,7 +214,7 @@ class Relationals extends Migration
             
             // columnas
             $table->integer('quantity');
-            $table->boolean('flagstate')->default('1');            
+            $table->boolean('flagstate')->default('1');
             
             // referencia a orders
             $table->integer('orders_id')->unsigned();
@@ -231,6 +231,7 @@ class Relationals extends Migration
         
         Schema::create('product_options', function (Blueprint $table) {
             $table->increments('id');
+            // tabla de relacion n a m de products y locations
 
             // columnas
             // STOCK

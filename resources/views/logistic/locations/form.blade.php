@@ -35,17 +35,34 @@
                 </div>
                 <div class="form-group">
                     <label for="">Tipo</label>
+                    <select 
+                        maxlength="255" 
+                        required 
+                        class="form-control"
+                        name="type" 
+                        >
+                        @foreach (config('consts.location.type') as $key => $value)
+                            <option 
+                            @if (isset($dato) AND $dato->type == $key)
+                                selected
+                            @endif    
+                            value="{{$key}} ">{{$value}} </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Utilidad</label>
                     <input class="form-control"
                         type="text"
                         placeholder="Detalle"
                         maxlength="255"
                         required
-                        name="type"
+                        name="utility"
                         @if (isset($dato))
-                            value="{{ $dato->type }}"
+                            value="{{ $dato->utility }}"
                         @endif>
                 </div>
-
+                
 
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a href="{{ url('logistic/'.$name) }} "><button type="button" class="btn btn-danger">Cancelar</button></a>

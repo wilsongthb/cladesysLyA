@@ -15,7 +15,7 @@ const enfocar = function(id){
 }
 
 const ver = function(){
-    if(true){
+    if(GLOBAL.console){
         for(i in arguments)
             console.log(arguments[i])
     }

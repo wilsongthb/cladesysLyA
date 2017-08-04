@@ -39,7 +39,7 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         images: {
             list: [],
             get: function(){
-                $http.get(`${window.url}/listimages`).then(
+                $http.get(`${GLOBAL.url}/listimages`).then(
                     // success
                     (response) => {
                         this.list = response.data
@@ -50,7 +50,7 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         stock: {
             list: [],
             get () {
-                $http.get(`${APP_CONST.url}/api/logistic/stock`).then(
+                $http.get(`${GLOBAL.url}/api/logistic/stock`).then(
                     // success
                     function(response){
                         console.log(response)
@@ -65,15 +65,16 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
 app.factory('getOneFactory', ['$http', function($http){
     return {
         at: function(name, id){
-            return $http.get(`${window.url}/api/logistic/${name}/${id}`)
+            return $http.get(`${GLOBAL.url}/logistic/api/${name}/${id}`)
         }
     }
 }])
 
 app.service('locationsService', function($http){
     this.lista = []
+    // obtener las localizaciones
     this.get = function(){
-        $http.get(`${APP_CONST.url}/api/logistic/locations`).then(
+        $http.get(`${GLOBAL.url}/api/logistic/locations`).then(
             // success
             (response) => {
                 this.lista = response.data.data
@@ -82,17 +83,19 @@ app.service('locationsService', function($http){
     }
     this.get()
 
-    this.id = APP_CONST.location.default
+    // configuracion por defecto
+    // this.id = GLOBAL.location.default
+
     this.set = function(id){
-        // $http.post(`${APP_CONST.url}/api/config`, {
-        //     config: {
-        //         locations_id: id
-        //     }
-        // }).then(
-        //     response => {
-        //         this.config = response
-        //     }
-        // )
+        $http.post(`${APP_CONST.url}/api/config`, {
+            config: {
+                locations_id: id
+            }
+        }).then(
+            response => {
+                this.config = response
+            }
+        )
         this.id = id
     }
     this.get = function(){

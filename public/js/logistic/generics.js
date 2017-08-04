@@ -13,7 +13,7 @@ var genericGetResource = function($http ,name){
         if(keyCode === 17){// si presiona ctrl
             $http.get(
                 // url
-                `${window.url}/api/logistic/${name}`, 
+                `${GLOBAL.url}/api/logistic/${name}`, 
                 // config
                 { 
                     params: {
@@ -69,7 +69,7 @@ var readResourceController = function(config){
     $scope.leer = function(){
         $http.get(
             // url
-            `${window.url}/api/logistic/${$scope.config.name}`, 
+            `${config.api.url}`,
             // config
             {
                 params: {
@@ -95,7 +95,7 @@ var readResourceController = function(config){
         if($window.confirm(`Eliminar al registro con ID ${id}`)){
             $http.delete(
                 // url
-                `${window.url}/api/logistic/${$scope.config.name}/${id}`
+                `${config.api.url}/${id}`
             ).then(
                 // success
                 function(response){

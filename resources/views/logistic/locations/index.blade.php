@@ -37,7 +37,7 @@
                     @foreach ($datos as $dato)
                         <tr>
                             <td>{{$dato->id}} </td>
-                            <td>{{$dato->type}} </td>
+                            <td>{{config('consts.location.type')[$dato->type]}} </td>
                             <td>{{$dato->name}} </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="...">

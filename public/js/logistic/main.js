@@ -13,7 +13,7 @@ var app = angular.module('logistic', [
 ])
 
 
-// directivas personalizadas
+// directiva para poner un model en mayusculas
 .directive('capitalize', function() {
     return {
       require: 'ngModel',

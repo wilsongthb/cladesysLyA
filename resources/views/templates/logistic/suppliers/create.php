@@ -6,11 +6,11 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                     <label>Nombre de La compañia *</label>
                     <!-- enfoque incial -->
-                    <input id="init_focus" type="text" ng-model="registro.company_name" class="form-control" required>
+                    <input id="init_focus" type="text" ng-model="registro.company_name" class="form-control" required capitalize>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                     <label>Nombre de contacto *</label>
-                    <input type="text" ng-model="registro.contact_name" class="form-control" required>
+                    <input type="text" ng-model="registro.contact_name" class="form-control" required capitalize>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                     <label>Direccion *</label>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
                     <label>Codigo Postal *</label>
-                    <input type="text" ng-model="registro.postal_code" class="form-control" required>
+                    <input type="text" ng-model="registro.postal_code" class="form-control">
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
                     <label>Pais *</label>

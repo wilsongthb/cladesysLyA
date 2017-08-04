@@ -20,13 +20,23 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
-    /**
-        Modulo de Logistica, en Single Page Aplication
-    */
     Route::group(['prefix' => 'logistic'], function(){
+        // API
+        Route::group(['prefix' => 'api'], function(){
+            Route::resource('products', 'logistic\productsResource');
+            Route::resource('suppliers', 'logistic\suppliersResource');
+        });
+        // temporal
+        Route::resource('brands', 'logistic\brandsController');
+        Route::resource('packings', 'logistic\packingsController');
+        Route::resource('categories', 'logistic\categoriesController');
+        Route::resource('locations', 'logistic\locationsController');
+        Route::resource('measurements', 'logistic\measurementsController');
+
+        // WEB SPA
         Route::get('/{p?}/{p1?}/{p3?}/{p4?}', function(){ 
             // ruta especial, ignora los argumentos y los pasa a angular-route
-            return view('logistic.index');
+            return view('logistic.angular');
         })->name('logistic');
     });
     Route::get('view/{view}', 'viewController@index');
@@ -42,11 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', function(){ return view('index'); });
 
 
-    Route::resource('brands', 'logistic\brandsController');
-    Route::resource('packings', 'logistic\packingsController');
-    Route::resource('categories', 'logistic\categoriesController');
-    Route::resource('locations', 'logistic\locationsController');
-    Route::resource('measurements', 'logistic\measurementsController');
+    
 });
 
 Route::group(['prefix' => 'test'], function(){
