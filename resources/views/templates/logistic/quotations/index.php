@@ -4,7 +4,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <a id="init_focus" href="{{config.urlCreate}}"><button type="button" class="btn btn-default"><i class="fa fa-plus"></i> Agregar</button></a>
+                    <!-- <a id="init_focus" href="{{config.urlCreate}}"><button type="button" class="btn btn-default"><i class="fa fa-plus"></i> Agregar</button></a> -->
+                    <h3>Lista de Requerimientos</h3>
                 </div>
                 <div class="pull-right">
                     <div class="form-inline">
@@ -35,7 +36,7 @@
                             <div class="btn-group" role="group" aria-label="...">
                                 <a href="{{config.urlEdit}}/{{r.id}}" type="button" class="btn btn-default">
                                     <i class="fa fa-pencil"></i>
-                                    Editar
+                                    Cotizar
                                 </a>
                                 <button type="button" class="btn btn-danger" ng-click="eliminar(r.id)">
                                     <i class="fa fa-trash"></i>

@@ -73,7 +73,7 @@ app.factory('getOneFactory', ['$http', function($http){
 app.service('locationsService', function($http){
     this.lista = []
     // obtener las localizaciones
-    this.get = function(){
+    this.init = function(){
         $http.get(`${GLOBAL.url}/logistic/api/locations`).then(
             // success
             (response) => {
@@ -87,7 +87,7 @@ app.service('locationsService', function($http){
             }
         )
     }
-    this.get()
+    this.init()
 
     // configuracion por defecto
     // this.id = GLOBAL.location.default

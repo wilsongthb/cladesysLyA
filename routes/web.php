@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function(){
     // LOGISTIC
     Route::group(['prefix' => 'logistic'], function(){
@@ -26,8 +24,11 @@ Route::group(['middleware' => 'auth'], function(){
         Route::group(['prefix' => 'api'], function(){
             Route::resource('products', 'logistic\productsResource');
             Route::resource('suppliers', 'logistic\suppliersResource');
+            Route::resource('requeriments', 'logistic\requerimentsResource');
+            Route::resource('order_details', 'logistic\order_detailsResource');
+            Route::resource('quotations', 'logistic\quotationsResource');
 
-            //GETERS UTILITIES
+            //GET UTILITIES
             Route::get('brands', 'logistic\utilitiesResource@brands');
             Route::get('categories', 'logistic\utilitiesResource@categories');
             Route::get('measurements', 'logistic\utilitiesResource@measurements');

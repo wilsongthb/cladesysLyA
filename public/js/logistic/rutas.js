@@ -50,6 +50,34 @@ app.config([
                 templateUrl: `${GLOBAL.url}/view/logistic.requeriments.index.html`,
                 controller: 'RequerimentsController'
             })
+            .when('/requeriments/create', {
+                templateUrl: `${GLOBAL.url}/view/logistic.requeriments.create.html`,
+                controller: 'RequerimentsCreateController'
+            })
+            .when('/requeriments/edit/:id', {
+                templateUrl: `${GLOBAL.url}/view/logistic.requeriments.edit.html`,
+                controller: 'RequerimentsEditController'
+            })
+
+            // COTIZACION
+            .when('/quotations', {
+                templateUrl: `${GLOBAL.url}/view/logistic.quotations.index.html`,
+                controller: 'QuotationsController'
+            })
+            .when('/quotations/edit/:id', {
+                templateUrl: `${GLOBAL.url}/view/logistic.quotations.edit.html`,
+                controller: 'QuotationsEditController'
+            })
+
+            // ORDEN COMPRA
+            .when('/purchase_orders', {
+                templateUrl: `${GLOBAL.url}/view/logistic.quotations.index.html`,
+                controller: 'QuotationsController'
+            })
+            .when('/purchase_orders/edit/:id', {
+                templateUrl: `${GLOBAL.url}/view/logistic.quotations.edit.html`,
+                controller: 'QuotationsEditController'
+            })
 
             // rutas perdidas
             .otherwise({

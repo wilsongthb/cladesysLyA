@@ -19,8 +19,8 @@
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-alt"></i> Proceso de Compra <span class="caret"></span></a>
     <ul class="dropdown-menu">
         <li><a href="{{ url('/logistic/requeriments') }} "><i class="fa fa-circle"></i> Requerimientos</a></li>
-        <li><a href="#"><i class="fa fa-circle"></i> Evaluacion</a></li>
-        <li><a href="#"><i class="fa fa-circle"></i> Orden de Compra</a></li>
+        <li><a href="{{ url('/logistic/quotations') }} "><i class="fa fa-circle"></i> Cotización</a></li>
+        <li><a href="{{ url('/logistic/purchase_orders') }} "><i class="fa fa-circle"></i> Orden de Compra</a></li>
     </ul>
 </li>
 <li class="dropdown">

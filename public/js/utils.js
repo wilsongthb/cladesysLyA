@@ -20,3 +20,7 @@ const ver = function(){
             console.log(arguments[i])
     }
 }
+
+const ezClon = function(obj){
+    return JSON.parse(JSON.stringify(obj))
+}

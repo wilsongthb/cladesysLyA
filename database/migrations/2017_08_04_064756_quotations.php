@@ -26,7 +26,7 @@ class Quotations extends Migration
             $table->float('unit_price', 8, 2);
             $table->integer('suppliers_id')->unsigned();
             $table->foreign('suppliers_id')->references('id')->on('suppliers');
-            $table->char('status', 1); // ACEPTADO O NO
+            $table->char('status', 1)->default('0'); // ACEPTADO O NO
         });
     }
 

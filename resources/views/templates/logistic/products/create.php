@@ -123,7 +123,7 @@
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="form-group">
                         <label for="">Imagen</label>
-                        <p><a class="btn btn-info" href="{{ APP_CONST.url + '/getimage' }} " target="_blank">Subir archivo</a></p>
+                        <p><a class="btn btn-info" href="{{ GLOBAL.url + '/getimage' }} " target="_blank">Subir archivo</a></p>
                         <div ng-if="registro.image_path">
                             <img width="100" ng-src="{{config.url + '/' + registro.image_path}}" alt="Image">
                         </div>

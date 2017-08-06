@@ -17,7 +17,7 @@
 
 
 ## instalacion
-~~~
+~~~sh
 git clone https://github.com/wilsongthb/cladesysLyA.git
 cd cladesysLyA1
 composer install
@@ -26,7 +26,7 @@ bower install
 ~~~
 
 ## Configuracion de la base de datos
-~~~
+~~~sql
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
 -- Versión del servidor:         5.7.18-0ubuntu0.16.04.1 - (Ubuntu)
@@ -62,3 +62,7 @@ pass: root
 
 - formato de fecha en español
 - COdigo postal como no requerido
+
+# NOTA
+* tienes que aprender a manejar mejor los promises
+* modificar inventories.depressiation a inventories.devaluetion

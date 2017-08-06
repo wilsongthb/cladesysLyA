@@ -3,6 +3,7 @@ const RequerimentsConfig = {
     title: 'REQUERIMIENTOS',
     api: {
         url: `${GLOBAL.url}/logistic/api/requeriments`,
+        detail: `${GLOBAL.url}/logistic/api/order_details`,
     },
     urlCreate: `${GLOBAL.url}/logistic/requeriments/create`,
     urlEdit: `${GLOBAL.url}/logistic/requeriments/edit`
@@ -13,140 +14,142 @@ app.controller('RequerimentsController', // nombre del controlador
     readResourceController(RequerimentsConfig) // funcion generica para mostrar una vista de recursos, devuelve un array con el controlador y sus dependencias
 )
 
-// app.controller('ProductsCreateController', [
-//     '$scope',
-//     '$http',
-//     '$location',
-//     'utilitiesFactory',
-//     '',
-// function(
-//     $scope, 
-//     $http, 
-//     $location,
-//     utilitiesFactory,
-//     ,
-// ){
-//     // enfoque inicial
-//     enfocar('init_focus')
+app.controller('RequerimentsCreateController', [
+    '$scope',
+    '$http',
+    'utilitiesFactory',
+    'uibDateParser',
+    'locationsService',
+    '$location',
+function(
+    $scope,
+    $http,
+    utilitiesFactory,
+    uibDateParser,
+    locationsService,
+    $location
+){
+    // valores iniciales
+    $scope.error = false
+    $scope.registro = {
+        // valores por defecto
+        user_id: GLOBAL.user.id
+    }
+    $scope.GLOBAL = GLOBAL
+    
 
-//     // valores iniciales
-//     $scope.error = false
-//     $scope.registro = {
-//         // valores por defecto
-//         user_id: GLOBAL.user.id
-//     }
-//     $scope.GLOBAL = GLOBAL
+    /////////////////////////////////////////////////////////////////////////7
+    // PERSONALIZADO //////////////////////////////////////////////////////
+    $scope.config = ezClon(RequerimentsConfig)
+    $scope.config.title = 'NUEVO REQUERIMIENTO'
+    $scope.locations = utilitiesFactory.locations
+    $scope.locations.get()
 
-//     /////////////////////////////////////////////////////////////////////////7
-//     // PERSONALIZADO //////////////////////////////////////////////////////
-//     /////////////////////////////////////////////////////////////////////////777
-//     $scope.config = JSON.parse(JSON.stringify(productsConfig))
-//     $scope.config.title = 'REGISTRAR NUEVO PRODUCTO'
-//     // obtener los valores relacionales
-//     $scope.brands = utilitiesFactory.brands
-//     $scope.categories = utilitiesFactory.categories
-//     $scope.measurements = utilitiesFactory.measurements
-//     $scope.packings = utilitiesFactory.packings
-//     $scope.brands.get()
-//     $scope.categories.get()
-//     $scope.measurements.get()
-//     $scope.packings.get()
-//     // imagenes
-//     $scope.images = utilitiesFactory.images
-//     $scope.images.get()
-//     //////////////////////////////////////////////////////////////////////////7
-//     $scope.guardar = function(){
-//         $http.post(
-//             // url
-//             `${productsConfig.api.url}`, 
-//             // data
-//             $scope.registro, 
-//             // config
-//             {}
-//         ).then(
-//             // success
-//             function(response){
-//                 $location.path(`/${$scope.config.name}`)
-//             },
-//             // error
-//             function(response){
-//                 $scope.error = true
-//             }
-//         )
-//     }
-// }])
+    //form
+    $scope.registro.locations_id = locationsService.get()
+    $scope.date_format = 'dd/MM/yyyy'
+    $scope.registro.shipping = new Date();
+    /////////////////////////////////////////////////////////////////////////777
+    
+    // METHODS
+    $scope.guardar = function(){
+        $http.post(`${$scope.config.api.url}`, $scope.registro).then(
+            // success
+            function(response){
+                $location.path(`/${$scope.config.name}`)
+            },
+            // error
+            function(response){
+                $scope.error = true
+            }
+        )
+    }
 
-// app.controller('ProductsEditController', [
-//     '$scope',
-//     '$http',
-//     '$location',
-//     'utilitiesFactory',
-//     '$routeParams',
-//     'getOneFactory',
-//     function(
-//         $scope, 
-//         $http, 
-//         $location,
-//         utilitiesFactory,
-//         $routeParams,
-//         getOneFactory
-//     ){
-//     //enfoque
-//     enfocar('init_focus')
-//     // valores iniciales
-//     $scope.error = false
-//     $scope.GLOBAL = GLOBAL
-//     /////////////////////////////////////////////////////////////////////////7
-//     // PERSONALIZADO ///////////////////////////////////////////////////
-//     /////////////////////////////////////////////////////////////////////////777
-//     // obtener los valores relacionales
-//     $scope.brands = utilitiesFactory.brands
-//     $scope.categories = utilitiesFactory.categories
-//     $scope.measurements = utilitiesFactory.measurements
-//     $scope.packings = utilitiesFactory.packings
-//     $scope.brands.get()
-//     $scope.categories.get()
-//     $scope.measurements.get()
-//     $scope.packings.get()
-//     // imagenes
-//     $scope.images = utilitiesFactory.images
-//     $scope.images.get()
-//     // valores iniciales
-//     $scope.config = JSON.parse(JSON.stringify(productsConfig))
-//     $scope.config.title = 'EDITAR PRODUCTO'
-//     // al editar ---  nombre del recurso,  id
-//     getOneFactory.at($scope.config.name, $routeParams.id).then(
-//         // success
-//         function(response){
-//             $scope.registro = response.data
-//             $scope.registro.user_id = GLOBAL.user.id
-//         },
-//         // error
-//         function(response){
-//             // console.log(`${window.url}/logistic/ng/${$scope.config.name}`)
-//             $location.path('notfound')
-//             // $location.path(`${$scope.config.name}`)
-//         }
-//     )
-//     /////////////////////////////////////////////////////////////////////////7
-//     /////////////////////////////////////////////////////////////////////////777
-//     $scope.guardar = function(){
-//         $http.put(
-//             // url
-//             `${productsConfig.api.url}/${$routeParams.id}`, 
-//             // data
-//             $scope.registro, 
-//             // config
-//             {}
-//         ).then(
-//             // success
-//             function(response){
-//                 $location.path(`/${$scope.config.name}`)
-//             },
-//             // error
-//             function(response){
-//                 $scope.error = true
-//             }
-//         )
-//     }
-// }])
+    // al iniciar, cuando este cargado
+    $(document).ready(function(){
+        // enfoque inicial
+        enfocar('init_focus')
+    })
+}])
+
+app.controller('RequerimentsEditController', [
+    '$scope',
+    '$http',
+    'utilitiesFactory',
+    'uibDateParser',
+    'locationsService',
+    '$location',
+    '$routeParams',
+function(
+    $scope,
+    $http,
+    utilitiesFactory,
+    uibDateParser,
+    locationsService,
+    $location,
+    $routeParams
+){
+    // valores iniciales
+    $scope.error = false
+    $scope.registro = {
+        // valores por defecto
+        user_id: GLOBAL.user.id
+    }
+    $scope.detalles = []
+    $scope.detalle = {}
+    $scope.GLOBAL = GLOBAL
+    
+
+    /////////////////////////////////////////////////////////////////////////7
+    // PERSONALIZADO //////////////////////////////////////////////////////
+    $scope.config = ezClon(RequerimentsConfig)
+    $scope.config.title = 'EDITAR REQUERIMIENTO'
+    $scope.locations = utilitiesFactory.locations
+    $scope.locations.get()
+    $scope.products = utilitiesFactory.products
+    $scope.products.get()
+
+    //cargar datos
+    $scope.leer_detalles = function(){
+        $http.get(`${$scope.config.api.detail}`, {
+            params: {
+                id: $routeParams.id
+            }
+        }).then(
+            function(response){
+                $scope.detalles = response.data
+            }
+        )
+    }
+    /////////////////////////////////////////////////////////////////////////777
+    
+    // METHODS
+    $scope.guardar = function(){
+        $http.post(`${$scope.config.api.url}`, $scope.registro).then(
+            // success
+            function(response){
+                $location.path(`/${$scope.config.name}`)
+            },
+            // error
+            function(response){
+                $scope.error = true
+            }
+        )
+    }
+    $scope.guardar_detalle = function(){
+        $scope.detalle.user_id = GLOBAL.user.id
+        $scope.detalle.orders_id = $routeParams.id
+        $http.post(`${$scope.config.api.detail}`, $scope.detalle).then(
+            function(response){
+                console.log('guardado')
+            }
+        )
+    }
+
+    // al iniciar, cuando este cargado
+    $scope.leer_detalles()
+    $(document).ready(function(){
+        // enfoque inicial
+        enfocar('init_focus')
+    })
+}])

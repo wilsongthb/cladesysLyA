@@ -194,7 +194,7 @@ class Relationals extends Migration
             
             // columnas
             $table->date('shipping'); // fecha de envio
-            $table->char('status'); // estado del envio
+            $table->char('status', 1)->default('1'); // estado del envio
             $table->boolean('flagstate')->default('1'); // estado, eliminado, activo
             
             // referencia a locations

@@ -28,6 +28,7 @@
     <script src="{{ asset('bower_components/angular-animate/angular-animate.js') }} "></script>
     <script src="{{ asset('bower_components/angular-touch/angular-touch.js') }} "></script>
     <script src="{{ asset('bower_components/angular-bootstrap/ui-bootstrap.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-tpls.js') }} "></script>
     <script src="{{ asset('bower_components/angular-sanitize/angular-sanitize.js') }} "></script>
 
     <script>
@@ -58,4 +59,5 @@
     <script src="{{ asset('js/logistic/ProductsController.js') }} "></script>
     <script src="{{ asset('js/logistic/SuppliersController.js') }} "></script>
     <script src="{{ asset('js/logistic/RequerimentsController.js') }} "></script>
+    <script src="{{ asset('js/logistic/QuotationsController.js') }} "></script>
 @stop
