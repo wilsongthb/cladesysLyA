@@ -77,7 +77,15 @@ app.service('locationsService', function($http){
         $http.get(`${GLOBAL.url}/logistic/api/locations`).then(
             // success
             (response) => {
-                this.lista = response.data.data
+                this.lista = []
+                // this.lista = response.data.data
+                this.lista[0] = {
+                    id: null,
+                    name: 'NINGUNO'
+                }
+                for(i in response.data.data){
+                    this.lista[response.data.data[i].id] = response.data.data[i]
+                }
             }
         )
         $http.get(`${GLOBAL.url}/config`).then(
@@ -91,6 +99,7 @@ app.service('locationsService', function($http){
 
     // configuracion por defecto
     // this.id = GLOBAL.location.default
+    this.id = 0
 
     this.set = function(id){
         $http.post(`${GLOBAL.url}/config`, {

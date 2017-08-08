@@ -28,8 +28,10 @@
                 <tbody>
                     <tr ng-repeat="r in registros">
                         <td ng-bind="r.id"></td>
-                        <td ng-bind="r.locations_id"></td>
-                        <td ng-bind="r.status"></td>
+                        <td ng-bind="r.origen"></td>
+                        <td>
+                            <order-status status="r.status"></order-status>
+                        </td>
                         <td ng-bind="r.shipping"></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="...">

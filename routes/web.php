@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'], function(){
             Route::resource('requeriments', 'logistic\requerimentsResource');
             Route::resource('order_details', 'logistic\order_detailsResource');
             Route::resource('quotations', 'logistic\quotationsResource');
+            Route::resource('inputs', 'logistic\inputsResource');
+            Route::resource('input_details', 'logistic\input_detailsResource');
 
             //GET UTILITIES
             Route::get('brands', 'logistic\utilitiesResource@brands');
@@ -55,7 +57,20 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('getimage','ImageController@getImage');
     Route::post('postimage','ImageController@postImage');
     Route::get('listimages', 'ImageController@lista');
-    Route::get('/home', function(){ return view('index'); });
+
+    // HOME
+    Route::get('/home', function(){ 
+        // return view('index');
+        return redirect('/');
+    });
+
+    // GERENCIAL
+    Route::group(['prefix' => 'managerial'], function(){
+        /**
+        * SINGLE PAGE APLICATION IN VUE JS
+        */
+        Route::get('/', 'logistic\utilitiesResource@trabajando');
+    });
 
 });
 

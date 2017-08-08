@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\input_detailsModel;
 use DB;
+use Datetime;
 
 class input_detailsResource extends Controller
 {
@@ -53,7 +54,7 @@ class input_detailsResource extends Controller
         
         
         $fila->inputs_id = $request->inputs_id;
-        $fila->expiration = $request->expiration;
+        $fila->expiration = new Datetime($request->expiration);
         $fila->products_id = $request->products_id;
         $fila->quantity = $request->quantity;
         $fila->suppliers_id = $request->suppliers_id;

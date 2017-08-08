@@ -47,8 +47,8 @@ function(
 
     //form
     $scope.registro.locations_id = locationsService.get()
-    $scope.date_format = 'dd/MM/yyyy'
-    $scope.registro.shipping = new Date();
+    // $scope.date_format = 'dd/MM/yyyy'
+    $scope.registro.shipping = new Date()
     /////////////////////////////////////////////////////////////////////////777
     
     // METHODS
@@ -56,7 +56,8 @@ function(
         $http.post(`${$scope.config.api.url}`, $scope.registro).then(
             // success
             function(response){
-                $location.path(`/${$scope.config.name}`)
+                $location.replace()
+                $location.path(`/${$scope.config.name}/edit/${response.data.id}`)
             },
             // error
             function(response){
@@ -141,7 +142,8 @@ function(
         $scope.detalle.orders_id = $routeParams.id
         $http.post(`${$scope.config.api.detail}`, $scope.detalle).then(
             function(response){
-                console.log('guardado')
+                // console.log('guardado')
+                $scope.leer_detalles()
             }
         )
     }

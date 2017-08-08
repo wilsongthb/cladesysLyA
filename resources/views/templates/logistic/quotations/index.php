@@ -17,36 +17,12 @@
                 </div>
             </div>
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Origen</th>
-                        <th>Estado</th>
-                        <th>Fecha de Envio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="r in registros">
-                        <td ng-bind="r.id"></td>
-                        <td ng-bind="r.locations_id"></td>
-                        <td ng-bind="r.status"></td>
-                        <td ng-bind="r.shipping"></td>
-                        <td>
-                            <div class="btn-group" role="group" aria-label="...">
-                                <a href="{{config.urlEdit}}/{{r.id}}" type="button" class="btn btn-default">
-                                    <i class="fa fa-pencil"></i>
-                                    Cotizar
-                                </a>
-                                <button type="button" class="btn btn-danger" ng-click="eliminar(r.id)">
-                                    <i class="fa fa-trash"></i>
-                                    Eliminar
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="list-group">
+                <a href="{{config.urlEdit}}/{{r.id}}" class="list-group-item" ng-repeat="r in registros">
+                    <h4>{{r.id}} - {{r.origen}} - <order-status status="r.status"></order-status></h4>
+                </a>
+            </div>
 
             <!--mensaje de error-->
             <div class="alert alert-danger" ng-show="error">

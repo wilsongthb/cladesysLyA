@@ -19,11 +19,13 @@ app.controller('QuotationsEditController', [
     '$routeParams',
     '$http',
     'utilitiesFactory',
+    '$window',
 function(
     $scope,
     $routeParams,
     $http,
-    utilitiesFactory
+    utilitiesFactory,
+    $window
 ){
     // valores iniciales
     $scope.error = false
@@ -70,16 +72,35 @@ function(
     }
     /////////////////////////////////////////////////////////////////////////////777
     $scope.guardar = function(){
+        $scope.registro.user_id = GLOBAL.user.id
         $http.post(`${$scope.config.api.quotations}`, $scope.registro).then(
             // success
             function(response){
                 $scope.leer()
+                $scope.registro = {}
             },
             // error
             function(response){
                 $scope.error = true
             }
         )
+    }
+    $scope.eliminar = function(id){
+        if($window.confirm(`Eliminar al registro con ID ${id}`)){
+            $http.delete(
+                // url
+                `${$scope.config.api.quotations}/${id}`
+            ).then(
+                // success
+                function(response){
+                    $scope.leer()
+                },
+                // error
+                function(response){
+                    $scope.error = true
+                }
+            )
+        }
     }
 
     // INIT

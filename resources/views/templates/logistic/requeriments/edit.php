@@ -1,14 +1,15 @@
 <div class="container">
-    <h3>{{title}} </h3>
+    <h3 class="text-center">{{config.title}} </h3>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <!-- <button ng-click="" id="init_focus">Agregar</button> -->
             <form ng-submit="guardar_detalle()">
-                <p>
-                    products_id:
+                <div class="form-group">
+                    <label for="">Producto</label>
                     <select 
+                        id="init_focus"
                         ng-model="detalle.products_id" 
-                        ng-change="selectProduct()"
+                        ng-keyup="products.get('', $event.keyCode)"
                         class="form-control" 
                         required>
                         <option value="">Buscar...</option>
@@ -17,21 +18,24 @@
                             ng-value="p.id"
                             ng-bind="p.detail + ' - ' + p.barcode"></option>
                     </select>
-                </p>
-                <p>
-                    quantity: <input type="text" ng-model="detalle.quantity" required>
-                </p>
-                <p>
-                    detail: <textarea ng-model="detalle.detail" rows="3"></textarea>
-                </p>
-                <button>Guardar</button>
+                </div>
+                <div class="form-group">
+                    <label for="">Cantidad</label>
+                    <input type="text" class="form-control" ng-model="detalle.quantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Detalle: </label>
+                    <textarea class="form-control" ng-model="detalle.detail" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success">Guardar</button>
+                </div>
             </form>
         </div>
     </div>
     
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -39,6 +43,7 @@
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Detalle</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,13 +51,13 @@
                         <td ng-bind="d.id"></td>
                         <td ng-bind="d.products_detail"></td>
                         <td ng-bind="d.quantity"></td>
-                        <td title="{{d.detail}} "><i class="fa fa-table"></i> </td>
+                        <!-- <td title="{{d.detail}} "><i class="fa fa-table"></i> </td> -->
+                        <td ng-bind="d.detail"></td>
+                        <td title="Eliminar"><button><i class="fa fa-remove"></i></button></td>
                     </tr>
                 </tbody>
             </table>
             
         </div>
     </div>
-    
-    
 </div>

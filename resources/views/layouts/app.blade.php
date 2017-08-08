@@ -37,7 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="{{ url('/logistic') }} ">Logistic</a>
+                            <a href="{{ url('/logistic') }} ">LOGISTIC</a>
                         </li>
                         &nbsp;
                     </ul>

@@ -13,6 +13,12 @@ use App\ticketsModel;
 
 class utilitiesResource extends Controller
 {
+    public function trabajando(){ 
+        return "
+            <img src='./images/giphy.gif' alt='Trabajando'>
+            <p><strong>En construccion...</strong></p>
+        "; 
+    }
     public function main(Request $request){ 
         // ruta especial, ignora los argumentos y los pasa a angular-route
         if($request->ajax() OR $request->isJson() OR $request->expectsJson()){

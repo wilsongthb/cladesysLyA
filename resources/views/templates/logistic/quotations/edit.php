@@ -31,12 +31,14 @@
         
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <form ng-submit="guardar()">
-                <p>
-                    ID *: <input type="text" ng-model="registro.order_details_id" required disabled>
-                </p>
-                <p>
-                    Proveedor *: 
+                <div class="form-group">
+                    <label for="">ID</label>
+                    <p class="form-control" ng-bind="registro.order_details_id"></p>
+                </div>
+                <div class="form-group">
+                    <label for="">Proveedor *</label>
                     <select 
+                        class="form-control"
                         ng-model="registro.suppliers_id" 
                         ng-keyup="suppliers.get('', $event.keyCode)" 
                         required>
@@ -46,11 +48,14 @@
                             {{s.company_name}} 
                         </option>
                     </select>
-                </p>
-                <p>
-                    Precio *: <input type="text" ng-model="registro.unit_price" required>
-                </p>
-                <button>Guardar</button>
+                </div>
+                <div class="form-group">
+                    <label for="">Precio *</label>
+                    <input class="form-control" type="text" ng-model="registro.unit_price" required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success">Guardar</button>
+                </div>
             </form>
         </div>
         
@@ -62,17 +67,21 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Orden detalle</th>
-                        <th>suppliers</th>
-                        <th>unit_price</th>
+                        <th>Producto</th>
+                        <th>Proveedor</th>
+                        <th>Precio Unitario</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="d in detalles">
-                        <td ng-bind="d.id"></td>
-                        <td ng-bind="d.order_details_id"></td>
-                        <td ng-bind="d.suppliers_id"></td>
+                        <td>{{d.id}}_{{d.order_details_id}}</td>
+                        <td ng-bind="d.products_detail"></td>
+                        <td ng-bind="d.suppliers_name"></td>
                         <td ng-bind="d.unit_price"></td>
+                        <td>
+                            <button title="Eliminar" ng-click="eliminar(d.id)"><i class="fa fa-trash"></i></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

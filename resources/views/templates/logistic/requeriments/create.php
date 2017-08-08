@@ -9,9 +9,9 @@
                         id="init_focus"
                         type="text" 
                         class="form-control"
-                        uib-datepicker-popup="dd/mm/yyyy"
+                        uib-datepicker-popup="dd/MM/yyyy"
                         ng-model="registro.shipping" 
-                        placeholder="dd/mm/aaaa">
+                        placeholder="DD/MM/AAAA">
                 </p>
                 <p class="form-group">
                     <label for="">Localizacion *</label>

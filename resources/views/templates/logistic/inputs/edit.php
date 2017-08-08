@@ -1,7 +1,7 @@
 <div class="container">
     <h2 class="text-center">{{config.title}} </h2>
-    <a id="init_focus" class="btn btn-primary" data-toggle="modal" href='#modal-id'><i class="fa fa-plus"></i> Agregar Detalle</a>
-    <div class="modal" id="modal-id">
+    <a id="init_focus" class="btn btn-primary" ng-click="mostrarForm()"><i class="fa fa-plus"></i> Agregar Detalle</a>
+    <div class="modal" id="detalleModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -27,7 +27,13 @@
                         </div>
                         <div class="form-group">
                             <label>Fecha de Expiracion *</label>
-                            <input type="text" ng-model="detalle.expiration" class="form-control" required placeholder="AAAA-MM-DD">
+                            <input 
+                                type="text" 
+                                ng-model="detalle.expiration" 
+                                class="form-control" 
+                                required 
+                                placeholder="DD/MM/AAAA"
+                                uib-datepicker-popup="dd/MM/yyyy">
                         </div>
                         <div class="form-group">
                             <label>Numero Ticket *</label>
@@ -87,7 +93,7 @@
                             <label>Lote</label>
                             <input type="text" class="form-control" ng-model="detalle.lot">
                         </div>
-                        <button data-dismiss="modal" class="btn btn-success">Guardar</button>
+                        <button class="btn btn-success">Guardar</button>
                     </form>
                 </div>
                 <!-- <div class="modal-footer">

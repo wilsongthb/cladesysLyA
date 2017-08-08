@@ -51,11 +51,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
                     <label>Pais *</label>
-                    <input type="text" ng-model="registro.country" class="form-control" required>
+                    <input type="text" ng-model="registro.country" class="form-control" required capitalize>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
                     <label>Region *</label>
-                    <input type="text" ng-model="registro.region" class="form-control" required>
+                    <input type="text" ng-model="registro.region" class="form-control" required capitalize>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
                     <label>Localización *</label>

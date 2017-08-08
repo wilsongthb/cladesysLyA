@@ -34,7 +34,7 @@
     <![endif]-->
 </head>
 <body>
-    <div id="contenido" ng-app="logistic">
+    <div id="contenido" ng-app="logistic" ng-controller="RootController">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->

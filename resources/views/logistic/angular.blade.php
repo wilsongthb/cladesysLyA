@@ -3,7 +3,7 @@
 
 @section('head')
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} "> 
+    {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">    --}}
     <link rel="stylesheet" href="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-csp.css') }} ">
     <base href="{{ url('') }}/logistic/">
 
@@ -14,6 +14,7 @@
     <div ng-view></div>
     <hr>
     <div class="container footer">
+        <p>LOCALIZACION: @{{location.lista[location.id].name}} </p>
         <p>Esta aplicación requiere un navegador actualizado, revisa esta <a href="http://caniuse.com/#feat=history">lista</a> para ver los navegadores compatibles.</p>
     </div>
 
@@ -33,24 +34,33 @@
 
     <script>
         // constantes de la aplicacion
-        const GLOBAL = {
-            url: "{{ url('') }}",
-            app_url: "{{ url('') }}/logistic",
-            api: {
-                url: "{{ url('') }}/logistic/api"
-            },
-            user: {!! json_encode(Auth::user()) !!},
-            console: true,
-            location: {
-                default: 1
+        const GLOBALS = function(){
+            return {
+                url: "{{ url('') }}",
+                app_url: "{{ url('') }}/logistic",
+                api: {
+                    url: "{{ url('') }}/logistic/api"
+                },
+                user: {!! json_encode(Auth::user()) !!},
+                console: true,
+                location: {
+                    default: 1
+                },
+                consts: {!! json_encode(config('consts')) !!},
             }
         }
+        const GLOBAL = GLOBALS()
     </script>
 
     <script src="{{ asset('js/utils.js') }} "></script>
     <script src="{{ asset('js/logistic/generics.js') }} "></script>
     <script src="{{ asset('js/logistic/shortcuts.js') }} "></script>
     <script src="{{ asset('js/logistic/main.js') }} "></script>
+    {{--  Componentes  --}}
+    <script src="{{ asset('js/logistic/components/products.js') }} "></script>
+    <script src="{{ asset('js/logistic/components/app.js') }} "></script>
+    <script src="{{ asset('js/logistic/components/orderStatus.js') }} "></script>
+    {{--  Rutas  --}}
     <script src="{{ asset('js/logistic/rutas.js') }} "></script>
     {{--  Servicios  --}}
     <script src="{{ asset('js/logistic/services.js') }} "></script>
@@ -60,4 +70,6 @@
     <script src="{{ asset('js/logistic/SuppliersController.js') }} "></script>
     <script src="{{ asset('js/logistic/RequerimentsController.js') }} "></script>
     <script src="{{ asset('js/logistic/QuotationsController.js') }} "></script>
+    <script src="{{ asset('js/logistic/inputsController.js') }} "></script>
+    <script src="{{ asset('js/logistic/PurchaseOrdersController.js') }} "></script>
 @stop

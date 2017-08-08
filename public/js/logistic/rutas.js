@@ -69,14 +69,33 @@ app.config([
                 controller: 'QuotationsEditController'
             })
 
+            // INPUTS
+            .when('/inputs', {
+                templateUrl: `${GLOBAL.url}/view/logistic.inputs.index.html`,
+                controller: 'inputsController'
+            })
+            .when('/inputs/create', {
+                templateUrl: `${GLOBAL.url}/view/logistic.inputs.create.html`,
+                controller: 'inputsCreateController'
+            })
+            .when('/inputs/edit/:id', {
+                templateUrl: `${GLOBAL.url}/view/logistic.inputs.edit.html`,
+                controller: 'inputsEditController'
+            })
+
             // ORDEN COMPRA
             .when('/purchase_orders', {
-                templateUrl: `${GLOBAL.url}/view/logistic.quotations.index.html`,
-                controller: 'QuotationsController'
+                templateUrl: `${GLOBAL.url}/view/logistic.purchase_orders.index.html`,
+                controller: 'PurchaseOrdersController'
             })
             .when('/purchase_orders/edit/:id', {
-                templateUrl: `${GLOBAL.url}/view/logistic.quotations.edit.html`,
-                controller: 'QuotationsEditController'
+                templateUrl: `${GLOBAL.url}/view/logistic.purchase_orders.edit.html`,
+                controller: 'PurchaseOrdersEditController'
+            })
+            
+            // COMPONENT
+            .when('/components', {
+                template: '<app></app>'
             })
 
             // rutas perdidas

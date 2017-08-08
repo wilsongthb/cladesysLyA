@@ -49,5 +49,14 @@ return [
                 Puede hacer requerimientos
             */
         ]
+    ],
+    // ORDERS
+    'orders' => [
+        'status' => [
+            1 => 'EN PROCESO',
+            2 => 'COTIZANDO',
+            3 => 'ORDEN DE COMPRA',
+            4 => 'FINALIZADO'
+        ]
     ]
 ];

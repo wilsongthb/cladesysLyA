@@ -17,7 +17,9 @@ class requerimentsResource extends Controller
     public function index()
     {
         return ordersModel::
-            where('flagstate', 1)
+            select('orders.*', 'locations.name AS origen')
+            ->where('orders.flagstate', 1)
+            ->leftJoin('locations', 'locations.id', '=', 'orders.locations_id')
             ->orderBy('id', 'DESC')
             ->paginate(80);
     }
@@ -50,7 +52,7 @@ class requerimentsResource extends Controller
         $fila->status = 1; // default
         $fila->save();
 
-        return "ok";
+        return $fila;
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\logistic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\quotationsModel;
+use App\ordersModel;
+use App\order_detailsModel;
 
 class quotationsResource extends Controller
 {
@@ -16,10 +18,12 @@ class quotationsResource extends Controller
     public function index(Request $request)
     {
         return quotationsModel::
-            select('quotations.*')
+            select('quotations.*', 'suppliers.company_name AS suppliers_name', 'products.detail AS products_detail')
+            ->leftJoin('suppliers', 'suppliers.id', '=', 'quotations.suppliers_id')
             ->leftJoin('order_details', 'order_details.id', '=', 'quotations.order_details_id')
+            ->leftJoin('products', 'products.id', '=', 'order_details.products_id')
             ->leftJoin('orders', 'orders.id', '=', 'order_details.orders_id')
-            ->where('orders.id', $request->id)
+            ->where('orders.id', $request->id) // importante
             ->get();
     }
 
@@ -41,6 +45,7 @@ class quotationsResource extends Controller
      */
     public function store(Request $request)
     {
+        
         // return $request->all();
         $fila = new quotationsModel;
         $fila->user_id = $request->user_id;
@@ -48,6 +53,13 @@ class quotationsResource extends Controller
         $fila->unit_price = $request->unit_price;
         $fila->suppliers_id = $request->suppliers_id;
         $fila->save();
+
+        $detail = order_detailsModel::find($request->order_details_id);
+        $order = ordersModel::find($detail->orders_id);
+        if($order->status == "1"){
+            $order->status = "2";
+            $order->save();
+        }
         return "ok";
     }
 
@@ -93,6 +105,6 @@ class quotationsResource extends Controller
      */
     public function destroy($id)
     {
-        //
+        quotationsModel::destroy($id);
     }
 }

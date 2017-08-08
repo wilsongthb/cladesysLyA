@@ -1,14 +1,17 @@
 inputsConfig = {
     name: 'inputs',
     title: 'ENTRADAS A ALMACEN',
-    urlApi: `${APP_CONST.url}/api/logistic/inputs`,
+    api: {
+        url: `${GLOBAL.url}/logistic/api/inputs`, 
+    },
+    urlApi: `${GLOBAL.url}/logistic/api/inputs`, 
     // esta en ng porque esta ruta sera servida por angular
-    urlCreate: `${APP_CONST.url}/logistic/ng/inputs/create`,
-    urlEdit: `${APP_CONST.url}/logistic/ng/inputs/edit`,
-    urlShow: `${APP_CONST.url}/logistic/ng/inputs/show`,
+    urlCreate: `${GLOBAL.url}/logistic/inputs/create`,
+    urlEdit: `${GLOBAL.url}/logistic/inputs/edit`,
+    urlShow: `${GLOBAL.url}/logistic/inputs/show`,
     detail: {
         name: 'input_details',
-        urlApi: `${APP_CONST.url}/api/logistic/input_details`,
+        urlApi: `${GLOBAL.url}/logistic/api/input_details`,
     },
 }
 
@@ -19,15 +22,18 @@ app.controller('inputsCreateController', [
     '$http',
     '$location',
     'utilitiesFactory',
+    'locationsService',
 function(
     $scope, 
     $http,
     $location,
-    utilitiesFactory
+    utilitiesFactory,
+    locationsService
 ){
-    $scope.APP_CONST = APP_CONST
+    $scope.GLOBAL = GLOBAL
     $scope.registro = {
-        user_id: APP_CONST.user.id
+        user_id: GLOBAL.user.id,
+        locations_id: parseInt(locationsService.id)
     }
     ///////////////////////////////////
     // PERSONALIZADO
@@ -58,12 +64,14 @@ app.controller('inputsEditController', [
     '$routeParams',
     '$location',
     'utilitiesFactory',
+    'uibDateParser',
 function(
     $scope,
     $http,
     $routeParams,
     $location,
-    utilitiesFactory
+    utilitiesFactory,
+    uibDateParser
 ){
     $scope.registro = {}
     $scope.detalles = []
@@ -97,12 +105,12 @@ function(
     // obteniendo registro
     $scope.leer = function(){
         $http.get(
-            `${APP_CONST.url}/api/logistic/${$scope.config.name}/${$routeParams.id}` // URL
+            `${$scope.config.api.url}/${$routeParams.id}` // URL
         ).then(
             // success
             function(response){
                 $scope.registro = response.data.registro
-                $scope.registro.user_id = APP_CONST.user.id
+                $scope.registro.user_id = GLOBAL.user.id
             }
         )
     }
@@ -112,6 +120,10 @@ function(
         $location.path(`${$scope.config.name}`)
     }
     ///////////////////////
+
+    $scope.mostrarForm = function() {
+        $('#detalleModal').modal('show')
+    }
 
     /////////////////////
     // DETALLES
@@ -132,11 +144,14 @@ function(
         )
     }
     $scope.guardarDetalle = function(){
-        $scope.detalle.user_id = APP_CONST.user.id
+        $scope.detalle.user_id = GLOBAL.user.id
         $scope.detalle.inputs_id = $scope.registro.id
+
         $http.post($scope.config.detail.urlApi, $scope.detalle).then(
             // success
             function(response){
+                $scope.detalle = {}
+                $('#detalleModal').modal('hide')
                 $scope.leerDetalles()
             }
         )
@@ -158,153 +173,4 @@ function(
     $scope.leer()
     $scope.leerDetalles()
     enfocar('init_focus')
-}])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.controller('inputsShowController', [
-    '$scope',
-    '$http',
-    '$location',
-    'utilitiesFactory',
-    'getOneFactory',
-    '$routeParams',
-function(
-    $scope, 
-    $http, 
-    $location,
-    utilitiesFactory,
-    getOneFactory,
-    $routeParams
-){
-
-    // valores iniciales
-    $scope.error = false
-    $scope.config = inputsConfig
-    $scope.registro = {
-        user_id: window.user.id
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    $scope.detalle = {}
-    $scope.detalles = []    
-    // obtener los valores relacionales
-    $scope.products = utilitiesFactory.products
-    $scope.tickets = utilitiesFactory.tickets
-    $scope.locations = utilitiesFactory.locations
-    $scope.suppliers = utilitiesFactory.suppliers
-    $scope.products.get()
-    $scope.tickets.get()
-    $scope.locations.get()
-    $scope.suppliers.get()
-    // valores de ayuda en la vista, no se heredan a otros controladores
-    $scope.selectProduct = function(){
-        $scope.product = $scope.products.registros.filter(function(obj){
-            return obj.id === $scope.detalle.products_id
-        })[0]
-        $scope.detalle.products_detail = $scope.product.detail
-    }
-    $scope.total = function(){
-        var total = 0
-        for(i in $scope.detalles){
-            var d = $scope.detalles[i]
-            total += d.unit_price * d.quantity
-        }
-        return total
-    }
-    $scope.copiarArriba = function(detalle){
-        $scope.detalle = JSON.parse(JSON.stringify(detalle))
-    }
-    // show 
-    getOneFactory.at('inputs', $routeParams.id).then(
-        // success
-        function(response){
-            $scope.registro = response.data.registro
-            $scope.detalles = response.data.detalles
-        }
-    )
-    ////////////////////////////////////////////////////////////////////////////////
-
-    // $scope.agregarDetalle = function(){
-    //     $scope.detalles.push(JSON.parse(JSON.stringify($scope.detalle)))
-    //     // $scope.detalles[$scope.detalles.length] = JSON.parse(JSON.stringify($scope.detalle))
-    //     // angular.copy($scope.detalle, $scope.detalles)
-    //     $scope.detalle = {}
-    // }
-    // $scope.guardar = function(){
-    //     $http.post(
-    //         // url
-    //         `${APP_CONST.url}/api/logistic/${$scope.config.name}`, 
-    //         // data
-    //         {
-    //             registro: $scope.registro,
-    //             detalles: $scope.detalles
-    //         }, 
-    //         // config
-    //         {}
-    //     ).then(
-    //         // success
-    //         function(response){
-    //             $location.path(`/${$scope.config.name}`)
-    //         },
-    //         // error
-    //         function(response){
-    //             $scope.error = true
-    //         }
-    //     )
-    // }
 }])
