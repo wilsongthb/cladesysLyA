@@ -75,7 +75,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="d in detalles">
-                        <td>{{d.id}}_{{d.order_details_id}}</td>
+                        <td>{{d.order_details_id}} - {{d.id}}</td>
                         <td ng-bind="d.products_detail"></td>
                         <td ng-bind="d.suppliers_name"></td>
                         <td ng-bind="d.unit_price"></td>

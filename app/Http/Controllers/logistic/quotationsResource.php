@@ -82,7 +82,45 @@ class quotationsResource extends Controller
      */
     public function edit($id)
     {
-        //
+        return [
+            'data' => order_detailsModel::
+                select(
+                    'p.detail AS products_detail',
+                    'od.*'
+                )
+                ->from('order_details AS od')
+                ->leftJoin('products AS p', 'p.id', '=', 'od.products_id')
+                ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+                ->where('o.id', $id)
+                ->get(),
+            'quotations' => quotationsModel::
+                select(
+                    'od.id AS order_details_id',
+                    // 'p.detail',
+                    'od.quantity',
+                    's.company_name',
+                    'q.*'
+                )
+                ->from('quotations AS q')
+                ->leftJoin('order_details AS od', 'od.id', '=', 'q.order_details_id')
+                ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+                ->leftJoin('suppliers AS s', 's.id', '=', 'q.suppliers_id')
+                ->leftJoin('products AS p', 'p.id', '=', 'od.products_id')
+                ->where('o.id', $id)
+                ->get(),
+            'suppliers' => quotationsModel::
+                select(
+                    's.id',
+                    's.company_name'
+                )
+                ->from('quotations AS q')
+                ->leftJoin('order_details AS od', 'od.id', '=', 'q.order_details_id')
+                ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+                ->leftJoin('suppliers AS s', 's.id', '=', 'q.suppliers_id')
+                ->where('o.id', $id)
+                ->groupBy('id')
+                ->get(),
+        ];
     }
 
     /**
@@ -94,7 +132,12 @@ class quotationsResource extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fila = quotationsModel::find($id);
+        $fila->quantity = $request->quantity;
+        $fila->user_id = $request->user_id;
+        $fila->status = $request->status;
+        $fila->save();
+        return "ok";
     }
 
     /**

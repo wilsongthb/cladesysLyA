@@ -3,7 +3,6 @@
 
 @section('head')
 
-    {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">    --}}
     <link rel="stylesheet" href="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-csp.css') }} ">
     <base href="{{ url('') }}/logistic/">
 

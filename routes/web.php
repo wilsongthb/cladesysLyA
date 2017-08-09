@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('locations', 'logistic\locationsController');
         Route::resource('measurements', 'logistic\measurementsController');
 
+        Route::get('purchase_order/{orders_id}/{suppliers_id}', 'logistic\purchaseOrderController@pdfPurchaseOrder');
+
         // WEB SPA
         Route::get('/{p?}/{p1?}/{p3?}/{p4?}', 'logistic\utilitiesResource@main')->name('logistic');
     });
@@ -67,10 +69,13 @@ Route::group(['middleware' => 'auth'], function(){
     // GERENCIAL
     Route::group(['prefix' => 'managerial'], function(){
         /**
-        * SINGLE PAGE APLICATION IN VUE JS
+        * SPA in VueJS
         */
         Route::get('/', 'logistic\utilitiesResource@trabajando');
     });
+    Route::get('/clinic', 'logistic\utilitiesResource@trabajando');
+    Route::get('/protocols', 'logistic\utilitiesResource@trabajando');
+    Route::get('/laboratories', 'logistic\utilitiesResource@trabajando');
 
 });
 

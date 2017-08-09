@@ -57,25 +57,31 @@ class Relationals extends Migration
             $table->increments('id');
             
             // columnas
-            $table->string('company_name');
+            $table->string('company_name')->nullable();
             $table->string('contact_name');
-            $table->string('identity');
-            $table->string('address');
+            $table->string('identity', 18)->nullable();
+            $table->string('address')->nullable();
             $table->string('phone');
             $table->string('postal_code')->nullable();
             $table->string('country');
             $table->string('region');
-            $table->string('home_page'); // url
-            $table->string('email');
+            $table->string('home_page')->nullable(); // url
+            $table->string('email')->nullable();
             $table->boolean('flagstate')->default('1');
 
+            // campos innecesarios
+            $table->string('account_number');
+            $table->string('bank', 150);
+            $table->string('observation');
+            $table->string('products_stock'); // en json
+
             // referencia a tickets
-            $table->integer('tickets_id')->unsigned(); // usando el de config
+            $table->integer('tickets_id')->unsigned()->nullable(); // usando el de config
             // $table->foreign('tickets_id')->references('id')->on('tickets');
 
             // referencia a locations
-            $table->integer('locations_id')->unsigned();
-            $table->foreign('locations_id')->references('id')->on('locations');
+            // $table->integer('locations_id')->unsigned();
+            // $table->foreign('locations_id')->references('id')->on('locations');
 
             // referencia al usuario
             $table->integer('user_id')->unsigned();

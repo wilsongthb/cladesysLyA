@@ -83,6 +83,7 @@ class cladesys extends Seeder
             ['detail' => 'FRASCO X 120 ML', 'user_id' => 1],
             ['detail' => 'FRASCO X 225 GR.', 'user_id' => 1],
             ['detail' => 'UNIT', 'user_id' => 1],
+            ['detail' => 'UNIDAD', 'user_id' => 1],
         ]);
         DB::table('measurements')->insert([
             ['detail' => 'GRAMOS', 'user_id' => 1],
