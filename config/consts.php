@@ -5,6 +5,12 @@
 ////////////////////////////77777777777
 
 return [
+    'empresa' => [
+        'nombre' => 'CHARISMA',
+        'areas' => [
+            1 => 'LOGISTICA'
+        ]
+    ],
     'money' => [
         'symbol' => 'S/.'
     ],
@@ -53,8 +59,8 @@ return [
     // ORDERS
     'orders' => [
         'status' => [
-            1 => 'EN PROCESO',
-            2 => 'COTIZANDO',
+            1 => 'REQUERIMIENTO',
+            2 => 'COTIZACION',
             3 => 'ORDEN DE COMPRA',
             4 => 'FINALIZADO'
         ]

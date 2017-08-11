@@ -22,7 +22,9 @@
                         <!-- <span ng-repeat="r in data.registros">
 
                         </span> -->
-                        <th ng-repeat="s in data.suppliers" ng-bind="s.company_name"></th>
+                        <th ng-repeat="s in data.suppliers">
+                            <span title="{{s.contact_name}}">{{s.company_name}}</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +54,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Generar orden de Compra</h4>
             </div>
             <div class="modal-body">
                 
@@ -67,8 +69,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
         </div>
     </div>

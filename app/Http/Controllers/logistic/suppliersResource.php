@@ -17,27 +17,17 @@ class suppliersResource extends Controller
     {
         $result = suppliersModel::select(
             // columnas
-                'suppliers.*',
-                'locations.name AS locations_name'
+                'suppliers.*'
+                // 'locations.name AS locations_name'
             )
             // relaciones con otras tablas
-                ->leftJoin('locations', 'suppliers.locations_id', '=', 'locations.id')
-                ->where('suppliers.flagstate', '1') // si esta eliminado no lo considera
-                ->orderBy('suppliers.id', 'DESC');
+            ->where('suppliers.flagstate', '1') // si esta eliminado no lo considera
+            ->orderBy('suppliers.id', 'DESC');
         if(strlen($request->search) !== 0){// si se envia algun argumento de busqueda
             // condiciones de busqueda
             $result
                 ->where('suppliers.company_name', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.contact_name', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.identity', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.address', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.phone', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.postal_code', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.country', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.region', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.home_page', 'LIKE', "%$request->search%")
-                ->orWhere('suppliers.email', 'LIKE', "%$request->search%")
-                ->orWhere('locations.name', 'LIKE', "%$request->search%");
+                ->orWhere('suppliers.contact_name', 'LIKE', "%$request->search%");
         }
         // enviar el resultado
         return $result->paginate(15);
@@ -61,27 +51,28 @@ class suppliersResource extends Controller
      */
     public function store(Request $request)
     {
-        $registro = new suppliersModel;
-        $registro->company_name = $request->company_name;
-        $registro->contact_name = $request->contact_name;
-        $registro->identity = $request->identity;
-        $registro->address = $request->address;
-        $registro->phone = $request->phone;
-        
-        $registro->country = $request->country;
-        $registro->region = $request->region;
-        $registro->home_page = $request->home_page;
-        $registro->email = $request->email;
-        // $registro->flagstate = $request->flagstate;
-        // $registro->flagstate = 1; // default
-        $registro->tickets_id = $request->tickets_id;
-        $registro->locations_id = $request->locations_id;
-        $registro->user_id = $request->user_id;
+        $fila = new suppliersModel;
+        // requerido
+        $fila->contact_name = $request->contact_name;
+        $fila->phone = $request->phone;
+        $fila->country = $request->country;
+        $fila->region = $request->region;
+        $fila->account_number = $request->account_number;
+        $fila->bank = $request->bank;
+        $fila->user_id = $request->user_id;
+        // opcional
+        $fila->company_name = isset($request->company_name) ? $request->company_name : NULL;
+        $fila->identity = isset($request->identity) ? $request->identity : NULL;
+        $fila->address = isset($request->address) ? $request->address : NULL;
+        $fila->postal_code = isset($request->postal_code) ? $request->postal_code : NULL;
+        $fila->home_page = isset($request->home_page) ? $request->home_page : NULL;
+        $fila->email = isset($request->email) ? $request->email : NULL;
+        $fila->observation = isset($request->observation) ? $request->observation : NULL;
+        $fila->products_stock = isset($request->products_stock) ? $request->products_stock : NULL;
+        $fila->tickets_id = isset($request->tickets_id) ? $request->tickets_id : NULL;
+        // guardar
+        $fila->save();
 
-        if(isset($request->postal_code)){
-            $registro->postal_code = $request->postal_code;
-        }
-        $registro->save();
         return "ok";
     }
 
@@ -121,36 +112,29 @@ class suppliersResource extends Controller
      */
     public function update(Request $request, $id)
     {
-        $registro = suppliersModel::find($id);
-        // address
-        // company_name
-        // contact_name
-        // country
-        // email
-        // home_page
-        // identity
-        // locations_id
-        // phone
-        // postal_code
-        // region
-        // tickets_id
-        // user_id
+        $fila = suppliersModel::find($id);
+        // requerido
+        $fila->contact_name = $request->contact_name;
+        $fila->phone = $request->phone;
+        $fila->country = $request->country;
+        $fila->region = $request->region;
+        $fila->account_number = $request->account_number;
+        $fila->bank = $request->bank;
+        $fila->user_id = $request->user_id;
+        // opcional
+        $fila->company_name = isset($request->company_name) ? $request->company_name : NULL;
+        $fila->identity = isset($request->identity) ? $request->identity : NULL;
+        $fila->address = isset($request->address) ? $request->address : NULL;
+        $fila->postal_code = isset($request->postal_code) ? $request->postal_code : NULL;
+        $fila->home_page = isset($request->home_page) ? $request->home_page : NULL;
+        $fila->email = isset($request->email) ? $request->email : NULL;
+        $fila->observation = isset($request->observation) ? $request->observation : NULL;
+        $fila->products_stock = isset($request->products_stock) ? $request->products_stock : NULL;
+        $fila->tickets_id = isset($request->tickets_id) ? $request->tickets_id : NULL;
+        // guardar
+        $fila->save();
 
-        $registro->address = $request->address;
-        $registro->company_name = $request->company_name;
-        $registro->contact_name = $request->contact_name;
-        $registro->country = $request->country;
-        $registro->email = $request->email;
-        $registro->home_page = $request->home_page;
-        $registro->identity = $request->identity;
-        $registro->locations_id = $request->locations_id;
-        $registro->phone = $request->phone;
-        $registro->postal_code = $request->postal_code;
-        $registro->region = $request->region;
-        $registro->tickets_id = $request->tickets_id;
-        $registro->user_id = $request->user_id;
-        // guardar cambios
-        $registro->save();
+        return "ok";
     }
 
     /**
@@ -162,7 +146,7 @@ class suppliersResource extends Controller
     public function destroy($id)
     {
         $registro = suppliersModel::find($id);
-        $registro->flagstate = 2;
+        $registro->flagstate = 0;
         $registro->save();
     }
 }

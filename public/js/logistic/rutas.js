@@ -92,10 +92,26 @@ app.config([
                 templateUrl: `${GLOBAL.url}/view/logistic.purchase_orders.edit.html`,
                 controller: 'PurchaseOrdersEditController'
             })
+
+            // SALIDA
+            .when('outputs', {
+                template: '<outputs></outputs>'
+            })
             
             // COMPONENT
             .when('/components', {
                 template: '<app></app>'
+            })
+            // COMPONENT
+            .when('/test', {
+                template: `
+                    <pre>{{ registro }}</pre>
+                    <tests-comp 
+                        registro="registro" 
+                        cadena="registro.msj"
+                        on-lac="hola(msj)"></tests-comp>
+                `,
+                controller: 'TestController'
             })
 
             // rutas perdidas

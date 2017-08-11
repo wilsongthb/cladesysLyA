@@ -45,7 +45,7 @@
                         <option 
                             ng-repeat="s in suppliers.registros" 
                             ng-value="s.id">
-                            {{s.company_name}} 
+                            {{s.company_name}} - {{s.contact_name}} 
                         </option>
                     </select>
                 </div>

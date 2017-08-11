@@ -5,11 +5,17 @@
             <!-- <button ng-click="" id="init_focus">Agregar</button> -->
             <form ng-submit="guardar_detalle()">
                 <div class="form-group">
-                    <label for="">Producto</label>
+                    <label for="">Producto *</label>
+                    <input 
+                        type="text"
+                        class="form-control"
+                        placeholder="Buscar producto"
+                        ng-model="detalle.products_detail"
+                        ng-model-options="{ debounce: 1000 } "
+                        ng-change="products.get(detalle.products_detail, false)">
                     <select 
-                        id="init_focus"
                         ng-model="detalle.products_id" 
-                        ng-keyup="products.get('', $event.keyCode)"
+                        ng-change="selectProduct()"
                         class="form-control" 
                         required>
                         <option value="">Buscar...</option>

@@ -111,7 +111,8 @@ class quotationsResource extends Controller
             'suppliers' => quotationsModel::
                 select(
                     's.id',
-                    's.company_name'
+                    's.company_name',
+                    's.contact_name'
                 )
                 ->from('quotations AS q')
                 ->leftJoin('order_details AS od', 'od.id', '=', 'q.order_details_id')

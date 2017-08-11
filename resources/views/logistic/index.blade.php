@@ -24,9 +24,9 @@
     </style>
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.css') }} ">
     <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }} ">
-    {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">       --}}
-    {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-journal.min.css') }} ">      --}}
-    {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-cosmo.min.css') }} ">   --}}
+     {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-simplex.min.css') }} ">        --}}
+     {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-journal.min.css') }} ">       --}}
+     {{--  <link rel="stylesheet" href="{{ asset('css/bootstrap-cosmo.min.css') }} ">    --}}
     @yield('head')
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -112,6 +112,9 @@
             $('#contenido').show()
             $('#contenido').css('opacity', 1)
             $('#cargando').hide()
+            {{--  if(window.imprimir){
+                imprimir()
+            }  --}}
         })
     </script>
     @yield('script')

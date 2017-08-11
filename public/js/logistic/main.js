@@ -10,6 +10,7 @@ var app = angular.module('logistic', [
     'ngTouch', // dependencia XD
     'ui.bootstrap', // UI bootstrap
     'ngSanitize', // insertar html directamente
+    'ui.select',
 ])
 
 

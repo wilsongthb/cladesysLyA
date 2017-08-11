@@ -73,6 +73,21 @@ function(
     utilitiesFactory,
     uibDateParser
 ){
+    function disabled(data) {
+        var date = data.date,
+        mode = data.mode;
+        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+     $scope.dateOptions = {
+        // dateDisabled: disabled,
+        formatYear: 'yy',
+        // maxDate: new Date(2020, 5, 22),
+        // minDate: new Date(),
+        startingDay: 1
+    };
+    $scope.pop = false;
+    $scope.pop1 = false;
+
     $scope.registro = {}
     $scope.detalles = []
     $scope.detalle = {}

@@ -4,6 +4,7 @@
 @section('head')
 
     <link rel="stylesheet" href="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-csp.css') }} ">
+    <link rel="stylesheet" href="{{ asset('bower_components/angular-ui-select/dist/select.css') }} ">
     <base href="{{ url('') }}/logistic/">
 
 @stop
@@ -30,6 +31,7 @@
     <script src="{{ asset('bower_components/angular-bootstrap/ui-bootstrap.js') }} "></script>
     <script src="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-tpls.js') }} "></script>
     <script src="{{ asset('bower_components/angular-sanitize/angular-sanitize.js') }} "></script>
+    <script src="{{ asset('bower_components/angular-ui-select/dist/select.js') }} "></script>
 
     <script>
         // constantes de la aplicacion
@@ -37,6 +39,7 @@
             return {
                 url: "{{ url('') }}",
                 app_url: "{{ url('') }}/logistic",
+                api_url: "{{ url('') }}/logistic/api",
                 api: {
                     url: "{{ url('') }}/logistic/api"
                 },
@@ -56,14 +59,16 @@
     <script src="{{ asset('js/logistic/shortcuts.js') }} "></script>
     <script src="{{ asset('js/logistic/main.js') }} "></script>
     {{--  Componentes  --}}
-    <script src="{{ asset('js/logistic/components/products.js') }} "></script>
     <script src="{{ asset('js/logistic/components/app.js') }} "></script>
+    <script src="{{ asset('js/logistic/components/utilities.js') }} "></script>
     <script src="{{ asset('js/logistic/components/orderStatus.js') }} "></script>
+    <script src="{{ asset('js/logistic/components/tests.js') }} "></script>
     {{--  Rutas  --}}
     <script src="{{ asset('js/logistic/rutas.js') }} "></script>
     {{--  Servicios  --}}
     <script src="{{ asset('js/logistic/services.js') }} "></script>
     {{--  Controladores  --}}
+    <script src="{{ asset('js/logistic/TestController.js') }} "></script>
     <script src="{{ asset('js/logistic/HomeController.js') }} "></script>
     <script src="{{ asset('js/logistic/ProductsController.js') }} "></script>
     <script src="{{ asset('js/logistic/SuppliersController.js') }} "></script>

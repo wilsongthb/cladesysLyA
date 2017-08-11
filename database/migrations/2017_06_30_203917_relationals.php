@@ -72,8 +72,8 @@ class Relationals extends Migration
             // campos innecesarios
             $table->string('account_number');
             $table->string('bank', 150);
-            $table->string('observation');
-            $table->string('products_stock'); // en json
+            $table->string('observation')->nullable();
+            $table->string('products_stock')->nullable(); // en json
 
             // referencia a tickets
             $table->integer('tickets_id')->unsigned()->nullable(); // usando el de config
@@ -244,7 +244,7 @@ class Relationals extends Migration
             $table->integer('minimum');
             $table->integer('permanent');
             // DURACION
-            $table->string('duration', '8');// en dias
+            $table->tinyInteger('duration');// en dias
             // RELACIONES
             $table->integer('products_id')->unsigned();
             $table->foreign('products_id')->references('id')->on('products');

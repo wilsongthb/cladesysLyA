@@ -27,13 +27,32 @@
                         </div>
                         <div class="form-group">
                             <label>Fecha de Expiracion *</label>
-                            <input 
+                            <!-- <input 
                                 type="text" 
                                 ng-model="detalle.expiration" 
                                 class="form-control" 
                                 required 
                                 placeholder="DD/MM/AAAA"
-                                uib-datepicker-popup="dd/MM/yyyy">
+                                uib-datepicker-popup="dd/MM/yyyy"> -->
+                            <div class="input-group">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    uib-datepicker-popup="dd/MM/yyyy"
+                                    ng-model="detalle.expiration" 
+                                    is-open="pop1" 
+                                    datepicker-options="dateOptions" 
+                                    ng-required="true" 
+                                    close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-default" 
+                                        ng-click="pop1 = true">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Numero Ticket *</label>
@@ -87,7 +106,25 @@
                         
                         <div class="form-group">
                             <label>Fecha de Fabricación</label>
-                            <input type="text" class="form-control" ng-model="detalle.fabrication" placeholder="AAAA-MM-DD">
+                            <div class="input-group">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    uib-datepicker-popup="dd/MM/yyyy"
+                                    ng-model="detalle.fabrication" 
+                                    is-open="pop" 
+                                    datepicker-options="dateOptions" 
+                                    ng-required="true" 
+                                    close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-default" 
+                                        ng-click="pop = true">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Lote</label>

@@ -2,70 +2,78 @@
     <div class="row">
         <h2 class="text-center">{{config.title}} </h2>
         <form class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-submit="guardar()">
+            
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                    <label>Nombre de La compañia *</label>
-                    <!-- enfoque incial -->
-                    <input id="init_focus" type="text" ng-model="registro.company_name" class="form-control" required capitalize>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                    <label>Nombre de contacto *</label>
-                    <input type="text" ng-model="registro.contact_name" class="form-control" required capitalize>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                    <label>Direccion *</label>
-                    <input type="text" ng-model="registro.address" class="form-control" required>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
-                    <label>Pagina web *</label>
-                    <input type="text" ng-model="registro.home_page" class="form-control" required>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
-                    <label>Email *</label>
-                    <input type="email" ng-model="registro.email" class="form-control" required>
-                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <legend>Información Basica (requerida)</legend>
+                    <div class="form-group">
+                        <label>Nombre de Contacto *</label>
+                        <input class="form-control" type="text" ng-model="registro.contact_name" required maxlength="191">
+                    </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>Tipo de documento *</label>
-                    <select 
-                        class="form-control"
-                        ng-model="registro.tickets_id"
-                        required>
-                        <?php foreach(config('consts.doc.type') as $key => $doc){ ?>
-                            <option ng-value="<?= $key ?>"><?= $doc ?> </option>
-                        <?php } ?>
-                    </select>
+                    <div class="form-group">
+                        <label>Pais *</label>
+                        <input class="form-control" type="text" ng-model="registro.country" capitalize maxlength="191" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Region *</label>
+                        <input class="form-control" type="text" ng-model="registro.region" capitalize maxlength="191" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Numero de Telefono *</label>
+                        <input class="form-control" type="text" ng-model="registro.phone" maxlength="191" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Banco *</label>
+                        <input class="form-control" type="text" ng-model="registro.bank" capitalize maxlength="150" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Numero de cuenta bancaria *</label>
+                        <input class="form-control" type="text" ng-model="registro.account_number" maxlength="191" required>
+                    </div>
                 </div>
-                
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>ID de identidad *</label>
-                    <input type="text" ng-model="registro.identity" class="form-control" required>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>Telefono *</label>
-                    <input type="text" ng-model="registro.phone" class="form-control" required>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>Codigo Postal</label>
-                    <input type="text" ng-model="registro.postal_code" class="form-control">
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>Pais *</label>
-                    <input type="text" ng-model="registro.country" class="form-control" required capitalize>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>Region *</label>
-                    <input type="text" ng-model="registro.region" class="form-control" required capitalize>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 form-group">
-                    <label>Localización *</label>
-                    <select 
-                        ng-model="registro.locations_id" 
-                        class="form-control" 
-                        ng-keyup="locations.get('', $event.keyCode)" 
-                        required>
-                        <option ng-repeat="l in locations.registros" ng-value="l.id">{{l.name}} </option>
-                    </select>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <legend>Información Adicional</legend>
+                    <div class="form-group">
+                        <label>Razon Social</label>
+                        <input class="form-control" type="text" ng-model="registro.company_name" capitalize maxlength="191">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de documento</label>
+                        <select 
+                            class="form-control"
+                            ng-model="registro.tickets_id">
+                            <?php foreach(config('consts.doc.type') as $key => $doc){ ?>
+                                <option ng-value="<?= $key ?>"><?= $doc ?> </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Numero de DNI/RUC</label>
+                        <input class="form-control" type="text" ng-model="registro.identify" maxlength="18">
+                    </div>
+                    <div class="form-group">
+                        <label>Direccion</label>
+                        <input class="form-control" type="text" ng-model="registro.address" maxlength="191">
+                    </div>
+                    <div class="form-group">
+                        <label>Codigo Postal</label>
+                        <input class="form-control" type="text" ng-model="registro.postal_code" maxlength="191">
+                    </div>
+                    <div class="form-group">
+                        <label>Pagina Web</label>
+                        <input class="form-control" type="text" ng-model="registro.home_page" maxlength="191">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electronico</label>
+                        <input class="form-control" type="text" ng-model="registro.email" maxlength="191">
+                    </div>
+                    <div class="form-group">
+                        <label>Observaciones</label>
+                        <textarea class="form-control" ng-model="registro.observation" maxlength="191" rows="2"></textarea>
+                    </div>
+                    
+                    <!-- products_stock -->
                 </div>
             </div>
             <!--mensaje de error-->
