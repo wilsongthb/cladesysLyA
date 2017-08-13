@@ -21,7 +21,7 @@
 @stop
 
 @section('script')
-
+    {{--  codigo de terceros  --}}
     <script src="{{ asset('bower_components/money-formatter/dist/money-formatter.js') }} "></script>
     <script src="{{ asset('bower_components/angular/angular.js') }} "></script>
     <script src="{{ asset('bower_components/angular-route/angular-route.js') }} "></script>
@@ -54,15 +54,13 @@
         const GLOBAL = GLOBALS()
     </script>
 
+    {{--  Core  --}}
     <script src="{{ asset('js/utils.js') }} "></script>
     <script src="{{ asset('js/logistic/generics.js') }} "></script>
     <script src="{{ asset('js/logistic/shortcuts.js') }} "></script>
     <script src="{{ asset('js/logistic/main.js') }} "></script>
     {{--  Componentes  --}}
-    <script src="{{ asset('js/logistic/components/app.js') }} "></script>
-    <script src="{{ asset('js/logistic/components/utilities.js') }} "></script>
     <script src="{{ asset('js/logistic/components/orderStatus.js') }} "></script>
-    <script src="{{ asset('js/logistic/components/tests.js') }} "></script>
     {{--  Rutas  --}}
     <script src="{{ asset('js/logistic/rutas.js') }} "></script>
     {{--  Servicios  --}}

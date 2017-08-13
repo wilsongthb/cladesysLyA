@@ -885,34 +885,34 @@ foreach ($arr_in as $key => $fila) {
 
         // INSERt A BASE DE DATOS
         // CATEGORIAS
-        // foreach ($categorias as $key => $value) {
-        //     DB::table('categories')->insert([
-        //         'detail' => $key,
-        //         'user_id' => 1
-        //     ]);
-        // }
+        foreach ($categorias as $key => $value) {
+            DB::table('categories')->insert([
+                'detail' => $key,
+                'user_id' => 1
+            ]);
+        }
         
         // BRANDS
-        // foreach ($brands as $key => $value) {
-        //     DB::table('brands')->insert([
-        //         'detail' => $key,
-        //         'user_id' => 1
-        //     ]);
-        // }
+        foreach ($brands as $key => $value) {
+            DB::table('brands')->insert([
+                'detail' => $key,
+                'user_id' => 1
+            ]);
+        }
         // PACKINGS
-        // foreach ($packings as $key => $value) {
-        //     DB::table('packings')->insert([
-        //         'detail' => $key,
-        //         'user_id' => 1
-        //     ]);
-        // }
+        foreach ($packings as $key => $value) {
+            DB::table('packings')->insert([
+                'detail' => $key,
+                'user_id' => 1
+            ]);
+        }
         // MEASUREMENTS
-        // foreach ($measurements as $key => $value) {
-        //     DB::table('measurements')->insert([
-        //         'detail' => $key,
-        //         'user_id' => 1
-        //     ]);
-        // }
+        foreach ($measurements as $key => $value) {
+            DB::table('measurements')->insert([
+                'detail' => $key,
+                'user_id' => 1
+            ]);
+        }
 
 
         // PRODUCTS

@@ -15,6 +15,10 @@ app.config([
                 // pagina de error, muestra un mensaje de aviso
                 templateUrl: `${GLOBAL.url}/view/notfound.html`
             })
+            // rutas perdidas
+            .otherwise({
+                redirectTo: '/notfound'
+            })
 
             // PRODUCTS
             .when('/products', {
@@ -94,29 +98,16 @@ app.config([
             })
 
             // SALIDA
-            .when('outputs', {
+            .when('/outputs', {
                 template: '<outputs></outputs>'
             })
-            
-            // COMPONENT
-            .when('/components', {
-                template: '<app></app>'
-            })
-            // COMPONENT
-            .when('/test', {
-                template: `
-                    <pre>{{ registro }}</pre>
-                    <tests-comp 
-                        registro="registro" 
-                        cadena="registro.msj"
-                        on-lac="hola(msj)"></tests-comp>
-                `,
-                controller: 'TestController'
+
+
+            // developer
+            .when('/dev', {
+                templateUrl: `${GLOBAL.url}/view/logistic.dev.html`,
             })
 
-            // rutas perdidas
-            .otherwise({
-                redirectTo: '/notfound'
-            })
+
         $locationProvider.html5Mode(true)
     }])
