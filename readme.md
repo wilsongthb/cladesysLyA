@@ -48,21 +48,24 @@ USE `cladesys_db`;
 
 
 ## Ejecutar para crear base de datos
-~~~
+~~~sh
 php artisan migrate
 php artisan db:seed
 ~~~
 
+## Si usas apache2 debes de configurar el archivo /public/.htaccess
+~~~sh
+RewriteBase "/wilson/cladesysLyA/public/" # la ruta de la carpeta en tu servidor
+~~~
+
 ## Acceso de desarrollo
+~~~
 email: root@localhost
 pass: root
-
-## AGREGAR
-- Patrimonio
-
-- formato de fecha en español
-- COdigo postal como no requerido
+~~~
 
 # NOTA
 * tienes que aprender a manejar mejor los promises
-* modificar inventories.depressiation a inventories.devaluetion
+
+# NUEVAS
+Voy a usar materialize para ofrecer una vista mas moderna
