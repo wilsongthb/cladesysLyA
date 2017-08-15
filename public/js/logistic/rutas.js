@@ -99,8 +99,20 @@ app.config([
 
             // SALIDA
             .when('/outputs', {
-                template: '<outputs></outputs>'
+                templateUrl: `${GLOBAL.url}/view/logistic.outputs.index.html`,
+                controller: 'OutputsController'
             })
+            .when('/outputs/create', {
+                templateUrl: `${GLOBAL.url}/view/logistic.outputs.create.html`,
+                controller: 'OutputsCreateController'
+            })
+            .when('/outputs/edit/:id', {
+                templateUrl: `${GLOBAL.url}/view/logistic.outputs.edit.html`,
+                controller: 'OutputsEditController'
+            })
+            // .when('/outputs', {
+            //     template: '<outputs></outputs>'
+            // })
 
             .when('/product_options', {
                 templateUrl: `${GLOBAL.url}/view/logistic.product_options.html`,

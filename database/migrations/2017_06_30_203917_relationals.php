@@ -145,56 +145,6 @@ class Relationals extends Migration
             $table->timestamps();
         });
 
-        Schema::create('outputs', function (Blueprint $table) {
-            $table->increments('id');
-            
-            // columnas
-            $table->tinyInteger('status');
-            $table->char('type');
-            $table->string('ticket_number', '20');
-            $table->boolean('flagstate')->default('1');
-
-            // referencia a tickets
-            $table->integer('tickets_id')->unsigned();
-            // $table->foreign('tickets_id')->references('id')->on('tickets');
-
-            // referencia a locations
-            $table->integer('locations_id')->unsigned();
-            $table->foreign('locations_id')->references('id')->on('locations');
-
-            // referencia al usuario
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-
-            // timestamps create_at y update_at
-            $table->timestamps();
-        });
-
-        Schema::create('output_details', function (Blueprint $table) {
-            $table->increments('id');
-            
-            // columnas
-            $table->float('utility', 4, 2); // configuracion de utilidad
-            $table->float('unit_price', 11, 2);
-            $table->integer('quantity');
-            $table->boolean('flagstate')->default('1');
-
-            // referencia a input_details
-            $table->integer('input_details_id')->unsigned();
-            $table->foreign('input_details_id')->references('id')->on('input_details');
-
-            // referencia a outputs
-            $table->integer('outputs_id')->unsigned();
-            $table->foreign('outputs_id')->references('id')->on('outputs');
-
-            // referencia al usuario
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-
-            // timestamps create_at y update_at
-            $table->timestamps();
-        });
-
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             
@@ -271,8 +221,7 @@ class Relationals extends Migration
         Schema::dropIfExists('product_options');
         Schema::dropIfExists('order_details');
         Schema::dropIfExists('orders');
-        Schema::dropIfExists('output_details');
-        Schema::dropIfExists('outputs');
+        
         Schema::dropIfExists('input_details');
         Schema::dropIfExists('inputs');
         Schema::dropIfExists('suppliers');

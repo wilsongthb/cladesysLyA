@@ -15,7 +15,7 @@ class OutputsResource extends Controller
      */
     public function index()
     {
-        //
+        return Outputs::paginate(15);
     }
 
     /**
@@ -38,14 +38,14 @@ class OutputsResource extends Controller
     {
         $fila = new Outputs;
         $fila->user_id = $request->user_id;
-        $fila->locations_id = $request->locations_id;
-        $fila->tickets_id = $request->tickets_id;
+        $fila->locations_id = $request->locations_id;// destino
+        $fila->tickets_id = 1;
         $fila->status = 1;
-        $fila->type = 1;
+        $fila->type = $request->type;
         $fila->ticket_number = 0;
         $fila->save();
-        $fila->ticket_number = sprintf("%'.09d", $fila->id);
-        $fila->save();
+        // $fila->ticket_number = sprintf("%'.09d", $fila->id);
+        // $fila->save();
         return $fila;
     }
 
@@ -57,7 +57,7 @@ class OutputsResource extends Controller
      */
     public function show($id)
     {
-        //
+        return Outputs::find($id);
     }
 
     /**

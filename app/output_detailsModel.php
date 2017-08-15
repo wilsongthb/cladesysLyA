@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class output_detailsModel extends Model
 {
-    protected $table = 'outputs';
+    protected $table = 'output_details';
 }

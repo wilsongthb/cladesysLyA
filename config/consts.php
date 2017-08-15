@@ -5,6 +5,13 @@
 ////////////////////////////77777777777
 
 return [
+    'output' => [
+        'type' => [
+            1 => 'SALIDA',
+            2 => 'VENTA',
+            3 => 'CONVERSION'
+        ]
+    ],
     'empresa' => [
         'nombre' => 'CHARISMA',
         'areas' => [

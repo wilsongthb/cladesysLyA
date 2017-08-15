@@ -33,10 +33,18 @@ class basics extends Seeder
         // ]);
 
         DB::table('locations')->insert([
-            'type' => '1',
-            'name' => 'ALMACEN GENERAL',
-            'utility' => '5',
-            'user_id' => '1'
+            [
+                'type' => '1',
+                'name' => 'ALMACEN GENERAL',
+                'utility' => '5',
+                'user_id' => '1'
+            ],
+            [
+                'type' => '2',
+                'name' => 'SUCURSAL',
+                'utility' => '0',
+                'user_id' => '1'
+            ]
         ]);
         
         DB::table('measurements')->insert([
