@@ -24,10 +24,6 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
             registros: [], 
             get: genericGetResource($http, 'locations')
         },
-        // tickets: {
-        //     registros: [], 
-        //     get: genericGetResource($http, 'tickets')
-        // },
         products: {
             registros: [],
             get: genericGetResource($http, 'products')
@@ -71,49 +67,37 @@ app.factory('getOneFactory', ['$http', function($http){
 }])
 
 app.service('locationsService', function($http){
+    // this.locations = utilitiesFactory.locations
+
+    // this.locations.get()
+    // utilitiesFactory.locations.get()
+    // this.locations = utilitiesFactory.locations.registros
     this.lista = []
-    // obtener las localizaciones
     this.init = function(){
-        $http.get(`${GLOBAL.url}/logistic/api/locations`).then(
-            // success
-            (response) => {
-                this.lista = []
-                // this.lista = response.data.data
+        $http.get(`${GLOBAL.api_url}/locations`).then(
+            (res) => {
+                // this.lista = res.data.data
                 this.lista[0] = {
-                    id: null,
-                    name: 'NINGUNO'
+                    name: "NINGUNO"
                 }
-                for(i in response.data.data){
-                    this.lista[response.data.data[i].id] = response.data.data[i]
+                for(i in res.data.data){
+                    this.lista.push(res.data.data[i])
                 }
-            }
-        )
-        $http.get(`${GLOBAL.url}/config`).then(
-            // success
-            response => {
-                this.id = response.data.locations_id
             }
         )
     }
     this.init()
 
-    // configuracion por defecto
-    // this.id = GLOBAL.location.default
-    this.id = 0
+    // this.id = 0
+    this.id = parseInt(localStorage.locations_id)
 
     this.set = function(id){
-        $http.post(`${GLOBAL.url}/config`, {
-            locations_id: id
-        }).then(
-            // success
-            response => {
-                this.id = response.data.locations_id
-            }
-        )
         this.id = id
+        localStorage.locations_id = id
     }
+
     this.get = function(){
-        return this.id
+        return parseInt(localStorage.locations_id)
     }
 })
 

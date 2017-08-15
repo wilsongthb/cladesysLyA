@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function(){
             Route::resource('quotations', 'logistic\quotationsResource');
             Route::resource('inputs', 'logistic\inputsResource');
             Route::resource('input_details', 'logistic\input_detailsResource');
+            Route::resource('product_options', 'logistic\ProductOptionsResource');
+            Route::resource('outputs', 'logistic\OutputsResource');
+            Route::resource('output_details', 'logistic\OutputDetailsResource');
 
             //GET UTILITIES
             Route::get('brands', 'logistic\utilitiesResource@brands');
@@ -36,6 +39,18 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('measurements', 'logistic\utilitiesResource@measurements');
             Route::get('packings', 'logistic\utilitiesResource@packings');
             Route::get('locations', 'logistic\utilitiesResource@locations');
+            Route::get('product_options/{locations_id}/{products_id}', 'logistic\ProductOptionsResource@select');
+            Route::get('inventory', function(){
+                return \DB::
+                    table('input_details AS id')
+                    ->select(
+                        'id.*',
+                        'p.detail'
+                    )
+                    // ->from
+                    ->leftJoin('products AS p', 'p.id', '=', 'id.products_id')
+                    ->get();
+            });
         });
         // temporal
         Route::resource('brands', 'logistic\brandsController');

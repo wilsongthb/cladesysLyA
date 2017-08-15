@@ -4,9 +4,8 @@ namespace App\Http\Controllers\logistic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\outputsModel as Outputs;
 
-class OutputsResource extends Controller
+class OutputDetailsResource extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,17 +35,7 @@ class OutputsResource extends Controller
      */
     public function store(Request $request)
     {
-        $fila = new Outputs;
-        $fila->user_id = $request->user_id;
-        $fila->locations_id = $request->locations_id;
-        $fila->tickets_id = $request->tickets_id;
-        $fila->status = 1;
-        $fila->type = 1;
-        $fila->ticket_number = 0;
-        $fila->save();
-        $fila->ticket_number = sprintf("%'.09d", $fila->id);
-        $fila->save();
-        return $fila;
+        //
     }
 
     /**

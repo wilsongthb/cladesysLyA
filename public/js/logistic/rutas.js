@@ -102,6 +102,11 @@ app.config([
                 template: '<outputs></outputs>'
             })
 
+            .when('/product_options', {
+                templateUrl: `${GLOBAL.url}/view/logistic.product_options.html`,
+                controller: 'ProductOptionsController'
+            })
+
 
             // developer
             .when('/dev', {

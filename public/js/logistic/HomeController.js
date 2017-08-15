@@ -3,5 +3,6 @@ app.controller('HomeController', [
     'locationsService',
     function($scope, locationsService){
     $scope.msj = "Hola, Angular JS esta trabajando"
-    $scope.locations = locationsService
+    $scope.service = locationsService
+    // $scope.service.init()
 }])

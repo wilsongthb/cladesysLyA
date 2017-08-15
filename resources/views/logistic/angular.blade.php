@@ -61,6 +61,7 @@
     <script src="{{ asset('js/logistic/main.js') }} "></script>
     {{--  Componentes  --}}
     <script src="{{ asset('js/logistic/components/orderStatus.js') }} "></script>
+    <script src="{{ asset('js/logistic/components/outputs.js') }} "></script>
     {{--  Rutas  --}}
     <script src="{{ asset('js/logistic/rutas.js') }} "></script>
     {{--  Servicios  --}}
@@ -74,4 +75,5 @@
     <script src="{{ asset('js/logistic/QuotationsController.js') }} "></script>
     <script src="{{ asset('js/logistic/inputsController.js') }} "></script>
     <script src="{{ asset('js/logistic/PurchaseOrdersController.js') }} "></script>
+    <script src="{{ asset('js/logistic/ProductOptionsController.js') }} "></script>
 @stop

@@ -1,6 +1,21 @@
 <div class="container">
     <div class="page-header">
         <h1 class="text-center">LOGISTICA</h1>
+        
+        
+        
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-sm-offset-4 col-md-4 col-lg-4">
+            
+            <div class="list-group">
+                <a 
+                class="list-group-item"
+                ng-repeat="l in service.lista"
+                ng-class="{ active: l.id == service.get() }"
+                ng-click="service.set(l.id)">{{l.name}} </a>
+            </div>
+        </div>
     </div>
     <!-- <div class="list-group">
         <a 
@@ -22,16 +37,19 @@
             ...
         </ul>
     </div> -->
-    <p>Selecciona la localizacion para gestionar</p>
+    <!-- <p>Selecciona la localizacion para gestionar</p> -->
 
-     <div class="btn-group">
+
+     <!-- <div class="btn-group">
         <label 
-            ng-repeat="l in locations.lista" 
+            ng-repeat="l in locations.registros" 
             class="btn btn-primary" 
             ng-model="locations.id" 
             uib-btn-radio="l.id" 
             ng-click="locations.set(l.id)">
                 {{l.name}} 
         </label>
-    </div> 
+    </div> -->
+
+
 </div>

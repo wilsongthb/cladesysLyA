@@ -12,6 +12,7 @@
         {{--  <li><a href="{{ url('/logistic/tickets') }}"><i class="fa fa-bars"></i> Boletos</a></li>  --}}
         <li role="separator" class="divider"></li>
         <li><a href="{{ url('/logistic/products') }}"><i class="fa fa-cogs"></i> Productos</a></li>
+        <li><a href="{{ url('/logistic/product_options') }}"><i class="fa fa-cogs"></i>Opciones de Productos</a></li>
         <li><a href="{{ url('/logistic/suppliers') }}"><i class="fa fa-cogs"></i> Proveedores</a></li>
     </ul>
 </li>
