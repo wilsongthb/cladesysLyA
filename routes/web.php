@@ -18,9 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
-    // LOGISTIC
     Route::group(['prefix' => 'logistic'], function(){
-        // API
         Route::group(['prefix' => 'api'], function(){
             Route::resource('products', 'logistic\productsResource');
             Route::resource('suppliers', 'logistic\suppliersResource');
@@ -32,8 +30,6 @@ Route::group(['middleware' => 'auth'], function(){
             Route::resource('product_options', 'logistic\ProductOptionsResource');
             Route::resource('outputs', 'logistic\OutputsResource');
             Route::resource('output_details', 'logistic\OutputDetailsResource');
-
-            //GET UTILITIES
             Route::get('brands', 'logistic\utilitiesResource@brands');
             Route::get('categories', 'logistic\utilitiesResource@categories');
             Route::get('measurements', 'logistic\utilitiesResource@measurements');
@@ -51,48 +47,31 @@ Route::group(['middleware' => 'auth'], function(){
                     ->get();
             });
         });
-        // temporal
         Route::resource('brands', 'logistic\brandsController');
         Route::resource('packings', 'logistic\packingsController');
         Route::resource('categories', 'logistic\categoriesController');
         Route::resource('locations', 'logistic\locationsController');
         Route::resource('measurements', 'logistic\measurementsController');
-
         Route::get('purchase_order/{orders_id}/{suppliers_id}', 'logistic\purchaseOrderController@pdfPurchaseOrder');
-
-        // WEB SPA
         Route::get('/{p?}/{p1?}/{p3?}/{p4?}', 'logistic\utilitiesResource@main')->name('logistic');
+        Route::get('/gentelella/{p?}/{p1?}/{p3?}/{p4?}', 'logistic\utilitiesResource@gentelella')->name('logistic');
     });
     Route::get('view/{view}', 'viewController@index');
-
-    // configuracion
     Route::get('config', 'sessionController@getConfig');
     Route::post('config', 'sessionController@setConfig');
-
-    // host de archivos, imagenes
     Route::get('getimage','ImageController@getImage');
     Route::post('postimage','ImageController@postImage');
     Route::get('listimages', 'ImageController@lista');
-
-    // HOME
     Route::get('/home', function(){ 
-        // return view('index');
         return redirect('/');
     });
-
-    // GERENCIAL
     Route::group(['prefix' => 'managerial'], function(){
-        /**
-        * SPA in VueJS
-        */
         Route::get('/', 'logistic\utilitiesResource@trabajando');
     });
     Route::get('/clinic', 'logistic\utilitiesResource@trabajando');
-    Route::get('/protocols', 'logistic\utilitiesResource@trabajando');
+    Route::get('/biosecurity', 'logistic\utilitiesResource@trabajando');
     Route::get('/laboratories', 'logistic\utilitiesResource@trabajando');
-
 });
-
 Route::group(['prefix' => 'test'], function(){
     Route::get('/', 'testController@index');
 });

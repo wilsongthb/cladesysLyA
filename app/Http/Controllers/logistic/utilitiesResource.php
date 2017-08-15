@@ -30,6 +30,17 @@ class utilitiesResource extends Controller
         }
         return view('logistic.angular');
     }
+    public function gentelella(Request $request){ 
+        // ruta especial, ignora los argumentos y los pasa a angular-route
+        if($request->ajax() OR $request->isJson() OR $request->expectsJson()){
+            dd([
+                'ajax' => $request->ajax(),
+                'isJson' => $request->isJson(),
+                'expectsJson' => $request->expectsJson()
+            ]);
+        }
+        return view('logistic.gentelella');
+    }
     public function brands(Request $request)
     {
         $result = brandsModel::where('flagstate', '1');

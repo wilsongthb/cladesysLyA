@@ -4,11 +4,12 @@
     </IfModule>
 
     RewriteEngine On
-    RewriteBase "/wilson/cladesysLyA/public/"
+    # RewriteBase "/dev/wilson/cladesysLyA/public/"
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ $1 [L,R=301]
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+    # RewriteRule ^(.*)/$ $1 [L,R=301]
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d

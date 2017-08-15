@@ -87,7 +87,7 @@
                     <a href="{{ url('/logistic') }} ">logistica</a>
                     <a href="{{ url('/laboratories') }} ">laboratorio</a>
                     <a href="{{ url('/managerial') }} ">gerencial</a>
-                    <a href="{{ url('/protocols') }} ">protocolos</a>
+                    <a href="{{ url('/biosecurity') }} ">bioseguridad</a>
                     {{--  <a href="https://laravel.com/docs">Documentation</a>  --}}
                     <!--<a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
