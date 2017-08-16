@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid" ng-class="{ 'container': !fluid }">
+    <input type="checkbox" ng-model="fluid">Fluido
     <h3 class="text-center">{{config.title}} </h3>
     
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -29,7 +29,7 @@
             
         </div>
         
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
             <form ng-submit="guardar()">
                 <div class="form-group">
                     <label for="">ID</label>

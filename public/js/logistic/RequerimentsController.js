@@ -49,10 +49,15 @@ function(
     $scope.registro.locations_id = locationsService.get()
     // $scope.date_format = 'dd/MM/yyyy'
     $scope.registro.shipping = new Date()
+    let enviado = true
     /////////////////////////////////////////////////////////////////////////777
     
     // METHODS
     $scope.guardar = function(){
+        if(!enviado){
+            return
+        }
+        enviado = false
         $http.post(`${$scope.config.api.url}`, $scope.registro).then(
             // success
             function(response){
