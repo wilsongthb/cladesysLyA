@@ -118,8 +118,21 @@ app.config([
                 templateUrl: `${GLOBAL.url}/view/logistic.product_options.html`,
                 controller: 'ProductOptionsController'
             })
+            .when('/fast-form-products', {
+                templateUrl: `${GLOBAL.url}/view/logistic.product_options.html`,
+                controller: 'ProductOptionsController'
+            })
 
+            .when('/inventory', {
+                templateUrl: `${GLOBAL.url}/view/logistic.inventory.html`,
+                controller: 'inventoryController'
+            })
 
+            .when('/report-products', {
+                templateUrl: `${GLOBAL.url}/view/logistic.report-products.index.html`,
+                controller: 'ReportProductsController'
+            })
+            
             // developer
             .when('/dev', {
                 templateUrl: `${GLOBAL.url}/view/logistic.dev.html`,

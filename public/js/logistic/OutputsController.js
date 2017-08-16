@@ -38,7 +38,9 @@ const OutputsConfig = {
             $http.post(`${config.api.url}`, $scope.registro).then(
                 function(res){
                     $location.replace()
-                    $location.path(`${config.urlEdit}/${res.data.id}`)
+                    // $location.path()
+                    // ver(`${config.urlEdit}/${res.data.id}`)
+                    $location.path(`${config.name}/edit/${res.data.id}`)
                 }
             )
 
@@ -75,7 +77,7 @@ const OutputsConfig = {
             )
         }
 
-        $scope.stock = function(){
+        $scope.getStock = function(){
             $http.get(`${GLOBAL.api_url}/stock`).then(
                 function(res){
                     $scope.stock = res.data
@@ -93,6 +95,7 @@ const OutputsConfig = {
             $http.post(`${GLOBAL.api_url}/output_details`, $scope.detalle.registro).then(
                 function(res){
                     $scope.detalle_leer()
+                    $scope.getStock()
                 }
             )
         }
@@ -115,7 +118,7 @@ const OutputsConfig = {
         function activate() { 
             $scope.leer()
             $scope.locations.get()
-            $scope.stock()
+            $scope.getStock()
             $scope.detalle_leer()
         }
     }

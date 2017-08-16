@@ -43,14 +43,26 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
                 )
             }
         },
+        purchase: {
+            list: [],
+            get () {
+                $http.get(`${GLOBAL.url}/logistic/api/purchase`).then(
+                    // success
+                    (response) => {
+                        // console.log(response)
+                        // console.log(this)
+                        this.list = response.data
+                    }
+                )
+            }
+        },
         stock: {
             list: [],
             get () {
-                $http.get(`${GLOBAL.url}/api/logistic/stock`).then(
+                $http.get(`${GLOBAL.url}/logistic/api/stock`).then(
                     // success
-                    function(response){
-                        console.log(response)
-                        console.log(this)
+                    (response) => {
+                        this.list = response.data
                     }
                 )
             }

@@ -48,7 +48,7 @@
                     <input type="text" class="form-control" ng-model="registro.permanent" required>
                 </div>
                 <div class="form-group">
-                    <label for="">Duracion(en dias)</label>
+                    <label for="">Duracion(en Meses)</label>
                     <input type="text" class="form-control" ng-model="registro.duration" required>
                 </div>
                 <button class="btn btn-default">Guardar</button>

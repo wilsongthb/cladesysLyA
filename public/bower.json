@@ -27,6 +27,7 @@
     "money-formatter": "^0.1.4",
     "inputmask": "https://github.com/RobinHerbots/Inputmask.git#^3.3.7",
     "angular-ui-select": "^0.19.8",
-    "gentelella": "^1.4.0"
+    "gentelella": "^1.4.0",
+    "moment": "^2.18.1"
   }
 }

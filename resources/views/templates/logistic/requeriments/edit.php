@@ -1,7 +1,7 @@
 <div class="container">
     <h3 class="text-center">{{config.title}} </h3>
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
             <!-- <button ng-click="" id="init_focus">Agregar</button> -->
             <form ng-submit="guardar_detalle()">
                 <div class="form-group">
@@ -38,10 +38,7 @@
                 </div>
             </form>
         </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
             <table class="table table-hover">
                 <thead>
                     <tr>

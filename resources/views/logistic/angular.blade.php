@@ -23,6 +23,7 @@
 @section('script')
     {{--  codigo de terceros  --}}
     <script src="{{ asset('bower_components/money-formatter/dist/money-formatter.js') }} "></script>
+    <script src="{{ asset('bower_components/moment/min/moment.min.js') }} "></script>
     <script src="{{ asset('bower_components/angular/angular.js') }} "></script>
     <script src="{{ asset('bower_components/angular-route/angular-route.js') }} "></script>
     <script src="{{ asset('bower_components/angular-resource/angular-resource.js') }} "></script>
@@ -77,4 +78,6 @@
     <script src="{{ asset('js/logistic/PurchaseOrdersController.js') }} "></script>
     <script src="{{ asset('js/logistic/ProductOptionsController.js') }} "></script>
     <script src="{{ asset('js/logistic/OutputsController.js') }} "></script>
+    <script src="{{ asset('js/logistic/inventoryController.js') }} "></script>
+    <script src="{{ asset('js/logistic/ReportProductsController.js') }} "></script>
 @stop

@@ -1,15 +1,15 @@
-<<div class="container">
+<div class="container">
     <form ng-submit="detalle_guardar()">
         <legend>DETALLES DE SALIDA</legend>
         <div class="form-group">
             <label for="">Producto *</label>
             <select class="form-control" ng-model="detalle.registro.input_details_id" required>
-                <option ng-repeat="s in stock" ng-value="s.id">{{s.detail}} - {{s.quantity}} </option>
+                <option ng-repeat="s in stock" ng-value="s.id">{{s.products_detail}} - {{s.stock}} </option>
             </select>
         </div>
         <div class="form-group">
             <label for="">Cantidad *</label>
-            <input type="text" class="form-control" required ng-model="detalle.registro.quantity">
+            <input type="number" class="form-control" required ng-model="detalle.registro.quantity">
         </div>
         <div class="form-group">
                 <label for="">Utilidad *</label>

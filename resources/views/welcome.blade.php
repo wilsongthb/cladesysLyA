@@ -83,11 +83,12 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/clinic') }} ">clinica</a>
+                    {{--  <a href="{{ url('/clinic') }} ">clinica</a>  --}}
                     <a href="{{ url('/logistic') }} ">logistica</a>
+                    {{--  <a href="{{ url('/logistic/gentelella') }} ">logistica [Gentelella]</a>
                     <a href="{{ url('/laboratories') }} ">laboratorio</a>
                     <a href="{{ url('/managerial') }} ">gerencial</a>
-                    <a href="{{ url('/biosecurity') }} ">bioseguridad</a>
+                    <a href="{{ url('/biosecurity') }} ">bioseguridad</a>  --}}
                     {{--  <a href="https://laravel.com/docs">Documentation</a>  --}}
                     <!--<a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

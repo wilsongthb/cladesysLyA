@@ -114,7 +114,6 @@
                                     ng-model="detalle.fabrication" 
                                     is-open="pop" 
                                     datepicker-options="dateOptions" 
-                                    ng-required="true" 
                                     close-text="Close" />
                                 <span class="input-group-btn">
                                     <button 
@@ -145,6 +144,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Producto</th>
                         <th>Proveedor</th>
                         <th class="text-right" >Cantidad</th>
@@ -155,6 +155,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="d in detalles">
+                        <td ng-bind="d.id"></td>
                         <td ng-bind="d.detail"></td>
                         <td ng-bind="d.company_name"></td>
                         <td class="text-right" ng-bind="d.quantity"></td>
@@ -165,7 +166,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="4" class="text-right">TOTAL</th>
+                        <th colspan="5" class="text-right">TOTAL</th>
                         <th class="text-right">{{enSoles(total())}} </th>
                     </tr>
                 </tbody>

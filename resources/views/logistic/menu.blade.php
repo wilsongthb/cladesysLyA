@@ -30,9 +30,13 @@
         <li><a href="{{ url('/logistic/inputs') }} "><i class="fa fa-chevron-right"></i> Ingresos</a></li>
         <li><a href="{{ url('/logistic/outputs') }} "><i class="fa fa-chevron-left"></i> Salidas</a></li>
         <li><a href="{{ url('/logistic/inventory') }} "><i class="fa fa-book"></i> Inventario</a></li>
-        <li><a href="#"><i class="fa fa-bar-chart"></i> Reportes</a></li>
+        <li><a href="{{ url('/logistic/report-products') }} "><i class="fa fa-bar-chart"></i> Reporte de Productos</a></li>
     </ul>
 </li>
-<li>
-    <a href="{{ url('/logistic/dev') }} "><i class="fa fa-plus"></i> Developer</a>
+<li class="dropdown">
+    <a id="nav_focus" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i> Herramientas <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li><a href="{{ url('/logistic/dev') }} "><i class="fa fa-plus"></i> Developer</a></li>
+        <li><a href="{{ url('/logistic/fast-form-products') }} "><i class="fa fa-plus"></i> FastForm Productos</a></li>
+    </ul>
 </li>
