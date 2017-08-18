@@ -1,91 +1,106 @@
-<div class="container-fluid" ng-class="{ 'container': !fluid }">
-    <input type="checkbox" ng-model="fluid">Fluido
-    <h3 class="text-center">{{config.title}} </h3>
+<div class="container-fluid" ng-class="{container: !fluid}">
+    <input type="checkbox" ng-model="fluid">Formato Fluido
+    <h3 class="text-center">COTIZACION</h3>
     
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
-                        <th>Detalle</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="d in registros">
-                        <td ng-bind="d.id"></td>
-                        <td ng-bind="d.products_detail"></td>
-                        <td ng-bind="d.quantity"></td>
-                        <td title="{{d.detail}} "><i class="fa fa-table"></i> </td>
-                        <td>
-                            <button ng-click="cotizar(d.id)"><i class="fa fa-edit"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button class="btn btn-primary" ng-click="verModalAP()">Agregar Proveedor</button>
         </div>
-        
-        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
-            <form ng-submit="guardar()">
-                <div class="form-group">
-                    <label for="">ID</label>
-                    <p class="form-control" ng-bind="registro.order_details_id"></p>
-                </div>
-                <div class="form-group">
-                    <label for="">Proveedor *</label>
-                    <select 
-                        class="form-control"
-                        ng-model="registro.suppliers_id" 
-                        ng-keyup="suppliers.get('', $event.keyCode)" 
-                        required>
-                        <option 
-                            ng-repeat="s in suppliers.registros" 
-                            ng-value="s.id">
-                            {{s.company_name}} - {{s.contact_name}} 
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="">Precio *</label>
-                    <input class="form-control" type="text" ng-model="registro.unit_price" required>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success">Guardar</button>
-                </div>
-            </form>
-        </div>
-        
     </div>
     
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <table class="table table-hover">
+            <table class="table table-condensed table-hover">
                 <thead>
                     <tr>
+                        <th class="text-center" colspan="3">REQUERIMIENTO</th>
+                        <th class="text-center" colspan="{{order_details.suppliers.length}} ">COTIZACION - PRECIOS POR PROVEEDORES</th>
+                    </tr>
+                    <tr>
+                        <!-- requerimiento -->
                         <th>ID</th>
                         <th>Producto</th>
-                        <th>Proveedor</th>
-                        <th>Precio Unitario</th>
-                        <th></th>
+                        <th>Cantidad</th>
+                        <!-- cotizacion -->
+                        <!-- <span ng-repeat="r in data.registros">
+                        </span> -->
+                        <th ng-repeat="s in order_details.suppliers track by $index" ng-if="s">
+                        <!-- <th ng-repeat="s in order_details.suppliers track by s.id" ng-if="s"> -->
+                            {{s.company_name}} - {{s.contact_name}}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="d in detalles">
-                        <td>{{d.order_details_id}} - {{d.id}}</td>
-                        <td ng-bind="d.products_detail"></td>
-                        <td ng-bind="d.suppliers_name"></td>
-                        <td ng-bind="d.unit_price"></td>
-                        <td>
-                            <button title="Eliminar" ng-click="eliminar(d.id)"><i class="fa fa-trash"></i></button>
+                    <tr ng-repeat="r in order_details.lista track by $index">
+                        <!-- requerimiento -->
+                        <td ng-bind="r.id"></td>
+                        <td ng-bind="r.products_detail"></td>
+                        <td class="text-center" ng-bind="r.quantity"></td>
+                        <!-- cotizacion -->
+                        <td ng-repeat="s in order_details.suppliers track by $index" ng-if="s" title="Precio">
+                        <!-- <td ng-repeat="s in order_details.suppliers track by s.id" ng-if="s" title="Precio"> -->
+                            <input 
+                                type="text" 
+                                ng-model="order_details.quotations[r.id][s.id].unit_price" 
+                                ng-model-options="{ debounce: 1000 } "
+                                ng-change="order_details.guardarQuotation(order_details.quotations[r.id][s.id], r.id, s.id)">
                         </td>
+                        <!-- <td ng-repeat="s in data.suppliers">
+                            <input ng-if="data.quotations[r.id][s.id]" type="checkbox" ng-model="data.quotations[r.id][s.id].status" class="form-temp"
+                                ng-change="guardar(data.quotations[r.id][s.id])">
+                            <input ng-if="data.editar_cantidades && data.quotations[r.id][s.id]" type="text" ng-model="data.quotations[r.id][s.id].quantity"
+                                ng-change="guardar(data.quotations[r.id][s.id])"> {{enSoles(data.quotations[r.id][s.id].unit_price)}}
+                        </td> -->
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    
+</div>
+<div class="modal fade" id="modalIOC">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Generar orden de Compra</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group">
+                    <a class="list-group-item" ng-repeat="s in data.suppliers" ng-bind="s.company_name" target="_blank" ng-href="{{ data.GLOBAL.app_url }}/purchase_order/{{data.orders_id}}/{{s.id}} "></a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- agregar proveeedor modal -->
+<div class="modal fade" id="agregarProveedor">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div> -->
+            <div class="modal-body">
+                
+                <div class="list-group">
+                    <a 
+                        ng-repeat="s in suppliers.registros"
+                        ng-click="agregarProveedor(s)" class="list-group-item">{{s.company_name}} - {{s.contact_name}} </a>
+                </div>
+                
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+        </div>
+    </div>
 </div>

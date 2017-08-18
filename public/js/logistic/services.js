@@ -89,18 +89,18 @@ app.service('locationsService', function($http){
         $http.get(`${GLOBAL.api_url}/locations`).then(
             (res) => {
                 // this.lista = res.data.data
-                this.lista[0] = {
-                    name: "NINGUNO"
-                }
+                // this.lista[0] = {
+                //     name: "NINGUNO"
+                // }
                 for(i in res.data.data){
-                    this.lista.push(res.data.data[i])
+                    this.lista[res.data.data[i].id] = res.data.data[i]
                 }
             }
         )
     }
     this.init()
 
-    // this.id = 0
+    this.id = 1
     this.id = parseInt(localStorage.locations_id)
 
     this.set = function(id){

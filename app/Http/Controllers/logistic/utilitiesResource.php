@@ -11,9 +11,35 @@ use App\categoriesModel;
 use App\packingsModel;
 use App\ticketsModel;
 use DB;
+use App\productsModel;
+use App\ProductOptions as product_optionsModel;
 
 class utilitiesResource extends Controller
 {
+    public function ffp(Request $request){
+        $fila = new productsModel;
+        $fila->packings_id = $request->p_packings_id;
+        $fila->units = $request->p_units;
+        $fila->detail = $request->p_detail;
+        $fila->brands_id = $request->p_brands_id;
+        $fila->categories_id = $request->p_categories_id;
+        $fila->measurements_id = $request->p_measurements_id;
+        $fila->user_id = $request->user_id;
+        $fila->save();
+
+        $po = new product_optionsModel;
+        $po->minimum = $request->po_minimum;
+        $po->permanent = $request->po_permanent;
+        $po->duration = $request->po_duration;
+        $po->products_id = $fila->id;
+        $po->locations_id = $request->po_locations_id;
+        $po->user_id = $request->user_id;
+        $po->save();
+
+        return "ok";
+
+        // dd($request->all());
+    }
     public function stock(){
         return DB::select(DB::raw("SELECT
 	s.*
@@ -114,7 +140,7 @@ GROUP BY s.products_id"));
             // condiciones de busqueda
             $result->where('detail', 'LIKE', "%$request->search%");
         }
-        return $result->paginate(50);
+        return $result->paginate(10000);
     }
     public function categories(Request $request)
     {
@@ -123,7 +149,7 @@ GROUP BY s.products_id"));
             // condiciones de busqueda
             $result->where('detail', 'LIKE', "%$request->search%");
         }
-        return $result->paginate(50);
+        return $result->paginate(10000);
     }
     public function measurements(Request $request)
     {
@@ -132,7 +158,7 @@ GROUP BY s.products_id"));
             // condiciones de busqueda
             $result->where('detail', 'LIKE', "%$request->search%");
         }
-        return $result->paginate(50);
+        return $result->paginate(10000);
     }
     public function packings(Request $request)
     {
@@ -141,7 +167,7 @@ GROUP BY s.products_id"));
             // condiciones de busqueda
             $result->where('detail', 'LIKE', "%$request->search%");
         }
-        return $result->paginate(50);
+        return $result->paginate(10000);
     }
     public function locations(Request $request)
     {
@@ -150,7 +176,7 @@ GROUP BY s.products_id"));
             // condiciones de busqueda
             $result->where('name', 'LIKE', "%$request->search%");
         }
-        return $result->paginate(50);
+        return $result->paginate(10000);
     }
     public function tickets(Request $request)
     {
@@ -159,6 +185,6 @@ GROUP BY s.products_id"));
             // condiciones de busqueda
             $result->where('name', 'LIKE', "%$request->search%");
         }
-        return $result->paginate(50);
+        return $result->paginate(10000);
     }
 }

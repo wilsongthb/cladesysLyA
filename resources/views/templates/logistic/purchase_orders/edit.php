@@ -42,9 +42,10 @@
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF</button>
+            <!-- <button class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF</button>
             <button class="btn btn-success"><i class="fa fa-file-excel-o"></i> Excel</button>
-            <button class="btn btn-default"><i class="fa fa-file-o"></i> Generar Entrada</button>
+            <button class="btn btn-default"><i class="fa fa-file-o"></i> Generar Entrada</button> -->
+            <button class="btn btn-default" ng-click="seleccionarMasBarato()"><i class="fa fa-money"></i> Seleccionar el mas barato</button>
             <button class="btn btn-default" ng-click="generarOrdenDeCompra()">Generar Orden de Compra</button>
         </div>
     </div>

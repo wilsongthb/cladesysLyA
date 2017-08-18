@@ -28,8 +28,8 @@ const PurchaseOrdersConfig = {
         .module('logistic')
         .controller('PurchaseOrdersEditController', PurchaseOrdersEditController);
 
-    PurchaseOrdersEditController.$inject = ['$scope', '$http', '$routeParams'];
-    function PurchaseOrdersEditController($scope, $http, $routeParams) {
+    PurchaseOrdersEditController.$inject = ['$scope', '$http', '$routeParams', '$window'];
+    function PurchaseOrdersEditController($scope, $http, $routeParams, $window) {
         var vm = this;
         
         $scope.data = {
@@ -42,6 +42,32 @@ const PurchaseOrdersConfig = {
         }
         $scope.enSoles = function(dinero){
             return window.moneyFormatter.format('PEN', dinero)
+        }
+
+        $scope.seleccionarMasBarato = function(){
+            $('#cargando').show()
+            $('#contenido').hide()
+            $http.get(`${$scope.data.config.api.quotations}/mas_bara_pe`, {params: {id: $routeParams.id}}).then(
+                function(res){
+                    $('#cargando').hide()
+                    $('#contenido').show()
+                    $scope.methods.read()
+                    // $window.alert('recarga la pagina por favor')
+                }
+            )
+            // for(i in $scope.data.quotations){
+            //     let fila = $scope.data.quotations[i]
+            //     // ver(fila)
+            //     let menor = -1
+            //     for(let j in fila){
+            //         // ver(j, fila[j])
+            //         let q = fila[j]
+            //         q.status = 0
+            //         if(menor === -1){menor = q}
+            //         menor = (menor.unit_price < q.unit_price) ? q : menor
+            //     }
+            //     $scope.guardar(menor)
+            // }
         }
 
         $scope.methods = {

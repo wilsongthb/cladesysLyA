@@ -12,6 +12,7 @@
                 <a 
                 class="list-group-item"
                 ng-repeat="l in service.lista"
+                ng-if="l"
                 ng-class="{ active: l.id == service.get() }"
                 ng-click="service.set(l.id)">{{l.name}} </a>
             </div>

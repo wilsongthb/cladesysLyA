@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\quotationsModel;
 use App\ordersModel;
 use App\order_detailsModel;
+use DB;
 
 class quotationsResource extends Controller
 {
@@ -17,14 +18,48 @@ class quotationsResource extends Controller
      */
     public function index(Request $request)
     {
-        return quotationsModel::
-            select('quotations.*', 'suppliers.company_name AS suppliers_name', 'products.detail AS products_detail')
-            ->leftJoin('suppliers', 'suppliers.id', '=', 'quotations.suppliers_id')
-            ->leftJoin('order_details', 'order_details.id', '=', 'quotations.order_details_id')
-            ->leftJoin('products', 'products.id', '=', 'order_details.products_id')
-            ->leftJoin('orders', 'orders.id', '=', 'order_details.orders_id')
-            ->where('orders.id', $request->id) // importante
-            ->get();
+        $id = $request->id;
+        return [
+            // 'data' => order_detailsModel::
+            //     select(
+            //         'p.detail AS products_detail',
+            //         'od.*'
+            //     )
+            //     ->from('order_details AS od')
+            //     ->leftJoin('products AS p', 'p.id', '=', 'od.products_id')
+            //     ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+            //     ->where('o.id', $id)
+            //     ->get(),
+            'quotations' => quotationsModel::
+                select(
+                    // 'od.id AS order_details_id',
+                    // 'p.detail',
+                    // 'od.quantity',
+                    // 's.company_name',
+                    'q.*'
+                )
+                ->from('quotations AS q')
+                ->leftJoin('order_details AS od', 'od.id', '=', 'q.order_details_id')
+                ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+                ->leftJoin('suppliers AS s', 's.id', '=', 'q.suppliers_id')
+                ->leftJoin('products AS p', 'p.id', '=', 'od.products_id')
+                ->where('o.id', $id)
+                ->get(),
+            'suppliers' => quotationsModel::
+                select(
+                    // 's.id',
+                    // 's.company_name',
+                    // 's.contact_name'
+                    's.*'
+                )
+                ->from('quotations AS q')
+                ->leftJoin('order_details AS od', 'od.id', '=', 'q.order_details_id')
+                ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+                ->leftJoin('suppliers AS s', 's.id', '=', 'q.suppliers_id')
+                ->where('o.id', $id)
+                ->groupBy('id')
+                ->get(),
+        ];
     }
 
     /**
@@ -60,7 +95,9 @@ class quotationsResource extends Controller
             $order->status = "2";
             $order->save();
         }
-        return "ok";
+        return $fila;
+        // return "ok";
+        
     }
 
     /**
@@ -150,5 +187,66 @@ class quotationsResource extends Controller
     public function destroy($id)
     {
         quotationsModel::destroy($id);
+    }
+    
+    public function masBaraPe(Request $request){
+        DB::table('quotations AS q')
+            ->leftJoin('order_details AS od', 'od.id', '=', 'q.order_details_id')
+            ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+            ->where('o.id', $request->id)
+            ->update(
+                ['q.status' => 0]
+            );
+
+        $quotations = quotationsModel::
+        select(
+            'od.id AS order_details_id',
+            // 'p.detail',
+            'od.quantity',
+            's.company_name',
+            'q.*'
+        )
+        ->from('quotations AS q')
+        ->leftJoin('order_details AS od', 'od.id', '=', 'q.order_details_id')
+        ->leftJoin('orders AS o', 'o.id', '=', 'od.orders_id')
+        ->leftJoin('suppliers AS s', 's.id', '=', 'q.suppliers_id')
+        ->leftJoin('products AS p', 'p.id', '=', 'od.products_id')
+        ->where('o.id', $request->id)
+        ->get();
+
+        // dd($quotations);
+        
+        $qs = [];
+
+        foreach($quotations as $key => $val){
+            if(!isset($qs[$val->order_details_id])){
+                $qs[$val->order_details_id] = [];
+                $qs[$val->order_details_id][$val->suppliers_id] = $val;
+            }else{
+                $qs[$val->order_details_id][$val->suppliers_id] = $val;
+            }
+        }
+
+        // dd($qs);
+        $mins = [];
+
+        foreach ($qs as $key => $value) {
+            $min = -1;
+            foreach ($value as $ll => $vals) {
+                $vals->status = 0;
+                // $vals->save();
+                if($min === -1){$min = $vals;}
+                $min = ($min->unit_price > $vals->unit_price) ? $vals : $min;
+            }
+            // $mins[] = $min->id;
+            $min->status = 1;
+            $min->save();
+        }
+        
+        // foreach ($mins as $key => $value) {
+            
+        // }
+
+        dd($qs);
     }
 }

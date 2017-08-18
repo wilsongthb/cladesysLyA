@@ -119,8 +119,8 @@ app.config([
                 controller: 'ProductOptionsController'
             })
             .when('/fast-form-products', {
-                templateUrl: `${GLOBAL.url}/view/logistic.product_options.html`,
-                controller: 'ProductOptionsController'
+                templateUrl: `${GLOBAL.url}/view/logistic.tools.fast-form-products.html`,
+                controller: 'FastFormProductsController'
             })
 
             .when('/inventory', {

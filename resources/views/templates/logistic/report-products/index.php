@@ -41,7 +41,7 @@
                             <strong ng-show="estado(s).urg">Urgente!</strong>
                         </td>
                         <td ng-show="estado(s).type == 1" ng-class="{ warning: estado(s).msj, danger: estado(s).urg }">
-                            <span ng-show="estado(s).msj">Requieres Comprar </span><strong ng-show="estado(s).urg">Urgente!</strong>
+                            <span ng-show="estado(s).msj || estado(s).urg">Requieres Comprar </span><strong ng-show="estado(s).urg">Urgente!</strong>
                         </td>
                     </tr>
                 </tbody>

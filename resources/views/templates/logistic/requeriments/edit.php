@@ -56,7 +56,8 @@
                         <td ng-bind="d.quantity"></td>
                         <!-- <td title="{{d.detail}} "><i class="fa fa-table"></i> </td> -->
                         <td ng-bind="d.detail"></td>
-                        <td title="Eliminar"><button><i class="fa fa-remove"></i></button></td>
+                        <!-- <td title="Eliminar"><button><i class="fa fa-remove"></i></button></td> -->
+                        
                     </tr>
                 </tbody>
             </table>

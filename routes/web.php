@@ -20,10 +20,12 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'logistic'], function(){
         Route::group(['prefix' => 'api'], function(){
+            Route::post('tools/ffp', 'logistic\utilitiesResource@ffp');
             Route::resource('products', 'logistic\productsResource');
             Route::resource('suppliers', 'logistic\suppliersResource');
             Route::resource('requeriments', 'logistic\requerimentsResource');
             Route::resource('order_details', 'logistic\order_detailsResource');
+            Route::get('quotations/mas_bara_pe', 'logistic\quotationsResource@masBaraPe');
             Route::resource('quotations', 'logistic\quotationsResource');
             Route::resource('inputs', 'logistic\inputsResource');
             Route::resource('input_details', 'logistic\input_detailsResource');
@@ -45,7 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('locations', 'logistic\locationsController');
         Route::resource('measurements', 'logistic\measurementsController');
         Route::get('purchase_order/{orders_id}/{suppliers_id}', 'logistic\purchaseOrderController@pdfPurchaseOrder');
-        // Route::get('/gentelella', 'logistic\utilitiesResource@gentelella')->name('logisticGentellela');
+        Route::get('/gentelella', 'logistic\utilitiesResource@gentelella')->name('logisticGentellela');
         Route::get('/{p?}/{p1?}/{p3?}/{p4?}', 'logistic\utilitiesResource@main')->name('logisticNgBs3');
         
     });
