@@ -171,11 +171,12 @@ class quotationsResource extends Controller
     public function update(Request $request, $id)
     {
         $fila = quotationsModel::find($id);
-        $fila->quantity = $request->quantity;
+        $fila->unit_price = $request->unit_price;
         $fila->user_id = $request->user_id;
         $fila->status = $request->status;
         $fila->save();
-        return "ok";
+        return $fila;
+        // return "ok";
     }
 
     /**
