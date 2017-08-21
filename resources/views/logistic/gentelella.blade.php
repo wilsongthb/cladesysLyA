@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('bower_components/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css') }} ">
     <!-- Custom Theme Style -->
     <link rel="stylesheet" href="{{ asset('bower_components/gentelella/build/css/custom.min.css') }} ">
+
+    
   </head>
 
   <body class="nav-md">
