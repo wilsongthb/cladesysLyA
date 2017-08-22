@@ -16,6 +16,28 @@ use App\ProductOptions as product_optionsModel;
 
 class utilitiesResource extends Controller
 {
+    public function product_options(){
+        $po = DB::select(DB::raw("SELECT
+        l.name AS LOCALIZACION,
+        c.detail AS CATEGORIA,
+        p.detail AS DESCRIPCION,
+        b.detail AS MARCA,
+        p.detail AS 'MEDIDA DE COMPRA',
+        p.units AS 'CANTIDAD',
+        m.detail AS 'MEDIDA DE DISTRIBUCION',
+        po.minimum AS 'STOCK MINIMO',	
+        po.permanent AS 'STOCK PERMANENTE',
+        po.duration AS 'ANILISIS EN MESES'
+    FROM products AS p
+    LEFT JOIN product_options AS po ON p.id = po.products_id
+    LEFT JOIN categories AS c ON c.id = p.categories_id
+    LEFT JOIN brands AS b ON b.id = p.brands_id
+    LEFT JOIN measurements AS m ON m.id = p.measurements_id
+    LEFT JOIN packings AS pa ON pa.id = p.packings_id 
+    LEFT JOIN locations AS l ON l.id = po.locations_id"));
+    // dd($po);
+        return view('logistic.product-options', ['po' => $po]);
+    }
     public function ffp(Request $request){
         $fila = new productsModel;
         $fila->packings_id = $request->p_packings_id;

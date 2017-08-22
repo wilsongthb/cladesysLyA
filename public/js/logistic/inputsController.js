@@ -6,9 +6,9 @@ inputsConfig = {
     },
     urlApi: `${GLOBAL.url}/logistic/api/inputs`, 
     // esta en ng porque esta ruta sera servida por angular
-    urlCreate: `${GLOBAL.url}/logistic/inputs/create`,
-    urlEdit: `${GLOBAL.url}/logistic/inputs/edit`,
-    urlShow: `${GLOBAL.url}/logistic/inputs/show`,
+    urlCreate: `${GLOBAL.app_url}/inputs/create`,
+    urlEdit: `${GLOBAL.app_url}/inputs/edit`,
+    // urlShow: `${GLOBAL.url}/logistic/inputs/show`,
     detail: {
         name: 'input_details',
         urlApi: `${GLOBAL.url}/logistic/api/input_details`,

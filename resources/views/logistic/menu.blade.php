@@ -13,6 +13,7 @@
         <li role="separator" class="divider"></li>
         <li><a href="{{ url('/logistic/products') }}"><i class="fa fa-cogs"></i> Productos</a></li>
         <li><a href="{{ url('/logistic/product_options') }}"><i class="fa fa-cogs"></i>Opciones de Productos</a></li>
+        <li><a href="{{ url('/logistic/product-options') }}" target="_blank"><i class="fa fa-cogs"></i>Ver Productos</a></li>
         <li><a href="{{ url('/logistic/suppliers') }}"><i class="fa fa-cogs"></i> Proveedores</a></li>
     </ul>
 </li>
@@ -27,8 +28,9 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Kardex <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="{{ url('/logistic/inputs') }} "><i class="fa fa-chevron-right"></i> Ingresos</a></li>
-        <li><a href="{{ url('/logistic/outputs') }} "><i class="fa fa-chevron-left"></i> Salidas</a></li>
+        <li><a href="{{ url('/logistic/inputs') }} "><i class="fa fa-chevron-right"></i> Entradas</a></li>
+        <li><a href="{{ url('/logistic/outputs') }} "><i class="fa fa-chevron-left"></i> Distribucion</a></li>
+        <li><a href="{{ url('/logistic/outputs') }} "><i class="fa fa-chevron-left"></i> Ventas</a></li>
         <li><a href="{{ url('/logistic/inventory') }} "><i class="fa fa-book"></i> Inventario</a></li>
         <li><a href="{{ url('/logistic/report-products') }} "><i class="fa fa-bar-chart"></i> Reporte de Productos</a></li>
     </ul>

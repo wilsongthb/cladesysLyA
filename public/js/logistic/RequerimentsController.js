@@ -5,8 +5,8 @@ const RequerimentsConfig = {
         url: `${GLOBAL.url}/logistic/api/requeriments`,
         detail: `${GLOBAL.url}/logistic/api/order_details`,
     },
-    urlCreate: `${GLOBAL.url}/logistic/requeriments/create`,
-    urlEdit: `${GLOBAL.url}/logistic/requeriments/edit`
+    urlCreate: `${GLOBAL.app_url}/requeriments/create`,
+    urlEdit: `${GLOBAL.app_url}/requeriments/edit`
 }
 
 // controlador para leer registros

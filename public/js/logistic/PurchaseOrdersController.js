@@ -3,12 +3,12 @@ const PurchaseOrdersConfig = {
     title: 'ORDEN DE COMPRA',
     url: `${GLOBAL.app_url}/purchase_orders`,
     api: {
-        url: `${GLOBAL.app_url}/api/requeriments`,
-        order_details: `${GLOBAL.app_url}/api/order_details`,
-        quotations: `${GLOBAL.app_url}/api/quotations`
+        url: `${GLOBAL.url}/logistic/api/requeriments`,
+        order_details: `${GLOBAL.api_url}/order_details`,
+        quotations: `${GLOBAL.api_url}/quotations`
         // quotations:
     },
-    urlEdit: `${GLOBAL.url}/logistic/purchase_orders/edit`
+    urlEdit: `${GLOBAL.app_url}/purchase_orders/edit`
 };
 
 

@@ -6,8 +6,8 @@ const productsConfig = {
         url: `${GLOBAL.url}/logistic/api/products`,
     },
     urlApi: `${GLOBAL.url}/logistic/api/products`,
-    urlCreate: `${GLOBAL.url}/logistic/products/create`,
-    urlEdit: `${GLOBAL.url}/logistic/products/edit`
+    urlCreate: `${GLOBAL.app_url}/products/create`,
+    urlEdit: `${GLOBAL.app_url}/products/edit`
 }
 
 // controlador para leer registros

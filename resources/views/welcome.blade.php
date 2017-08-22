@@ -85,6 +85,7 @@
                 <div class="links">
                     {{--  <a href="{{ url('/clinic') }} ">clinica</a>  --}}
                     <a href="{{ url('/logistic') }} ">logistica</a>
+                    <a href="{{ url('/logistic/gentelella') }} ">logistica [gentelella]</a>
                     {{--  <a href="{{ url('/logistic/gentelella') }} ">logistica [Gentelella]</a>
                     <a href="{{ url('/laboratories') }} ">laboratorio</a>
                     <a href="{{ url('/managerial') }} ">gerencial</a>

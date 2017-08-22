@@ -7,7 +7,7 @@ const QuotationsConfig = {
         quotations: `${GLOBAL.url}/logistic/api/quotations`,
     },
     // urlCreate: `${GLOBAL.url}/logistic/quotations/create`,
-    urlEdit: `${GLOBAL.url}/logistic/quotations/edit`
+    urlEdit: `${GLOBAL.app_url}/quotations/edit`
 }
 
 app.controller('QuotationsController', // nombre del controlador

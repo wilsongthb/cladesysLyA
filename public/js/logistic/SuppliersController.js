@@ -4,8 +4,8 @@ suppliersConfig = {
     api: {
         url: `${GLOBAL.api.url}/suppliers`
     },
-    urlCreate: `${GLOBAL.url}/logistic/suppliers/create`,
-    urlEdit: `${GLOBAL.url}/logistic/suppliers/edit`
+    urlCreate: `${GLOBAL.app_url}/suppliers/create`,
+    urlEdit: `${GLOBAL.app_url}/suppliers/edit`
 }
 
 app.controller('SuppliersController', 

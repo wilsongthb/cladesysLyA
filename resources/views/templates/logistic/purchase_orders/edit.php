@@ -65,7 +65,7 @@
                         ng-repeat="s in data.suppliers" 
                         ng-bind="s.company_name"
                         target="_blank"
-                        ng-href="{{ data.GLOBAL.app_url }}/purchase_order/{{data.orders_id}}/{{s.id}} "
+                        ng-href="{{ data.GLOBAL.url }}/logistic/purchase_order/{{data.orders_id}}/{{s.id}} "
                         ></a>
                 </div>
             </div>
