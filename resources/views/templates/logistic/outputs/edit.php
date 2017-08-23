@@ -4,7 +4,7 @@
         <div class="form-group">
             <label for="">Producto *</label>
             <select class="form-control" ng-model="detalle.registro.input_details_id" required>
-                <option ng-repeat="s in stock" ng-value="s.id">{{s.products_detail}} - {{s.stock}} </option>
+                <option ng-repeat="s in stock" ng-value="s.id">{{s.product_name}} - {{s.stock}} </option>
             </select>
         </div>
         <div class="form-group">

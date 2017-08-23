@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    
+
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <legend>Formulario Rapido Productos</legend>
@@ -8,8 +8,8 @@
             <button ng-click="$t.verDef()" class="btn">Modificar Valores Predeterminados</button>
         </div>
     </div>
-    
-    
+
+
     <!-- 
         p_packings_id
         p_units
@@ -21,46 +21,110 @@
     
          -->
     <form ng-submit="guardar()">
-        <table class="table table-condensed table-hover">
+
+        <!-- <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Empaquetado</th>
-                    <th>Unidades</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Stock Minimo</th>
-                    <th>Stock Permanente</th>
-                    <th>Tiempo de duracion(Meses)</th>
+                    <th>ID</th>
+                    <th class="col-lg-1">CATEGORIA</th>
+                    <th class="col-lg-7">DENOMINACION</th>
+                    <th class="col-lg-1">MARCA</th>
+                    <th class="col-lg-1">MEDIDA DE COMPRA</th>
+                    <th class="col-lg-1">CANTIDAD</th>
+                    <th class="col-lg-1">MEDIDA DE DISTRIBUCION</th>
                 </tr>
                 <tr>
-                    <th>
-                        <select ng-model="reg.p_packings_id" required class="form-control" id="init_focuss">
-                            <option ng-repeat="p in packings.registros" ng-value="p.id">{{p.detail}} </option>
+                    <td></td>
+                    <td>
+                        <select ng-model="def.categories_id" class="form-control">
+                            <option ng-repeat="c in categories.registros" ng-value="c.id">{{c.detail}} </option>
                         </select>
-                    </th>
-                    <th>
-                        <input type="text" ng-model="reg.p_units" class="form-control" required>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <input type="text" ng-model="reg.p_detail" class="form-control" required>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <select ng-model="reg.p_brands_id" class="form-control" required>
                             <option ng-repeat="b in brands.registros" ng-value="b.id">{{b.detail}} </option>
                         </select>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
+                        <select ng-model="reg.p_packings_id" required class="form-control" id="init_focuss">
+                            <option ng-repeat="p in packings.registros" ng-value="p.id">{{p.detail}} </option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="reg.p_units" class="form-control" required>
+                    </td>
+                    <td>
+                        <select ng-model="def.measurements_id" class="form-control">
+                            <option ng-repeat="m in measurements.registros" ng-value="m.id">{{m.detail}} </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table> -->
+
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th class="col-lg-1">Categoria</th>
+                    <th class="col-lg-4">Nombre</th>
+                    <th class="col-lg-1">Empaquetado</th>
+                    <th class="col-lg-1">Cantidad</th>
+                    <th class="col-lg-1">Unidad de Medida (Distribucion)</th>
+                    <th class="col-lg-1">Marca</th>
+                    <th class="col-lg-1">Stock Minimo</th>
+                    <th class="col-lg-1">Stock Permanente</th>
+                    <th class="col-lg-1">Tiempo de duracion(dias)</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select ng-model="def.categories_id" class="form-control">
+                            <option ng-repeat="c in categories.registros" ng-value="c.id">{{c.detail}} </option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="reg.p_detail" class="form-control" required>
+                    </td>
+                    <td>
+                        <select ng-model="reg.p_packings_id" required class="form-control" id="init_focuss">
+                            <option ng-repeat="p in packings.registros" ng-value="p.id">{{p.detail}} </option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="reg.p_units" class="form-control" required>
+                    </td>
+                    <td>
+                        <select ng-model="def.measurements_id" class="form-control">
+                            <option ng-repeat="m in measurements.registros" ng-value="m.id">{{m.detail}} </option>
+                        </select>
+                    </td>
+                    <td>
+                        <select ng-model="reg.p_brands_id" class="form-control" required>
+                            <option ng-repeat="b in brands.registros" ng-value="b.id">{{b.detail}} </option>
+                        </select>
+                    </td>
+                    <td>
                         <input type="text" ng-model="reg.po_minimum" class="form-control" required>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <input type="text" ng-model="reg.po_permanent" class="form-control" required>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <input type="text" ng-model="reg.po_duration" class="form-control" required>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <button type="submit" class="btn">Guardar</button>
-                    </th>
+                    </td>
                 </tr>
             </thead>
             <tbody>
@@ -78,21 +142,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <!-- <h4 class="modal-title">Modal title</h4> -->
+                <h4 class="modal-title">Configuraciones</h4>
             </div>
             <div class="modal-body">
-                <p>
-                    <label for="">Categoria</label>
-                    <select ng-model="def.categories_id" class="form-control">
-                        <option ng-repeat="c in categories.registros" ng-value="c.id">{{c.detail}} </option>
-                    </select>
-                </p>
-                <p>
-                    <label for="">Unidad de Medida (Distribucion)</label>
-                    <select ng-model="def.measurements_id" class="form-control">
-                        <option ng-repeat="m in measurements.registros" ng-value="m.id">{{m.detail}} </option>
-                    </select>
-                </p>
                 <p>
                     <label for="">Localizacion (para las configuraciones de stock)</label>
                     <select ng-model="def.locations_id" class="form-control">

@@ -30,6 +30,8 @@ const OutputsConfig = {
     function OutputsCreateController($scope, utilitiesFactory, $http, $location) {
         var vm = this;
         
+        enfocar('init_focus')
+
         $scope.locations = utilitiesFactory.locations
         $scope.locations.get();
 

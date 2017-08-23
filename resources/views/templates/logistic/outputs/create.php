@@ -3,12 +3,16 @@
     <form ng-submit="guardar()">
         <div class="form-group">
             <label for="">Tipo *</label>
-            <select ng-model="registro.type" required class="form-control">
+            <select id="init_focus" ng-model="registro.type" required class="form-control">
                 <?php foreach(config('consts.output.type') as $key => $value){ ?>
                     <option value="<?= $key ?>"><?= $value ?></option>
                 <?php } ?>
             </select>
         </div>
+        <!-- <div class="form-group">
+            <label for="">Origen *</label>
+            <p class="form-control">{{location.lista[location.id].name}} </p>
+        </div> -->
         <div class="form-group">
             <label>Destino *</label>
             <select 

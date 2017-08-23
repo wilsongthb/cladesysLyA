@@ -116,7 +116,7 @@ class locationsController extends Controller
     public function destroy($id)
     {   
         $registro = locationsModel::find($id);
-        $registro->flagstate = false;
+        $registro->flagstate = 0;
         $registro->save();
     }
 }

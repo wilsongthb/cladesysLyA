@@ -1,14 +1,10 @@
 <?php 
     return [
         'menu' => [
-            'Utilitarios' => [
-                'Empaquetado' => '/logistic/packings',
-                'Categorias' => '/logistic/categories',
-                'Marcas' => '/logistic/brands',
-                'Unidades de Medidad' => '/logistic/measurements',
-                'Localizaciones' => '/logistic/locations',
+            'Herramientas' => [
                 'Productos' => '/logistic/gentelella/products',
                 'Opciones de Producto' => '/logistic/gentelella/product_options',
+                'Fast Form Products' => '/logistic/gentelella/fast-form-products',
                 'Proveedores' => '/logistic/gentelella/suppliers',
             ],
             'Proceso de Compra' => [
@@ -20,7 +16,15 @@
                 'Ingresos' => '/logistic/gentelella/inputs',
                 'Salidas' => '/logistic/gentelella/outputs',
                 'Inventario' => '/logistic/gentelella/inventory',
+                // 'Stock' => '/logistic/gentelella/stock',
                 'Reporte de Productos' => '/logistic/gentelella/report-products',
-            ]
+            ],
+            'Configuraciones' => [
+                'Empaquetado' => '/logistic/packings',
+                'Categorias' => '/logistic/categories',
+                'Marcas' => '/logistic/brands',
+                'Unidades de Medidad' => '/logistic/measurements',
+                'Localizaciones' => '/logistic/locations',
+            ],
         ]
     ];

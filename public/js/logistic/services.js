@@ -58,8 +58,10 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         },
         stock: {
             list: [],
-            get () {
-                $http.get(`${GLOBAL.url}/logistic/api/stock`).then(
+            get (locations_id) {
+                $http.get(`${GLOBAL.url}/logistic/api/stock`, {
+                    params: {locations_id}
+                }).then(
                     // success
                     (response) => {
                         this.list = response.data

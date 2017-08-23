@@ -56,7 +56,7 @@ class Outputs extends Migration
 
             // referencia a input_details
             $table->integer('input_details_id')->unsigned();
-            $table->foreign('input_details_id')->references('id')->on('input_details');
+            $table->foreign('input_details_id')->references('id')->on('input_details')->onDelete('cascade');;
 
             // referencia a outputs
             $table->integer('outputs_id')->unsigned();

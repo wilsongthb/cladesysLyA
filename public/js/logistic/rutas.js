@@ -127,6 +127,10 @@ app.config([
                 templateUrl: `${GLOBAL.url}/view/logistic.inventory.html`,
                 controller: 'inventoryController'
             })
+            .when('/stock', {
+                templateUrl: `${GLOBAL.url}/view/logistic.stock.html`,
+                controller: 'inventoryController'
+            })
 
             .when('/report-products', {
                 templateUrl: `${GLOBAL.url}/view/logistic.report-products.index.html`,

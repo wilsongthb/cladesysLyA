@@ -1,6 +1,6 @@
-app.controller('inventoryController', function($scope, $http, utilitiesFactory){
+app.controller('inventoryController', function($scope, $http, utilitiesFactory, locationsService){
     $scope.stock = utilitiesFactory.stock
-    $scope.stock.get()
+    $scope.stock.get(locationsService.get())
 
     $scope.dateFormat = function formatDate(date) {
         var monthNames = [

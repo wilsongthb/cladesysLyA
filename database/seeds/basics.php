@@ -41,7 +41,25 @@ class basics extends Seeder
             ],
             [
                 'type' => '2',
-                'name' => 'SUCURSAL',
+                'name' => 'AREA DE RECEPCION',
+                'utility' => '0',
+                'user_id' => '1'
+            ],
+            [
+                'type' => '2',
+                'name' => 'AREA DE RADIOLOGIA',
+                'utility' => '0',
+                'user_id' => '1'
+            ],
+            [
+                'type' => '2',
+                'name' => 'AREA DE LABORATORIO',
+                'utility' => '0',
+                'user_id' => '1'
+            ],
+            [
+                'type' => '2',
+                'name' => 'AREA DE BIOSEGURIDAD',
                 'utility' => '0',
                 'user_id' => '1'
             ]

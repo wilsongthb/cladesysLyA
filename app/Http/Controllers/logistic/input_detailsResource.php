@@ -119,9 +119,10 @@ class input_detailsResource extends Controller
      */
     public function destroy($id)
     {
-        $fila = input_detailsModel::find($id);
-        $fila->flagstate = 0;
-        $fila->save();
+        input_detailsModel::destroy($id);
+        // $fila = input_detailsModel::find($id);
+        // $fila->flagstate = 0;
+        // $fila->save();
         return "ok";
     }
 }

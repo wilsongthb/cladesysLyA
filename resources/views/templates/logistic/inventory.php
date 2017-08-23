@@ -14,30 +14,29 @@
                 <thead>
                     <tr>
                         <th title="ID de entrada">ID</th>
-                        <th>Producto</th>
-                        <th>Ubicacion</th>
-                        <th>Fecha de Entrada</th>
-                        <th>Stock</th>
-                         <!-- <th>Minimo</th>
-                        <th>Permanente</th>
-                        <th>Duracion</th> -->
-                        <!-- <th>Estado</th>  -->
+                        <th>ID PRODUCTO</th>
+                        <th>UBICACION</th>
+                        <th>CATEGORIA</th>
+                        <th>NOMBRE DE PRODUCTO</th>
+                        <th>FECHA DE ENTRADA</th>
+                        <th>CANTIDAD INGRESADA</th>
+                        <th>SALIDAS</th>
+                        <th>STOCK</th>
+                        <th>ULTIMA SALIDA</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="s in stock.list">
                         <td ng-bind="s.id" >ID</td>
-                        <td ng-bind="s.products_detail"></td>
-                        <td ng-bind="s.locations_name"></td>
-                         <td ng-bind="s.fecha_entrada.split(' ')[0]"></td> 
-                         <!-- <td ng-bind="dateFormat(s.fecha_entrada)"></td>  -->
+                        <td ng-bind="s.products_id"></td>
+                        <td ng-bind="s.ubicacion"></td>
+                        <td ng-bind="s.categoria"></td>
+                        <td ng-bind="s.product_name"></td>
+                        <td ng-bind="s.fecha_entrada"></td>
+                        <td ng-bind="s.cantidad_entrada"></td>
+                        <td ng-bind="s.total_salidas"></td>
                         <td ng-bind="s.stock"></td>
-                        <!-- <td ng-bind="s.po_minimum"></td>
-                        <td ng-bind="s.po_permanent"></td>
-                        <td ng-bind="s.po_duration"></td> -->
-                         <!-- <td ng-class="{ warning: (s.stock < s.po_permanent), danger: (s.stock < s.po_minimum)}">
-                            <span ng-if="s.stock < s.po_permanent">Requieres Comprar <strong ng-if="s.stock < s.po_minimum">Urgente!</strong></span>
-                        </td>  -->
+                        <td ng-bind="s.fecha_ultima_salida"></td>
                     </tr>
                 </tbody>
             </table>

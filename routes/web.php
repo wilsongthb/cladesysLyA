@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('categories', 'logistic\categoriesController');
         Route::resource('locations', 'logistic\locationsController');
         Route::resource('measurements', 'logistic\measurementsController');
-        // Route::get('product-options', 'logistic\utilitiesResource@product_options');
+        Route::get('product-options', 'logistic\utilitiesResource@product_options');
         Route::get('purchase_order/{orders_id}/{suppliers_id}', 'logistic\purchaseOrderController@pdfPurchaseOrder');
         Route::get('/gentelella/{p?}/{p1?}/{p3?}/{p4?}', 'logistic\utilitiesResource@gentelella')->name('logisticGentellela');
         Route::get('/{p?}/{p1?}/{p3?}/{p4?}', 'logistic\utilitiesResource@main')->name('logisticNgBs3');
