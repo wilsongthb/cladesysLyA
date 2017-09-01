@@ -17,25 +17,25 @@ use App\ProductOptions as product_optionsModel;
 class utilitiesResource extends Controller
 {
     public function product_options(){
-        $po = DB::select(DB::raw("SELECT
-        l.name AS LOCALIZACION,
-        c.detail AS CATEGORIA,
-        p.detail AS DESCRIPCION,
-        b.detail AS MARCA,
-        p.detail AS 'MEDIDA DE COMPRA',
-        p.units AS 'CANTIDAD',
-        m.detail AS 'MEDIDA DE DISTRIBUCION',
-        po.minimum AS 'STOCK MINIMO',	
-        po.permanent AS 'STOCK PERMANENTE',
-        po.duration AS 'ANILISIS EN MESES'
-    FROM products AS p
-    LEFT JOIN product_options AS po ON p.id = po.products_id
-    LEFT JOIN categories AS c ON c.id = p.categories_id
-    LEFT JOIN brands AS b ON b.id = p.brands_id
-    LEFT JOIN measurements AS m ON m.id = p.measurements_id
-    LEFT JOIN packings AS pa ON pa.id = p.packings_id 
-    LEFT JOIN locations AS l ON l.id = po.locations_id"));
-    // dd($po);
+        $po = DB::select(DB::raw(
+        "SELECT
+            l.name AS LOCALIZACION,
+            c.detail AS CATEGORIA,
+            p.detail AS DESCRIPCION,
+            b.detail AS MARCA,
+            p.detail AS 'MEDIDA DE COMPRA',
+            p.units AS 'CANTIDAD',
+            m.detail AS 'MEDIDA DE DISTRIBUCION',
+            po.minimum AS 'STOCK MINIMO',	
+            po.permanent AS 'STOCK PERMANENTE',
+            po.duration AS 'ANILISIS EN MESES'
+        FROM products AS p
+        LEFT JOIN product_options AS po ON p.id = po.products_id
+        LEFT JOIN categories AS c ON c.id = p.categories_id
+        LEFT JOIN brands AS b ON b.id = p.brands_id
+        LEFT JOIN measurements AS m ON m.id = p.measurements_id
+        LEFT JOIN packings AS pa ON pa.id = p.packings_id 
+        LEFT JOIN locations AS l ON l.id = po.locations_id"));
         return view('logistic.product-options', ['po' => $po]);
     }
     public function ffp(Request $request){
@@ -69,34 +69,68 @@ class utilitiesResource extends Controller
             $location = "AND i.locations_id = $locations_id";
         }
         $sql = "SELECT
-	s.*
-FROM (
-	SELECT
-		id.id AS id,
-		p.id AS products_id,
-		l.name AS ubicacion,
-		c.detail AS categoria,
-		p.detail AS product_name,
-		id.created_at AS fecha_entrada,
-		id.quantity AS cantidad_entrada,
-		SUM(IFNULL(od.quantity, 0)) AS total_salidas,
-		(id.quantity - SUM(IFNULL(od.quantity, 0))) AS stock,
-		MAX(od.created_at) AS fecha_ultima_salida
-	FROM input_details AS id
-	LEFT JOIN products AS p ON p.id = id.products_id
-	LEFT JOIN output_details AS od ON id.id = od.input_details_id
-	LEFT JOIN inputs AS i ON i.id = id.inputs_id
-	LEFT JOIN locations AS l ON l.id = i.locations_id
-	LEFT JOIN categories AS c ON c.id = p.categories_id
-	WHERE IFNULL(od.flagstate, 1) = 1
-	$location
-	GROUP BY id.id
-) AS s
-WHERE s.stock > 0";
+                    s.*
+                FROM (
+                    SELECT
+                        id.id AS id,
+                        p.id AS products_id,
+                        l.name AS ubicacion,
+                        c.detail AS categoria,
+                        p.detail AS product_name,
+                        id.created_at AS fecha_entrada,
+                        id.quantity AS cantidad_entrada,
+                        SUM(IFNULL(od.quantity, 0)) AS total_salidas,
+                        (id.quantity - SUM(IFNULL(od.quantity, 0))) AS stock,
+                        MAX(od.created_at) AS fecha_ultima_salida
+                    FROM input_details AS id
+                    LEFT JOIN products AS p ON p.id = id.products_id
+                    LEFT JOIN output_details AS od ON id.id = od.input_details_id
+                    LEFT JOIN inputs AS i ON i.id = id.inputs_id
+                    LEFT JOIN locations AS l ON l.id = i.locations_id
+                    LEFT JOIN categories AS c ON c.id = p.categories_id
+                    WHERE IFNULL(od.flagstate, 1) = 1
+                    $location
+                    GROUP BY id.id
+                ) AS s
+                WHERE s.stock > 0";
         return DB::select(DB::raw($sql));
     }
-    public function purchase(){
-        return DB::select(DB::raw(""));
+    public function purchase(Request $request){
+        $location = "";
+        if($request->locations_id){
+            $locations_id = (int)$request->locations_id;
+            $location = "AND i.locations_id = $locations_id";
+        }
+        return DB::select(DB::raw(
+        "SELECT
+            s.*,
+            (s.total_entradas - s.total_salidas) AS stock_total
+        FROM (
+            SELECT
+                po.id,
+                p.id AS products_id,
+                po.locations_id AS locations_id,
+                p.detail AS products_detail,
+                l.name AS locations_name,
+                po.minimum AS po_minimum, 
+                po.permanent AS po_permanent,
+                po.duration AS po_duration,
+                SUM(IFNULL(id.quantity, 0)) AS total_entradas,
+                SUM(IFNULL(od.quantity, 0)) AS total_salidas,
+                MAX(od.created_at) AS ultima_salida
+            FROM product_options AS po
+            LEFT JOIN products AS p ON p.id = po.products_id
+            LEFT JOIN input_details AS id ON id.products_id = po.products_id
+            LEFT JOIN inputs AS i ON i.id = id.inputs_id
+            LEFT JOIN output_details AS od ON od.input_details_id = id.id
+            JOIN locations AS l ON l.id = po.locations_id
+            WHERE IFNULL(od.flagstate, 1) = 1
+            
+            AND IFNULL(i.locations_id, $locations_id) = $locations_id
+            AND po.locations_id = $locations_id
+            -- ORDER BY po.id DESC
+            GROUP BY po.products_id
+        ) AS s"));
     }
     public function trabajando(){ 
         return "

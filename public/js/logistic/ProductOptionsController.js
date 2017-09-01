@@ -25,7 +25,7 @@
         $scope.guardar = function(){
             $http.put(`${GLOBAL.api_url}/product_options/${$scope.registro.id}`, $scope.registro).then(
                 function(res){
-
+                    
                 },
                 function(err){
                     console.log(err)
@@ -63,7 +63,6 @@
                             enfocar('ss_input')
                         }, 200)
                     }
-
                 }
             }
         }
@@ -78,48 +77,3 @@
         }
     }
 })();
-
-
-// app.controller('ProductOptionsController', function($scope, utilitiesFactory) {
-//     // var vm = this;
-
-//     $scope.products = utilitiesFactory.products
-//     $scope.products.get()
-
-//     // super select
-//     $scope.ss = {
-//         // model: utilitiesFactory.products,
-//         mode: true, // input : select
-//         query: "",
-//         run (e) {
-//             if(e.keyCode === 13){
-//                 console.log(this.query)
-//                 // this.model.get(this.query)
-//             }
-//         }
-//     }
-
-//     // activate();
-
-//     // ////////////////
-
-//     // function activate() { }
-// })
-
-// app.controller('ProductOptionsController', function($scope, utilitiesFactory){
-//     $scope.products = utilitiesFactory.products
-//     $scope.products.get()
-
-//     // super select
-//     $scope.ss = {
-//         // model: utilitiesFactory.products,
-//         mode: true, // input : select
-//         query: "",
-//         run (e) {
-//             if(e.keyCode === 13){
-//                 console.log(this.query)
-//                 // this.model.get(this.query)
-//             }
-//         }
-//     }
-// })

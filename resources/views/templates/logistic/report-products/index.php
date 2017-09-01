@@ -16,7 +16,7 @@
                         <th title="ID de entrada">ID</th>
                         <th>Producto</th>
                         <th>Ubicacion</th>
-                        <th>Fecha de Ultima Entrada</th>
+                        <th>Fecha de Ultima Salida</th>
                         <th>Stock</th>
                          <th>Minimo</th>
                         <th>Permanente</th>
@@ -29,7 +29,8 @@
                         <td ng-bind="s.id" >ID</td>
                         <td ng-bind="s.products_detail"></td>
                         <td ng-bind="s.locations_name"></td>
-                         <td ng-bind="s.fecha_entrada.split(' ')[0]"></td> 
+                         <!-- <td ng-bind="s.fecha_entrada.split(' ')[0]"></td> -->
+                        <td ng-bind="s.ultima_salida"></td>
                          <!-- <td ng-bind="dateFormat(s.fecha_entrada)"></td>  -->
                         <td ng-bind="s.stock_total"></td>
                          <td ng-bind="s.po_minimum"></td>
@@ -37,11 +38,12 @@
                         <td ng-bind="s.po_duration"></td> 
                         <td ng-show="estado(s).type == 2" ng-class="{ warning: estado(s).msj, danger: estado(s).urg }">
                              <!-- <code>{{estado(s)}} </code>  -->
-                            <span ng-show="estado(s).msj || estado(s).urg">Requieres Comprar </span>
+                            <span title="Quedan {{estado(s).diff}} dias" ng-show="estado(s).msj || estado(s).urg">Requieres Comprar </span>
                             <strong ng-show="estado(s).urg">Urgente!</strong>
                         </td>
                         <td ng-show="estado(s).type == 1" ng-class="{ warning: estado(s).msj, danger: estado(s).urg }">
-                            <span ng-show="estado(s).msj || estado(s).urg">Requieres Comprar </span><strong ng-show="estado(s).urg">Urgente!</strong>
+                            <span ng-show="estado(s).msj || estado(s).urg">Requieres Comprar </span>
+                            <strong ng-show="estado(s).urg">Urgente!</strong>
                         </td>
                     </tr>
                 </tbody>

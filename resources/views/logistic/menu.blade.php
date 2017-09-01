@@ -2,7 +2,7 @@
 <li><a href="{{ url('/logistic') }} "><fa class="fa fa-book"></fa> LOGISTIC </a></li>
 <li class="dropdown">
     {{--  enfoque inicial  --}}
-    <a id="nav_focus" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-database"></i> Utilitarios <span class="caret"></span></a>
+    <a id="nav_focus" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-database"></i> Herramientas <span class="caret"></span></a>
     <ul class="dropdown-menu">
         <li><a href="{{ url('/logistic/packings') }}" target="_blank"><i class="fa fa-bars"></i> Empaquetado</a></li>
         <li><a href="{{ url('/logistic/categories') }}" target="_blank"><i class="fa fa-bars"></i> Categorias</a></li>

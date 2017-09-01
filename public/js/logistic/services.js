@@ -1,4 +1,4 @@
-app.factory('utilitiesFactory', ['$http' ,function($http){
+app.factory('utilitiesFactory', ['$http', 'locationsService' ,function($http, locationsService){
     return {
         /**
          * @description Servicio para proveer los datos 
@@ -46,7 +46,13 @@ app.factory('utilitiesFactory', ['$http' ,function($http){
         purchase: {
             list: [],
             get () {
-                $http.get(`${GLOBAL.url}/logistic/api/purchase`).then(
+                $http.get(`${GLOBAL.url}/logistic/api/purchase`,
+                {
+                    params: {
+                        locations_id: locationsService.get()
+                    }
+                }
+            ).then(
                     // success
                     (response) => {
                         // console.log(response)

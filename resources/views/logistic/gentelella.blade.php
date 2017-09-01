@@ -1017,6 +1017,7 @@
   <script src="{{ asset('js/logistic/inventoryController.js') }} "></script>
   <script src="{{ asset('js/logistic/ReportProductsController.js') }} "></script>
   <script src="{{ asset('js/logistic/FastFormProducts.js') }} "></script>
+  <script src="{{ asset('js/logistic/ConfigProductsController.js') }} "></script>
 </body>
 
 </html>

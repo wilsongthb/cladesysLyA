@@ -123,6 +123,11 @@ app.config([
                 controller: 'FastFormProductsController'
             })
 
+            .when('/config-products', {
+                templateUrl: `${GLOBAL.url}/view/logistic.config-products.html`,
+                controller: 'ConfigProductsController'
+            })
+
             .when('/inventory', {
                 templateUrl: `${GLOBAL.url}/view/logistic.inventory.html`,
                 controller: 'inventoryController'

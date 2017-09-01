@@ -23,20 +23,20 @@ app.controller('ReportProductsController', function($scope, $http, utilitiesFact
         if(p.po_minimum == 0 && p.po_permanent == 0){
             let e = moment(p.fecha_salida)
             let t = moment(new Date())
-            let diff = t.diff(e, 'months')
-            let months = diff + p.po_duration -1
-            return {
+            let diff = t.diff(e, 'days')
+            diff += p.po_duration
+            let res = {
                 diff,
-                months,
                 type: 2,
-                msj: months <= 2,
-                urg: months <= 0,
+                msj: diff <= 60,
+                urg: diff <= 30,
             }
+            return res
         }else{
             return {
                 type: 1,
-                msj: p.stock < p.po_permanent,
-                urg: p.stock < p.po_minimum                
+                msj: p.stock_total < p.po_permanent,
+                urg: p.stock_total < p.po_minimum                
             }
         }
     }

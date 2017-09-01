@@ -5,6 +5,7 @@ namespace App\Http\Controllers\logistic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ProductOptions;
+use DB;
 
 class ProductOptionsResource extends Controller
 {
@@ -30,9 +31,39 @@ class ProductOptionsResource extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $location = "";
+        if($request->locations_id){
+            $locations_id = (int)$request->locations_id;
+            $location = "AND po.locations_id = $locations_id";
+        }
+
+        // dd($location);
+        $sql = "SELECT
+                po.id,
+                p.id AS products_id,
+                po.locations_id AS locations_id,
+                p.detail,
+                po.minimum,
+                po.permanent,
+                po.duration
+            FROM product_options AS po
+            LEFT JOIN products AS p ON p.id = po.products_id
+            JOIN locations AS l ON l.id = po.locations_id
+            $location
+            AND p.detail LIKE '%$request->search%'
+            ";
+    // dd($sql);
+        $res = DB::
+            select(
+                DB::raw($sql)
+            );
+            return $res;
+            // ->where('po.locations_id', $locations_id);
+        // if($request->search){
+        //     // $res->query('p.detail', 'LIKE', '%'.$request->search.'%');
+        // }
     }
 
     /**

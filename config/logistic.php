@@ -5,6 +5,7 @@
                 'Productos' => '/logistic/gentelella/products',
                 'Opciones de Producto' => '/logistic/gentelella/product_options',
                 'Fast Form Products' => '/logistic/gentelella/fast-form-products',
+                'Configuracion de Productos' => '/logistic/gentelella/config-products',
                 'Proveedores' => '/logistic/gentelella/suppliers',
             ],
             'Proceso de Compra' => [
